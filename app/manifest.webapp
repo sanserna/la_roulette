@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "name": "Web Care-Package",
+  "launch_path": "/index.html",
+  "description": "A front-end standard build.",
+  "icons": {},
+  "developer": {
+    "name": "",
+    "url": ""
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "es",
+  "permissions": {
+  },
+  "locales": {
+    "es": {
+      "name": "Web Care-Package",
+      "description": "A front-end standard build."
+    }
+  }
+}
