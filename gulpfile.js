@@ -23,6 +23,7 @@ var eslint = require('gulp-eslint');
 
 var del = require('del');
 var newer = require('gulp-newer');
+var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
@@ -76,13 +77,13 @@ gulp.task('lint', function() {
 
 // Image task: optimizar imagenes.
 gulp.task('images', function() {
-  gulp.src(['src/img/**/*.png', 'src/img/**/*.jpg'])
+  gulp.src(['app/img/**/*.png', 'app/img/**/*.jpg'])
   .pipe(imagemin({
     optimizationLevel: 5,
     progressive: true,
     interlaced: true
   }))
-  .pipe(gulp.dest('dist/images'))
+  .pipe(gulp.dest('dist/img'))
   .pipe(size({title: 'images'}));
 });
 
@@ -132,7 +133,7 @@ gulp.task('build:css', function() {
   ];
 
   return gulp.src('app/styles/main.styl')
-    // Usar sintaxis de Stylus (opcional).
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(stylus({
       'include css': true
@@ -161,7 +162,7 @@ gulp.task('build:js', function() {
     .pipe(sourcemaps.init())
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(concat('main.min.js'))
-    .pipe(uglify({preserveComments: 'license'}))
+    .pipe(uglify())
     // Output files
     .pipe(size({title: 'scripts'}))
     .pipe(sourcemaps.write('.'))
@@ -220,7 +221,7 @@ gulp.task('start', function(){
 });
 
 // Crea un servidor estático en el directorio de producción (dist)
-gulp.task('serve:dist', ['default'], function() {
+gulp.task('serve:dist', function() {
   browserSync({
     notify: false,
     logPrefix: 'WCP',

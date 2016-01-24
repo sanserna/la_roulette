@@ -1,38 +1,65 @@
 /**
- * El Care-Package usa postcss junto con Stylus para brindarle super poderes al
- * CSS, si eres nuevo con el uso de Stylus anímate a aprender!
- * http://stylus-lang.com/
- * https://github.com/postcss/postcss
- * 
- * los plugins de postcss que se incluyen en el Care-Package son:
- * - atoprefixer: Prefijos para las propiedades de CSS que lo necesiten.
- * - rucksack: Paquete de utilidades CSS (http://simplaio.github.io/rucksack/docs/).
- * - lost: Grid System (https://github.com/peterramsing/lost).
- */
-
-/**
- * Nota: puedes incluir cualquier archivo '.css' o '.styl' dentro de la carpeta 
- * 'src/styles' e importarlos directamente en el 'main.styl'. El Care-Package
- * incluye por defecto normalize.styl v3.0.3.
+ * CONTENIDOS
  *
- * Eres libre de modificar los archivos que se encuentran en el directorio
- * 'base' a tu gusto, la idea es mantener tu código organizado y modular, por
- * defecto el Care-Package cuenta con archivos para la declaración de tus
- * base rules, mixins y variables. Se recomienda mantener los `@imports` en el
- * mismo orden.
+ * FRAMEWORKS
+ * normalize.css................Estandariza los estilos.
+ * animate.css..................Colección de animaciones.
+ * jquery.fullPage.css..........Transiciones entre las secciones de la pagina.
+ *
+ * BASE
+ * _fonts.......................Configuracion de la fuente principal.
+ * _base........................Estilos base en los elementos de la pagina.
+ * _base_mixins.................Algunos mixins utiles.
+ * _base_variables..............Declaracion de variables globales.
+ *
+ * COMPONENTES
+ * .content.....................Contenedor principal.
+ * #video-container.............Contenedor del video del landing page y sus elementos.
+ *
+ * COMPONENTES
+ *
  */
 
-// Base Imports
+// frameworks imports
 @import 'frameworks/normalize'
+@import 'frameworks/animate.css'
+@import 'frameworks/jquery.fullPage.css'
+
+// Base imports
+@import 'base/_fonts'
 @import 'base/_base'
 @import 'base/_base_mixins'
 @import 'base/_base_variables'
 
-// Imports
-// @import 'otro'
-
 // Tus estilos van aqui
-.layout
-    width 100%
-    height 100vh
-    background-color orange
+.video-container
+    background-color black
+    min-height 100vh
+    overflow hidden
+    position relative
+
+.logo-bg
+    background rgba(0,0,0,.5) url(../img/pattern.png)
+
+#home-video
+    display none
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,14 +1,12 @@
-# humanstxt.org/
-# The humans responsible & technology colophon
-
 # TEAM
 
-  <name> -- <role> -- <twitter>
+  Web Master: Santiago Serna
+  Contact: sanserve91@gmail.com
+  From: Bogotá DC, Colombia
 
-# THANKS
+# SITE
 
-  <name>
-
-# TECHNOLOGY COLOPHON
-
-  HTML5, CSS3
+  Last update: 2016/01/22
+  Language: Castellano
+  Doctype: HTML5
+  IDE: Sublime Text, Illustrator

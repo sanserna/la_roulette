@@ -5,7 +5,7 @@
 
 $(function(){
   // Tu codigo JS va aqui!
-  $('.layout').html('hola');
+  $('#fullpage').fullpage();
 });
 
 

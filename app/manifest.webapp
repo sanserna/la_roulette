@@ -1,11 +1,12 @@
 {
   "version": "1.0.0",
-  "name": "Web Care-Package",
+  "name": "La Roulette",
   "launch_path": "/index.html",
-  "description": "A front-end standard build.",
+  "description": "La mejor experiencia de una fiesta en casa",
   "icons": {},
+  "fullscreen": true,
   "developer": {
-    "name": "",
+    "name": "Santiago Serna",
     "url": ""
   },
   "installs_allowed_from": [
@@ -16,8 +17,8 @@
   },
   "locales": {
     "es": {
-      "name": "Web Care-Package",
-      "description": "A front-end standard build."
+      "name": "La Roulette",
+      "description": "La mejor experiencia de una fiesta en casa"
     }
   }
 }

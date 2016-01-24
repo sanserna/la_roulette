@@ -1,10 +1,9 @@
 {
   "lang": "es",
-  "name": "Web Care-Package",
-  "short_name": "WCP",
+  "name": "La Roulette",
+  "short_name": "LaRoulette",
   "icons": [],
-  "start_url": "/index.html?homescreen=1",
-  "display": "standalone",
-  "background_color": "#E0E0E0",
-  "theme_color": "#BDBDBD"
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "orientation": "portrait"
 }
