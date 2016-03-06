@@ -14,7 +14,9 @@
     <link rel="manifest" href="manifest.json">
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="styles/main.min.css">
+    <!-- build:css styles/main.min.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -33,35 +35,26 @@
     <!-- Final del FB Pixel code -->
   </head>
   <body>
-    <!-- Agrega el contenido de tu aplicacion web aqui: -->
-    <div class="content">
-      <div id="fullpage">
-        <div class="section">
-          <section class="video-container">
-            <video id="home-video" autoplay loop muted poster="img/fondo1.jpg">
-              <source src="img/videoRoulette.mp4" type="video/mp4">
-              <source src="img/videoRoulette.webm" type="video/webm">
-            </video>
-            <div class="logo-bg"></div>
-            <img src="img/logoLaRoulette_blanco.png" alt="la roulette">
-            <h1>la mejor experiencia de una fiesta en casa!</h1>
-          </section>
-        </div>
-        <div class="section" style="background: blue;">
-          <section class="home-party">
-            <div class="cabecera">
-              <img src="img/logoHomeParty.png" alt="la roulette home party" class="cabecera__logo">
-              .cabecera__textos
-            </div>
-          </section>
-        </div>
-        <div class="section" style="background: yellow;">seccion 3</div>
-        <div class="section" style="background: green;">seccion 4</div>
-      </div>
+    <!-- LA ROULETTE LAYOUT -->
+    <section id="video-container" class="crt-parallaxvideo">
+        <!-- <div class="mobile-bg"></div> -->
+        <video autoplay loop muted poster="img/fondo1.jpg">
+          <source src="video/videoRoulette.mp4" type="video/mp4">
+          <source src="video/videoRoulette.webm" type="video/webm">
+        </video>
+        <!-- <div id="logo-bg"></div> -->
+        <!-- <img id="lr-logo" src="img/logoLaRoulette_blanco.png" alt="la roulette"> -->
+        <h1>Vive Diferente!</h1>
+    </section>
+
+    <div class="page-content">
     </div>
 
     <!-- Main scripts -->
-    <script src="scripts/main.min.js"></script>
+    <!-- build:js scripts/main.min.js -->
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
 
     <!-- Google Analytics -->
     <script>

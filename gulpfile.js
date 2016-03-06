@@ -54,21 +54,25 @@ gulp.task('lint', function() {
   gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/**'])
   .pipe(eslint({
     'rules': {
-      'no-alert': 0,
       'camelcase': 1,
       'curly': 1,
       'eqeqeq': 0,
+      'indent': [2, 4],
+      'no-alert': 0,
       'no-empty': 1,
       'no-use-before-define': 0,
       'no-obj-calls': 2,
       'no-unused-vars': 0,
-      'semi': 1,
+      'padded-blocks': [2, "always"],
       'quotes': 0,
-      'space-before-blocks': [1, "never"],
+      'semi': 1,
+      'space-before-blocks': [1, "always"],
       'no-multiple-empty-lines': 0
     },
     'globals': {
-      '$': false
+      '$': false,
+      'document': false,
+      'window': false
     }
   }))
   .pipe(eslint.format())
@@ -154,9 +158,8 @@ gulp.task('build:js', function() {
   gulp.src([
     // Nota: en listar los scripts explícitamente en el orden para que sean
     // correctamente concatenados.
-    'app/scripts/vendors/jquery.js',
-    'app/scripts/vendors/jquery.slimscroll.js',
-    'app/scripts/vendors/jquery.fullpage.js',
+    'bower_components/jquery/dist/jquery.js',
+    // 'bower_components/vide/dist/jquery.vide.js',
     'app/scripts/main.js'
   ])
     .pipe(sourcemaps.init())
@@ -172,7 +175,10 @@ gulp.task('build:js', function() {
 // HTML task: compilar los templates.
 gulp.task('build:html', function(){
   return gulp.src('app/**/*.html')
-    .pipe(useref({searchPath: '{.tmp,app}'}))
+    .pipe(useref({
+      searchPath: '{.tmp,app}',
+      noAssets: true
+    }))
     .pipe(gulpif('*.css', uncss({
       html: [
         'app/index.html'
