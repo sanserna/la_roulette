@@ -8,8 +8,8 @@ app.ctrl = {
         $(document).on('ready', function () {
 
             // - centrar el logo al cambiar el tamaño de la ventana
-            $(window).resize(app.ctrl.centerLogo);
-            $(window).ready(app.ctrl.centerLogo);
+            $(window).resize(app.ctrl.centerHeaderContent);
+            $(window).ready(app.ctrl.centerHeaderContent);
 
             if (app.context.isMobile()) {
 
@@ -56,19 +56,27 @@ app.ctrl = {
 
     },
 
-    centerLogo: function () {
+    centerHeaderContent: function () {
 
         var $container = $('#main-header'),
+            $logo = $('#lr-logo'),
+            $title = $('#header-title'),
             containerW = $container.width(),
             containerH = $container.height(),
-            $logo = $('#lr-logo'),
             logoW = $logo.width(),
-            logoH = $logo.height();
+            logoH = $logo.height(),
+            titleW = $title.width(),
+            titleH = $title.height();
 
         $logo.css({
             top: containerH / 2.5 - logoH / 2,
             left: containerW / 2 - logoW / 2
         });
+
+        // $title.css({
+        //     top: containerH - titleH * 2,
+        //     left: containerW / 2 - logoW / 2
+        // });
 
     }
 
