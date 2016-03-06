@@ -4,39 +4,6 @@ Este repositorio contiene todos los archivos base necesarios para la edición de
 
 [www.laroulette.com.co](http://www.laroulette.com.co)
 
-## Licencia
-
-Copyright 2015, Santiago Serna.
-
-## Apuntes
-
-- Nuevo slogan: "vive diferente"
-
-- Imagenes de quienes somos redondas.
-
-- Galeria de imagenes --> secciones por año en donde estan contenidos los albunes
-de cada uno de los eventos.
-
-- Imagenes cuadradas en toda la pagina.
-
-- Carta de cocteles que sea una sola imagen y que se pase a la siguiente
-haciendo click.
-
-- Menu lateral ya no aparece.
-
-- Seccion de cotizaciones ya no aparece.
- 
-- Email template.
-
-- Secciones de la pagina: homeParty, cocktailParty, officeParty, delivery.
-
-- Blog.
-
-- Video que no ocupe toda la pantalla.
-
-- El contacto estar en la parte de quienes somos.
-
-
 ### Cronograma
 
 Las actualizaciones de la pagina web de La Roulette estará dividida en # fases,
@@ -45,6 +12,7 @@ final, a continuación se muestra el cronograma de trabajo para el desarrollo de
 cada una de las fases y los recursos que se necesitan.
 
 - Fase 1: actualización del layout
+
     En esta primera fase se harán los respectivos cambios en el layout original
     de la pagina web, y se integraran las nuevas secciones que se tienen
     programadas para que aparezcan en la nueva versión del sitio web.
@@ -68,6 +36,7 @@ cada una de las fases y los recursos que se necesitan.
         usados en el home.
 
 - Fase 2: creación del blog
+
     En la segunda fase se hará la integración del blog al sitio web.
     Fecha de entrega: Marzo 12 del 2016
     Recursos necesarios: ninguno
@@ -84,6 +53,10 @@ Cada una de las fases cuenta con un periodo de prueba en la que se harán prueba
 en el funcionamiento y se corregirán errores con respecto a la visualización del
 sitio web en dispositivos móviles y navegadores de diferentes marcas, cada una 
 de las fechas de entrega esta sujeta a cambios dependiendo de esta etapa.
+
+## Licencia
+
+Copyright 2015, Santiago Serna.
 
 
 

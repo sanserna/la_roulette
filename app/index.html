@@ -36,23 +36,23 @@
   </head>
   <body>
     <!-- LA ROULETTE LAYOUT -->
-    <section id="video-container" class="crt-parallaxvideo">
-        <!-- <div class="mobile-bg"></div> -->
-        <video autoplay loop muted poster="img/fondo1.jpg">
-          <source src="video/videoRoulette.mp4" type="video/mp4">
-          <source src="video/videoRoulette.webm" type="video/webm">
-        </video>
-        <!-- <div id="logo-bg"></div> -->
-        <!-- <img id="lr-logo" src="img/logoLaRoulette_blanco.png" alt="la roulette"> -->
+    <header id="video-container">
+        <div id="video"
+          data-vide-bg="mp4: videos/videoRoulette, webm: videos/videoRoulette, poster: videos/videoRoulette"
+          data-vide-options="posterType: jpg, loop: true, muted: true, position: 50% 50%">
+        </div>
+        <div class="logo-bg"></div>
+        <img class="lr-logo" src="img/logoLaRoulette_blanco.png" alt="la roulette">
         <h1>Vive Diferente!</h1>
-    </section>
+    </header>
 
     <div class="page-content">
     </div>
 
     <!-- Main scripts -->
     <!-- build:js scripts/main.min.js -->
-    <script src="scripts/jquery.js"></script>
+    <script src="scripts/vendors/jquery.js"></script>
+    <script src="scripts/vendors/jquery.vide.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 

@@ -158,8 +158,8 @@ gulp.task('build:js', function() {
   gulp.src([
     // Nota: en listar los scripts explícitamente en el orden para que sean
     // correctamente concatenados.
-    'bower_components/jquery/dist/jquery.js',
-    // 'bower_components/vide/dist/jquery.vide.js',
+    'scripts/vendors/jquery.js',
+    'scripts/vendors/jquery.vide.js',
     'app/scripts/main.js'
   ])
     .pipe(sourcemaps.init())

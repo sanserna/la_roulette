@@ -1,10 +1,8 @@
 *.sh
 *.DS_Store
+*.db
 /.tmp
 /dist
 /node_modules
 /recursos
-/bower_components/jquery/*
-/bower_components/vide/*
-!/bower_components/jquery/dist
-!/bower_components/vide/dist
+/bower_components/
