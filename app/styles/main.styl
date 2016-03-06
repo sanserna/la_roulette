@@ -74,15 +74,22 @@
         width 50%
         max-width 300px
         z-index 1
+        @media only screen and (min-device-width : 320px) and (orientation : landscape) {
+            width 40%
+        }
     }
     .main-header__title {
-        area()
+        color white
         position absolute
-        bottom 0px
+        top 0px
         left 0px
         margin auto
-        font-size responsive 25px 50px
+        font-size responsive 30px 50px
         font-range 320px 1280px
+        font-weight 300
+        text-align center
+        text-shadow 0px 1px 1px black
+        width 100%
     }
 }
 

@@ -58,6 +58,8 @@ app.ctrl = {
 
     centerHeaderContent: function () {
 
+        'use strict';
+
         var $container = $('#main-header'),
             $logo = $('#lr-logo'),
             $title = $('#header-title'),
@@ -73,10 +75,9 @@ app.ctrl = {
             left: containerW / 2 - logoW / 2
         });
 
-        // $title.css({
-        //     top: containerH - titleH * 2,
-        //     left: containerW / 2 - logoW / 2
-        // });
+        $title.css({
+            top: $logo.position().top + (logoH + titleH / 2)
+        });
 
     }
 
