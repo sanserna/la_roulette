@@ -63,11 +63,14 @@ gulp.task('lint', function() {
       'no-use-before-define': 0,
       'no-obj-calls': 2,
       'no-unused-vars': 0,
+      'one-var': [2, "always"],
       'padded-blocks': [2, "always"],
       'quotes': 0,
       'semi': 1,
       'space-before-blocks': [1, "always"],
-      'no-multiple-empty-lines': 0
+      'space-before-function-paren': [2, "always"],
+      'no-multiple-empty-lines': 0,
+      'wrap-iife': [2, "outside"]
     },
     'globals': {
       '$': false,

@@ -2,35 +2,40 @@ var app = app || {};
 
 app.context = {
 
-    isAndroid: function() {
+    isAndroid: function () {
 
         return navigator.userAgent.match(/Android/i);
 
     },
-    isBlackBerry: function() {
+    isBlackBerry: function () {
 
         return navigator.userAgent.match(/BlackBerry/i);
 
     },
-    isIOS: function() {
+    isIOS: function () {
 
         return navigator.userAgent.match(/iPhone|iPad|iPod/i);
 
     },
-    isOpera: function() {
+    isOpera: function () {
 
         return navigator.userAgent.match(/Opera Mini/i);
 
     },
-    isWindows: function() {
+    isWindows: function () {
 
         return navigator.userAgent.match(/IEMobile/i);
 
     },
-    isMobile: function() {
+    isMobile: function () {
 
         if (app.context.isAndroid() || app.context.isBlackBerry() || app.context.isIOS() || app.context.isOpera() || app.context.isWindows()) {
+
             return true;
-        } else return false;
+
+        }
+
+        return false;
+
     }
 };

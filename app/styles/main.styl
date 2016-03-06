@@ -4,7 +4,6 @@
  * FRAMEWORKS
  * normalize.css................Estandariza los estilos.
  * animate.css..................Colección de animaciones.
- * jquery.fullPage.css..........Transiciones entre las secciones de la pagina.
  *
  * BASE
  * _fonts.......................Configuracion de la fuente principal.
@@ -14,10 +13,9 @@
  *
  * COMPONENTES
  * .content.....................Contenedor principal.
- * #video-container.............Contenedor del video del landing page y sus elementos.
  *
- * COMPONENTES
- *
+ * MODULES
+ * #main-header.............Contenedor del video del landing page y sus elementos.
  */
 
 // frameworks imports
@@ -30,40 +28,58 @@
 @import 'base/_base_mixins'
 @import 'base/_base_variables'
 
-// Tus estilos van aqui
-#video-container {
-    min-height 100vh
+
+// -------------------
+// #MAIN-HEADER
+// -------------------
+
+#main-header {
+    height 100vh
     overflow hidden
     position relative
-    max-height 100vh
     width 100%
-    #video {
+    #main-header__bg {
         height 100vh
+        position relative
         width 100%
+        img {
+            height 100%
+            position fixed
+            top 0px
+            left 50%
+            transform translate(-50%, 0)
+            z-index -1
+            @media only screen and (min-device-width : 320px) and (orientation : landscape) {
+                height auto
+                width 120%
+            }
+        }
+        video {
+            position fixed !important
+        }
     }
-    .logo-bg {
+    .main-header__overlayed-bg {
         position absolute
-        top 0
-        left 0
+        top 0px
+        left 0px
         height 100%
         width 100%
-        background rgba(black,.1) url(../img/pattern.png)
+        background rgba(black,.2) url(../img/pattern.png)
         z-index 0
     }
-    .lr-logo {
-        area()
+    .main-header__lr-logo {
         position absolute
-        width 20%
-        left 50%
-        margin-left -35%
-        top 75px
+        top 0px
+        left 0px
+        width 50%
+        max-width 300px
         z-index 1
     }
 }
 
 .page-content {
     height 1000px
-    background rgba(red,.1)
+    background blue
 }
 
 
