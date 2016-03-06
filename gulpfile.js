@@ -72,7 +72,8 @@ gulp.task('lint', function() {
     'globals': {
       '$': false,
       'document': false,
-      'window': false
+      'window': false,
+      'navigator': false
     }
   }))
   .pipe(eslint.format())
@@ -158,8 +159,9 @@ gulp.task('build:js', function() {
   gulp.src([
     // Nota: en listar los scripts explícitamente en el orden para que sean
     // correctamente concatenados.
-    'scripts/vendors/jquery.js',
-    'scripts/vendors/jquery.vide.js',
+    'app/scripts/vendors/jquery.js',
+    'app/scripts/vendors/jquery.vide.js',
+    'app/scripts/context.js',
     'app/scripts/main.js'
   ])
     .pipe(sourcemaps.init())
