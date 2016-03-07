@@ -63,6 +63,7 @@ app.ctrl = {
         var $container = $('#main-header'),
             $logo = $('#lr-logo'),
             $title = $('#header-title'),
+            $pointerHand = $('#pointer-hand'),
             containerW = $container.width(),
             containerH = $container.height(),
             logoW = $logo.width(),
@@ -77,6 +78,10 @@ app.ctrl = {
 
         $title.css({
             top: $logo.position().top + (logoH + titleH / 2)
+        });
+
+        $pointerHand.css({
+            top: $title.position().top + (titleH + 20)
         });
 
     }

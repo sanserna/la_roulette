@@ -1,3 +1,7 @@
+// -------------------
+// #ELEMENTS-BASE-STYLES
+// -------------------
+
 * {
     box-sizing border-box
 }
@@ -11,10 +15,34 @@ body {
     -webkit-text-size-adjust: 100%   
 }
 
-h1, h2, h3, h4, h5, h6 {
+a {
+    color inherit
+    text-decoration none
+}
+
+h1, h2, h3, h4, h5, h6, p{
     margin 0
     padding 0
     border 0
     font-size 100%
-    vertical-align baseline
+}
+
+
+
+// -------------------
+// #GENERIC-ELEMENTS-STYLES
+// -------------------
+
+.titulo-seccion {
+    font-size responsive 1.875rem 3.12rem
+    font-range 320px 1280px
+    margin-bottom 30px
+    text-align center
+    width 100%
+}
+
+.descripcion-seccion {
+    font-size responsive 1rem 1.5rem
+    font-range 320px 1280px
+    width 100%
 }

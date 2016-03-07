@@ -41,10 +41,148 @@
         <div class="main-header__overlayed-bg"></div>
         <img id="lr-logo" class="main-header__lr-logo" src="img/logoLaRoulette_blanco.png" alt="la roulette">
         <h1 id="header-title" class="main-header__title">Vive Diferente!</h1>
+        <div id="pointer-hand" class="main-header__hand-icon"></div>
     </header>
 
-    <div class="page-content">
-    </div>
+    <main class="page-content">
+      <section class="frase-animada">
+        <h1>Vive Diferente!</h1>
+      </section>
+
+      <section class="servicios-container">
+        <p class="servicios-container__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sed magnam dicta ducimus nostrum numquam, praesentium consequatur velit culpa voluptates.</p>
+        
+        <a href="#">
+          <div class="servicios-container__item servicio servicio--home-party">
+            <h3 class="servicio__titulo">Home Party</h3>
+            <h6 class="servicio__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</h6>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="servicios-container__item servicio servicio--cocktail-party">
+            <h3 class="servicio__titulo">Coctail Party</h3>
+            <h6 class="servicio__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</h6>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="servicios-container__item servicio servicio--office-party">
+            <h3 class="servicio__titulo">Office Party</h3>
+            <h6 class="servicio__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</h6>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="servicios-container__item servicio servicio--delivery">
+            <h3 class="servicio__titulo">Delivery</h3>
+            <h6 class="servicio__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</h6>
+          </div>
+        </a>
+      </section>
+
+      <section class="videos-promocionales">
+        <h1 class="titulo-seccion">Lorem ipsum dolor.</h1>
+        <div class="youtubevideowrap">
+          <div class="video-container">
+            <div id="video-player"></div>
+            <script>
+              // 2. This code loads the IFrame Player API code asynchronously.
+              var tag = document.createElement('script');
+              
+              tag.src = "https://www.youtube.com/iframe_api";
+              var firstScriptTag = document.getElementsByTagName('script')[0];
+              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+              
+              // 3. This function creates an <iframe> (and YouTube player)
+              //    after the API code downloads.
+              var player;
+              function onYouTubeIframeAPIReady() {
+                player = new YT.Player('video-player', {
+                  height: '315',
+                  width: '560',
+                  videoId: 'rwej-YmrlYw',
+                  playerVars: {
+                    //controls: 0,
+                    rel: 0,
+                    showinfo: 0
+                  }
+                });
+              }
+            </script>
+          </div>
+        </div>
+      </section>
+
+      <section class="about">
+        <h1 class="titulo-seccion">Lorem ipsum dolor.</h1>
+        <p class="descripcion-seccion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam enim iste maiores unde omnis, non accusantium at soluta praesentium necessitatibus maxime quaerat laudantium facere assumenda modi, neque, ea, ducimus rerum fugiat qui ex itaque aliquam. Nemo, placeat. Perspiciatis, placeat, illum quis incidunt reprehenderit aliquam minima, vero porro illo explicabo, molestiae!</p>
+
+        <div class="fundador">
+          <img class="fundador__img" src="img/fotoDavid.jpg" alt="la roulette co fundador">
+          <h2 class="fundador__name">David Restrepo</h1>
+          <h3 class="fundador__pro">co-fundador</h3>
+        </div>
+
+        <div class="fundador">
+          <img class="fundador__img" src="img/fotoSebastian.jpg" alt="la roulette co fundador">
+          <h2 class="fundador__name">Sebastian Duque</h1>
+          <h3 class="fundador__pro">co-fundador</h3>
+        </div>
+      </section>
+
+      <section class="contacto">
+        <h6>contactanos</h6>
+        <a href="mailto:contacto@laroulette.com.co" target="_blank">contacto@laroulette.com.co</a>
+        <div class="persona-contacto-container">
+          <div class="persona-contacto">
+            <h6>David Restrepo</h6>
+            <h3>312-3055351</h3>
+          </div>
+
+          <div class="persona-contacto">
+            <h6>Sebastian Duque</h6>
+            <h3>310-8741280</h3>
+          </div>
+
+          <div class="persona-contacto">
+            <h6>David Restrepo</h6>
+            <h3>320-2947262</h3>
+          </div>
+        </div>
+
+        <p>Estamos atentos a proporcionarte toda la información que necesites</p>
+
+        <div class="social-contacto">
+          <a href="http://www.facebook.com/partylaroulette" target="_blank">
+            <img src="img/facebook_negro.png">
+          </a>
+          <a href="http://www.twitter.com/partylaroulette" target="_blank">
+            <img src="img/twitter_negro.png">
+          </a>
+          <a href="http://www.instagram.com/partylaroulette" target="_blank">
+            <img src="img/instagram_negro.png">
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <img class="page-footer__logo" src="img/logoLaRoulette_blanco.png">
+      <h6>Siguenos en:</h6>
+      <div class="page-footer__social-media">
+        <a href="http://www.facebook.com/partylaroulette" target="_blank">
+          <img src="img/facebook.png">
+        </a>
+        <a href="http://www.twitter.com/partylaroulette" target="_blank">
+          <img src="img/twitter.png">
+        </a>
+        <a href="http://www.instagram.com/partylaroulette" target="_blank">
+          <img src="img/instagram.png">
+        </a>
+      </div>
+      <p>© La Roulette 2015. Todos los derechos reservados. Elaborado por <a class="referenceLink" href="mailto:sanserve91@gmail.com" target="_blank">Santiago Serna</a></p>
+    </footer>
 
     <!-- Main scripts -->
     <!-- build:js scripts/main.min.js -->

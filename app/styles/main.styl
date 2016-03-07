@@ -11,16 +11,25 @@
  * _base_mixins.................Algunos mixins utiles.
  * _base_variables..............Declaracion de variables globales.
  *
- * COMPONENTES
+ * SECCIONES
+ * #main-header.................Contenedor del video del landing page y sus elementos.
  * .content.....................Contenedor principal.
+ * .servicios...................Contenedor de los servicios
+ * .frase-animada...............Contenedor donde se realiza la animacion de la frase
+ * .videos-promocionales........Seccion que contiene videos promocionales
+ * .page-foter..................Footer principal de la pagina
+ * .about.......................Seccion sobre la empresa
+ * .contacto....................Seccion de contacto
  *
- * MODULES
- * #main-header.............Contenedor del video del landing page y sus elementos.
+ * COMPONENTES
+ * .servicio....................Componente que define un servicio
+ * .video-container.............Contenedor para videos de youtube
+ * .fundador....................Componente para la seccion de about
  */
 
 // frameworks imports
 @import 'frameworks/normalize'
-//@import 'frameworks/animate.css'
+// @import 'frameworks/animate.css'
 
 // Base imports
 @import 'base/_fonts'
@@ -29,11 +38,14 @@
 @import 'base/_base_variables'
 
 
+
 // -------------------
 // #MAIN-HEADER
 // -------------------
 
 #main-header {
+    border-bottom 8px solid $purple-logo
+    box-sizing content-box
     height 100vh
     overflow hidden
     position relative
@@ -58,19 +70,25 @@
             position fixed !important
         }
     }
-    .main-header__overlayed-bg {
+    .main-header__overlayed-bg,
+    .main-header__lr-logo,
+    .main-header__title,
+    .main-header__hand-icon {
         position absolute
         top 0px
+    }
+    .main-header__overlayed-bg,
+    .main-header__lr-logo,
+    .main-header__title {
         left 0px
+    }
+    .main-header__overlayed-bg {
         height 100%
         width 100%
         background rgba(black,.2) url(../img/pattern.png)
         z-index 0
     }
     .main-header__lr-logo {
-        position absolute
-        top 0px
-        left 0px
         width 50%
         max-width 300px
         z-index 1
@@ -80,29 +98,335 @@
     }
     .main-header__title {
         color white
-        position absolute
-        top 0px
-        left 0px
-        margin auto
-        font-size responsive 30px 50px
-        font-range 320px 1280px
+        font-size responsive mainTitleRange
+        font-range minScreenSize maxScreenSize
         font-weight 300
         text-align center
         text-shadow 0px 1px 1px black
         width 100%
     }
+    .main-header__hand-icon {
+        background-image url(../img/hand_icon.png)
+        background-size 35px 35px
+        background-repeat no-repeat
+        left calc(50% - 17.5px)
+        height 35px
+        width 35px
+        @media only screen and (min-device-width : 320px) and (orientation : landscape) {
+            display none
+        }
+    }
 }
+
+
+
+// -------------------
+// #PAGE-CONTENT
+// -------------------
 
 .page-content {
-    height 1000px
-    background blue
+    width 100%
+    background transparent
 }
 
 
 
+// -------------------
+// #FRASE-ANIMADA
+// -------------------
+
+.frase-animada {
+    background-color white
+    display flex
+    align-items center
+    min-height 100vh
+    h1 {
+        font-size responsive mainTitleRange
+        text-align center
+        width 100%
+    }
+}
+
+
+// -------------------
+// #SERVICIOS-CONTAINER
+// -------------------
+
+.servicios-container {
+    area()
+    background-color $blackBG
+    lost-utility clearfix
+    padding 50px 10px
+    width 100%
+    .servicios-container__descripcion {
+        color white
+        font-size responsive mainDescriptionTextRange
+        font-range minScreenSize maxScreenSize
+        line-height 1.48
+        margin-bottom 1.5rem
+    }
+    .servicios-container__item {
+        height 200px
+        lost-column 1/1
+        @media only screen and (min-device-width : 320px) and (orientation : landscape) {
+            height 400px
+        }
+        @media only screen and (min-width: 1024px) {
+            lost-column 1/2 1
+        }
+    }
+}
 
 
 
+// -------------------
+// #SERVICIO
+// -------------------
+
+.servicio {
+    background-size cover
+    cursor pointer
+    position relative
+    .servicio__titulo, .servicio__descripcion {
+        text-align center
+        padding 0 10px
+        position absolute
+        left 0px
+        width 100%
+        z-index 1
+    }
+    .servicio__titulo{
+        color white
+        font-size responsive secondaryTitleRange
+        font-range minScreenSize maxScreenSize
+        font-weight 700
+        top 35%
+    }
+    .servicio__titulo--yellow {
+        color $yellow-logo
+    }
+    .servicio__titulo--purple {
+        color $purple-logo
+    }
+    .servicio__titulo--green {
+        color $green-logo
+    }
+    .servicio__titulo--teal {
+        color $teal-logo
+    }
+    .servicio__descripcion {
+        color white
+        font-size responsive descriptionTextRange
+        font-range minScreenSize maxScreenSize
+        text-transform uppercase
+        top 55%
+    }
+    &::after {
+        content ""
+        background-color rgba(black, .5)
+        display block
+        position absolute
+        top 0px
+        left 0px
+        height 100%
+        width 100%
+        z-index 0
+    }
+}
+
+.servicio--home-party {
+    background-image url(http://lorempixel.com/400/200/nightlife/)
+}
+
+.servicio--cocktail-party {
+    background-image url(http://lorempixel.com/400/200/city/)
+}
+
+.servicio--office-party {
+    background-image url(http://lorempixel.com/400/200/business/)
+}
+
+.servicio--delivery {
+    background-image url(http://lorempixel.com/400/200/fashion/)
+}
+
+
+
+// -------------------
+// #VIDEOS-PROMOCIONALES
+// -------------------
+
+.videos-promocionales {
+    background-color $silver
+    padding 30px 0
+    width 100%
+}
+
+
+
+// -------------------
+// #VIDEO-CONTAINER
+// -------------------
+
+.youtubevideowrap {
+    max-width 640px
+    margin 0 auto
+    width 80%
+}
+
+.video-container {
+    position relative
+    padding-bottom 56.25%
+    padding-top 30px
+    height 0
+    overflow hidden
+    iframe {
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+    }
+}
+
+
+
+// -------------------
+// #ABOUT
+// -------------------
+
+.about {
+    background-color $blackBG
+    padding 40px 15px
+    lost-utility clearfix
+    .titulo-seccion,
+    .descripcion-seccion {
+        color white
+    }
+    .titulo-seccion {
+        color $yellow-logo
+        line-height 1.2
+        margin 0
+        text-align left
+    }
+    .descripcion-seccion {
+        line-height 1.5
+        text-align justify
+    }
+}
+
+
+
+// -------------------
+// #CONTACTO
+// -------------------
+
+.contacto {
+    background-color white
+    height 500px
+    padding 40px 15px
+    text-align center
+    h6 {
+        font-size responsive descriptionTextRange
+        font-range minScreenSize maxScreenSize
+        text-transform uppercase
+    }
+    a, h3 {
+        color $green-logo
+        font-size responsive tertiaryTitleRange
+        font-range minScreenSize maxScreenSize
+    }
+    p {
+        line-height 1.5
+        margin-top 20px
+    }
+    .persona-contacto {
+        margin-top 20px
+    }
+    .social-contacto {
+        margin-top 20px
+        lost-utility clearfix
+        a {
+            lost-column 1/3
+        }
+    }
+}
+
+
+
+// -------------------
+// #FUNDADOR
+// -------------------
+
+.fundador {
+    width 100%
+    margin-top 40px
+    text-align center
+    .fundador__img {
+        border-radius 50%
+        box-shadow 0 2px 2px rgba(black,.5)
+        margin-bottom 10px
+        width 100%
+        max-width 250px
+    }
+    .fundador__name,
+    .fundador__pro {
+        line-height 1.4
+    }
+    .fundador__name {
+        color $yellow-logo
+        font-size responsive tertiaryTitleRange
+        font-range minScreenSize maxScreenSize
+    }
+    .fundador__pro {
+        color white
+        font-weight 300
+        font-size responsive descriptionTextRange
+        font-range minScreenSize maxScreenSize
+        text-transform uppercase
+    }
+}
+
+
+
+// -------------------
+// #PAGE-FOOTER
+// -------------------
+
+.page-footer {
+    color white
+    background-image url(../img/footer.png)
+    padding 20px 10px
+    text-align center
+    .page-footer__logo {
+        width 100px
+    }
+    h6 {
+        font-size responsive tertiaryTitleRange
+        font-range minScreenSize maxScreenSize
+        font-weight 300
+        margin 20px 0
+    }
+    p {
+        margin-top 20px
+        font-size responsive descriptionTextRange
+        font-range minScreenSize maxScreenSize
+    }
+    .page-footer__social-media {
+        lost-utility clearfix
+        a {
+            display block
+            lost-column 1/3
+            img {
+                width 50px
+            }
+        }
+    }
+    .referenceLink {
+        color $teal-logo
+        text-decoration underline
+    }
+}
 
 
 
