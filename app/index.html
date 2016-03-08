@@ -49,36 +49,30 @@
         <h1>Vive Diferente!</h1>
       </section>
 
-      <section class="servicios-container">
-        <p class="servicios-container__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sed magnam dicta ducimus nostrum numquam, praesentium consequatur velit culpa voluptates.</p>
-        
-        <a href="#">
-          <div class="servicios-container__item servicio servicio--home-party">
+      <section class="servicios">
+        <p class="servicios__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sed magnam dicta ducimus nostrum numquam, praesentium consequatur velit culpa voluptates.</p>
+
+        <div class="servicios-container">
+          <a href="#" class="servicios-container__item servicio servicio--home-party">
             <h3 class="servicio__titulo">Home Party</h3>
             <h6 class="servicio__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</h6>
-          </div>
-        </a>
+          </a>
 
-        <a href="#">
-          <div class="servicios-container__item servicio servicio--cocktail-party">
+          <a href="#" class="servicios-container__item servicio servicio--cocktail-party">
             <h3 class="servicio__titulo">Coctail Party</h3>
             <h6 class="servicio__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</h6>
-          </div>
-        </a>
+          </a>
 
-        <a href="#">
-          <div class="servicios-container__item servicio servicio--office-party">
+          <a href="#" class="servicios-container__item servicio servicio--office-party">
             <h3 class="servicio__titulo">Office Party</h3>
             <h6 class="servicio__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</h6>
-          </div>
-        </a>
+          </a>
 
-        <a href="#">
-          <div class="servicios-container__item servicio servicio--delivery">
+          <a href="#" class="servicios-container__item servicio servicio--delivery">
             <h3 class="servicio__titulo">Delivery</h3>
             <h6 class="servicio__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</h6>
-          </div>
-        </a>
+          </a>
+        </div>
       </section>
 
       <section class="videos-promocionales">
@@ -117,23 +111,26 @@
       <section class="about">
         <h1 class="titulo-seccion">Lorem ipsum dolor.</h1>
         <p class="descripcion-seccion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam enim iste maiores unde omnis, non accusantium at soluta praesentium necessitatibus maxime quaerat laudantium facere assumenda modi, neque, ea, ducimus rerum fugiat qui ex itaque aliquam. Nemo, placeat. Perspiciatis, placeat, illum quis incidunt reprehenderit aliquam minima, vero porro illo explicabo, molestiae!</p>
+        
+        <div class="fundadores-container">
+          <div class="fundadores-container__item fundador">
+            <img class="fundador__img" src="img/fotoDavid.jpg" alt="la roulette co fundador">
+            <h2 class="fundador__name">David Restrepo</h1>
+            <h3 class="fundador__pro">co-fundador</h3>
+          </div>
 
-        <div class="fundador">
-          <img class="fundador__img" src="img/fotoDavid.jpg" alt="la roulette co fundador">
-          <h2 class="fundador__name">David Restrepo</h1>
-          <h3 class="fundador__pro">co-fundador</h3>
-        </div>
-
-        <div class="fundador">
-          <img class="fundador__img" src="img/fotoSebastian.jpg" alt="la roulette co fundador">
-          <h2 class="fundador__name">Sebastian Duque</h1>
-          <h3 class="fundador__pro">co-fundador</h3>
+          <div class="fundadores-container__item fundador">
+            <img class="fundador__img" src="img/fotoSebastian.jpg" alt="la roulette co fundador">
+            <h2 class="fundador__name">Sebastian Duque</h1>
+            <h3 class="fundador__pro">co-fundador</h3>
+          </div>
         </div>
       </section>
 
       <section class="contacto">
         <h6>contactanos</h6>
         <a href="mailto:contacto@laroulette.com.co" target="_blank">contacto@laroulette.com.co</a>
+
         <div class="persona-contacto-container">
           <div class="persona-contacto">
             <h6>David Restrepo</h6>
@@ -146,7 +143,7 @@
           </div>
 
           <div class="persona-contacto">
-            <h6>David Restrepo</h6>
+            <h6>Lorena Roa</h6>
             <h3>320-2947262</h3>
           </div>
         </div>
@@ -154,16 +151,26 @@
         <p>Estamos atentos a proporcionarte toda la información que necesites</p>
 
         <div class="social-contacto">
-          <a href="http://www.facebook.com/partylaroulette" target="_blank">
+          <a href="http://www.facebook.com/partylaroulette" target="_blank" class="social-contacto__logo">
             <img src="img/facebook_negro.png">
           </a>
-          <a href="http://www.twitter.com/partylaroulette" target="_blank">
+          <a href="http://www.twitter.com/partylaroulette" target="_blank" class="social-contacto__logo">
             <img src="img/twitter_negro.png">
           </a>
-          <a href="http://www.instagram.com/partylaroulette" target="_blank">
+          <a href="http://www.instagram.com/partylaroulette" target="_blank" class="social-contacto__logo">
             <img src="img/instagram_negro.png">
           </a>
         </div>
+
+        <form class="contact-form">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" class="contact-form__input" required />
+            <label for="correo">E-mail</label>
+            <input type="text" id="correo" name="correo" class="contact-form__input" required />
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" class="contact-form__text-area" spellcheck="true" rows="10" cols="40" required></textarea>
+            <input type="submit" id="saveForm" name="saveForm" class="contact-form__submit">
+          </form>
       </section>
     </main>
 

@@ -4,6 +4,7 @@
  * FRAMEWORKS
  * normalize.css................Estandariza los estilos.
  * animate.css..................Colección de animaciones.
+ * flexiblegs-stylus.styl.......Responsive grid system
  *
  * BASE
  * _fonts.......................Configuracion de la fuente principal.
@@ -23,13 +24,16 @@
  *
  * COMPONENTES
  * .servicio....................Componente que define un servicio
+ * .servicios-container.........Contenedor de .servicio
  * .video-container.............Contenedor para videos de youtube
  * .fundador....................Componente para la seccion de about
+ * .contact-form................Formulario de la seccion de contacto
  */
 
 // frameworks imports
 @import 'frameworks/normalize'
 // @import 'frameworks/animate.css'
+@import 'frameworks/flexiblegs-stylus'
 
 // Base imports
 @import 'base/_fonts'
@@ -40,7 +44,7 @@
 
 
 // -------------------
-// #MAIN-HEADER
+// @MAIN-HEADER
 // -------------------
 
 #main-header {
@@ -56,12 +60,12 @@
         width 100%
         img {
             height 100%
-            position fixed
+            position absolute
             top 0px
             left 50%
             transform translate(-50%, 0)
             z-index -1
-            @media only screen and (min-device-width : 320px) and (orientation : landscape) {
+            @media only screen and (min-device-width : 320px) and (orientation: landscape) {
                 height auto
                 width 120%
             }
@@ -121,7 +125,7 @@
 
 
 // -------------------
-// #PAGE-CONTENT
+// @PAGE-CONTENT
 // -------------------
 
 .page-content {
@@ -132,7 +136,7 @@
 
 
 // -------------------
-// #FRASE-ANIMADA
+// @FRASE-ANIMADA
 // -------------------
 
 .frase-animada {
@@ -149,30 +153,30 @@
 
 
 // -------------------
-// #SERVICIOS-CONTAINER
+// @SERVICIOS
 // -------------------
 
-.servicios-container {
-    area()
+.servicios {
     background-color $blackBG
-    lost-utility clearfix
-    padding 50px 10px
-    width 100%
-    .servicios-container__descripcion {
+    .servicios__descripcion {
         color white
         font-size responsive mainDescriptionTextRange
         font-range minScreenSize maxScreenSize
         line-height 1.48
         margin-bottom 1.5rem
     }
+}
+
+.servicios-container {
+    wrap(1)
     .servicios-container__item {
-        height 200px
-        lost-column 1/1
-        @media only screen and (min-device-width : 320px) and (orientation : landscape) {
-            height 400px
+        height 250px
+        margin-bottom 10px
+        &:last-child {
+            margin-bottom 0
         }
-        @media only screen and (min-width: 1024px) {
-            lost-column 1/2 1
+        @media only screen and (min-device-width : 320px) {
+            margin-bottom 5px
         }
     }
 }
@@ -180,11 +184,12 @@
 
 
 // -------------------
-// #SERVICIO
+// @SERVICIO
 // -------------------
 
 .servicio {
     background-size cover
+    background-position 50% 50%
     cursor pointer
     position relative
     .servicio__titulo, .servicio__descripcion {
@@ -200,7 +205,7 @@
         font-size responsive secondaryTitleRange
         font-range minScreenSize maxScreenSize
         font-weight 700
-        top 35%
+        top 40%
     }
     .servicio__titulo--yellow {
         color $yellow-logo
@@ -219,11 +224,11 @@
         font-size responsive descriptionTextRange
         font-range minScreenSize maxScreenSize
         text-transform uppercase
-        top 55%
+        top 53%
     }
     &::after {
         content ""
-        background-color rgba(black, .5)
+        background-color rgba(#2c3e50, .6)
         display block
         position absolute
         top 0px
@@ -253,19 +258,18 @@
 
 
 // -------------------
-// #VIDEOS-PROMOCIONALES
+// @VIDEOS-PROMOCIONALES
 // -------------------
 
 .videos-promocionales {
     background-color $silver
-    padding 30px 0
     width 100%
 }
 
 
 
 // -------------------
-// #VIDEO-CONTAINER
+// @VIDEO-CONTAINER
 // -------------------
 
 .youtubevideowrap {
@@ -292,13 +296,11 @@
 
 
 // -------------------
-// #ABOUT
+// @ABOUT
 // -------------------
 
 .about {
     background-color $blackBG
-    padding 40px 15px
-    lost-utility clearfix
     .titulo-seccion,
     .descripcion-seccion {
         color white
@@ -311,63 +313,41 @@
     }
     .descripcion-seccion {
         line-height 1.5
-        text-align justify
     }
 }
 
 
 
 // -------------------
-// #CONTACTO
+// @FUNDADOR
 // -------------------
 
-.contacto {
-    background-color white
-    height 500px
-    padding 40px 15px
-    text-align center
-    h6 {
-        font-size responsive descriptionTextRange
-        font-range minScreenSize maxScreenSize
-        text-transform uppercase
+.fundadores-container {
+    wrap(1)
+    wrap(center)
+    .fundadores-container__item {
+        margin 50px 0
+        &:last-child {
+            margin-bottom 0
+        }
     }
-    a, h3 {
-        color $green-logo
-        font-size responsive tertiaryTitleRange
-        font-range minScreenSize maxScreenSize
-    }
-    p {
-        line-height 1.5
+    @media only screen and (min-width: 480px) {
+        wrap()
+        wrap("gutter", 15)
         margin-top 20px
-    }
-    .persona-contacto {
-        margin-top 20px
-    }
-    .social-contacto {
-        margin-top 20px
-        lost-utility clearfix
-        a {
-            lost-column 1/3
+        .fundadores-container__item {
+            col()
+            col(1,2)
+            margin 0
         }
     }
 }
 
-
-
-// -------------------
-// #FUNDADOR
-// -------------------
-
 .fundador {
-    width 100%
-    margin-top 40px
-    text-align center
+    text-align left
     .fundador__img {
-        border-radius 50%
         box-shadow 0 2px 2px rgba(black,.5)
-        margin-bottom 10px
         width 100%
-        max-width 250px
     }
     .fundador__name,
     .fundador__pro {
@@ -390,7 +370,98 @@
 
 
 // -------------------
-// #PAGE-FOOTER
+// @CONTACTO
+// -------------------
+
+.contacto {
+    background-color white
+    text-align center
+    h6 {
+        font-size responsive descriptionTextRange
+        font-range minScreenSize maxScreenSize
+        text-transform uppercase
+    }
+    a, h3 {
+        color $green-logo
+        font-size responsive tertiaryTitleRange
+        font-range minScreenSize maxScreenSize
+    }
+    p {
+        line-height 1.5
+        margin-top 40px
+    }
+    .persona-contacto-container {
+        margin-top 20px
+        @media only screen and (min-width: 480px) {
+            wrap()
+            wrap(center)
+            .persona-contacto {
+                col()
+                col(1,3)
+            }
+        }
+    }
+    .social-contacto {
+        margin-top 20px
+        wrap(flexbox)
+        wrap(center)
+        .social-contacto__logo {
+            margin-right 20px
+            &:last-child{
+                margin 0
+            }
+        }
+    }
+}
+
+
+
+// -------------------
+// @CONTACT-FORM
+// -------------------
+
+.contact-form {
+    margin-top 2rem
+    text-align left
+    .contact-form__input,
+    .contact-form__text-area {
+        color white
+        border 2px solid rgba($green-logo,.7)
+        font-size responsive normalText
+        font-range minScreenSize maxScreenSize
+        margin-bottom 1rem
+        width 100%
+    }
+    .contact-form__input {
+        display block
+        line-height 2.5
+        padding 0 1em
+    }
+    .contact-form__text-area {
+        padding 1em
+        height 120px
+    }
+    .contact-form__submit {
+        background-color $green-logo
+        border none
+        color white
+        height 35px
+        width 100px
+        &:hover {
+            background-color darken($green-logo, 20%)
+        }
+    }
+    @media only screen and (min-width: 480px) {
+        margin auto
+        margin-top 20px
+        width 70%
+    }
+}
+
+
+
+// -------------------
+// @PAGE-FOOTER
 // -------------------
 
 .page-footer {
@@ -405,7 +476,7 @@
         font-size responsive tertiaryTitleRange
         font-range minScreenSize maxScreenSize
         font-weight 300
-        margin 20px 0
+        margin 15px 0
     }
     p {
         margin-top 20px
@@ -413,10 +484,13 @@
         font-range minScreenSize maxScreenSize
     }
     .page-footer__social-media {
-        lost-utility clearfix
+        wrap(flexbox)
+        wrap(center)
         a {
-            display block
-            lost-column 1/3
+            margin-right 20px
+            &:last-child {
+                margin 0
+            }
             img {
                 width 50px
             }

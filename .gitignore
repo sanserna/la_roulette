@@ -5,4 +5,7 @@
 /dist
 /node_modules
 /recursos
-/bower_components/
+/bower_components/jquery/*
+!/bower_components/jquery/dist
+/bower_components/vide/*
+!/bower_components/vide/dist

@@ -135,9 +135,7 @@ gulp.task('build:css', function() {
     autoprefixer({browsers: AUTOPREFIXER_BROWSERS}),
     // Un plugin que contiene muchas utilidades CSS, consultar documentación:
     // http://simplaio.github.io/rucksack/docs/
-    rucksack,
-    // Grid System, documentación: https://github.com/peterramsing/lost
-    lost
+    rucksack
   ];
 
   return gulp.src('app/styles/main.styl')
