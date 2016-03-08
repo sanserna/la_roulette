@@ -1,5 +1,4 @@
-/**
- * CONTENIDOS
+/** TABLA DE CONTENIDOS
  *
  * FRAMEWORKS
  * normalize.css................Estandariza los estilos.
@@ -119,6 +118,9 @@
         @media only screen and (min-device-width : 320px) and (orientation : landscape) {
             display none
         }
+        @media only screen and (min-width: 1024px) {
+            display block
+        } 
     }
 }
 
@@ -178,7 +180,18 @@
         @media only screen and (min-device-width : 320px) {
             margin-bottom 5px
         }
+        @media only screen and (min-width: 768px) {
+            height 300px
+        }
     }
+    @media only screen and (min-width: 1024px) {
+        wrap()
+        .servicios-container__item {
+            col()
+            col(1,2)
+            margin 0
+        }
+    } 
 }
 
 
@@ -223,6 +236,7 @@
         color white
         font-size responsive descriptionTextRange
         font-range minScreenSize maxScreenSize
+        padding 0 5px
         text-transform uppercase
         top 53%
     }
@@ -296,7 +310,7 @@
 
 
 // -------------------
-// @ABOUT
+// @ABOUT ----->
 // -------------------
 
 .about {
@@ -314,6 +328,12 @@
     .descripcion-seccion {
         line-height 1.5
     }
+    @media only screen and (min-width: 1024px) {
+        wrap()
+        .about__txt-container {
+            area()
+        }
+    }
 }
 
 
@@ -324,28 +344,36 @@
 
 .fundadores-container {
     wrap(1)
-    wrap(center)
     .fundadores-container__item {
-        margin 50px 0
+        margin 50px auto
+        width 100%
+        max-width 400px
         &:last-child {
             margin-bottom 0
         }
     }
     @media only screen and (min-width: 480px) {
         wrap()
-        wrap("gutter", 15)
-        margin-top 20px
+        wrap("gutter", 45)
+        wrap(center)
+        margin-top 50px
         .fundadores-container__item {
             col()
             col(1,2)
             margin 0
+            max-width 250px
         }
+    }
+    @media only screen and (min-width: 1024px) {
+        area(blue)
+        margin 0
     }
 }
 
 .fundador {
     text-align left
     .fundador__img {
+        border-radius 5px
         box-shadow 0 2px 2px rgba(black,.5)
         width 100%
     }
@@ -387,6 +415,8 @@
         font-range minScreenSize maxScreenSize
     }
     p {
+        font-size responsive normalText
+        ont-range minScreenSize maxScreenSize
         line-height 1.5
         margin-top 40px
     }
