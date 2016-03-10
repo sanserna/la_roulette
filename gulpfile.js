@@ -162,6 +162,7 @@ gulp.task('build:js', function() {
     // correctamente concatenados.
     'app/scripts/vendors/jquery.js',
     'app/scripts/vendors/jquery.vide.js',
+    'app/scripts/vendors/foundation.js',
     'app/scripts/context.js',
     'app/scripts/main.js'
   ])

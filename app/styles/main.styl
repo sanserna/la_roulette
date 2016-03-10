@@ -23,16 +23,15 @@
  *
  * COMPONENTES
  * .servicio....................Componente que define un servicio
- * .servicios-container.........Contenedor de .servicio
  * .video-container.............Contenedor para videos de youtube
  * .fundador....................Componente para la seccion de about
  * .contact-form................Formulario de la seccion de contacto
  */
 
 // frameworks imports
-@import 'frameworks/normalize'
+// @import 'frameworks/normalize'
+@import 'frameworks/foundation-flex.css'
 // @import 'frameworks/animate.css'
-@import 'frameworks/flexiblegs-stylus'
 
 // Base imports
 @import 'base/_fonts'
@@ -62,6 +61,7 @@
             position absolute
             top 0px
             left 50%
+            max-width none
             transform translate(-50%, 0)
             z-index -1
             @media only screen and (min-device-width : 320px) and (orientation: landscape) {
@@ -160,6 +160,8 @@
 
 .servicios {
     background-color $blackBG
+    padding-left 0
+    padding-right 0
     .servicios__descripcion {
         color white
         font-size responsive mainDescriptionTextRange
@@ -167,39 +169,6 @@
         line-height 1.48
         margin-bottom 1.5rem
     }
-}
-
-.servicios-container {
-    wrap()
-    wrap(1)
-    > .container-support {
-        margin-bottom 10px
-        @media only screen and (min-device-width : 320px) {
-            margin-bottom 5px
-        }
-    }
-    .servicios-container__item {
-        height 250px
-        margin-bottom 10px
-        &:last-child {
-            margin-bottom 0
-        }
-        @media only screen and (min-width: 768px) {
-            height 300px
-        }
-    }
-    @media only screen and (min-width: 1024px) {
-        wrap()
-        wrap("gutter", 10)
-        .servicios-container__item {
-            height 40vh
-        }
-        > .container-support {
-            col()
-            col(1,2)
-            margin 0 0 10px 0
-        }
-    } 
 }
 
 
@@ -211,14 +180,29 @@
 .servicio {
     background-size cover
     background-position 50% 50%
-    cursor pointer
+    height 250px
+    display flex
+    align-items center
+    flex-direction column
+    justify-content center
     position relative
+    margin-bottom 10px
+    &:active {
+        .servicio__titulo {
+            color $yellow-logo
+        }
+    }
+    .servicio__image-filter {
+        background-color rgba(black,.5)
+        position absolute
+        top 0px
+        left 0px
+        height 100%
+        width 100%
+        z-index 0
+    }
     .servicio__titulo, .servicio__descripcion {
         text-align center
-        padding 0 10px
-        position absolute
-        left 0px
-        width 100%
         z-index 1
     }
     .servicio__titulo{
@@ -227,7 +211,6 @@
         font-size responsive secondaryTitleRange
         font-range minScreenSize maxScreenSize
         font-weight 700
-        top 40%
     }
     .servicio__titulo--yellow {
         color $yellow-logo
@@ -245,20 +228,8 @@
         color white
         font-size responsive descriptionTextRange
         font-range minScreenSize maxScreenSize
-        padding 0 5px
+        width 90%
         text-transform uppercase
-        top 53%
-    }
-    &::after {
-        content ""
-        background-color rgba(#2c3e50, .6)
-        display block
-        position absolute
-        top 0px
-        left 0px
-        height 100%
-        width 100%
-        z-index 0
     }
 }
 
@@ -351,7 +322,6 @@
 // -------------------
 
 .fundadores-container {
-    wrap()
     margin-top 20px
     > .container-support {
         margin 20px 0
@@ -362,23 +332,6 @@
     }
     .fundadores-container__item {
         width 100%
-    }
-    @media only screen and (min-width: 480px) {
-        wrap("gutter", 30)
-        wrap("flexbox")
-        wrap(center)
-        margin-top 50px
-        > .container-support {
-            col()
-            col(1,2)
-            margin 0
-            max-width 250px
-        }
-    }
-    @media only screen and (min-width: 1024px) {
-        > .container-support {
-            max-width 300px
-        }
     }
 }
 
@@ -434,19 +387,9 @@
     }
     .persona-contacto-container {
         margin-top 20px
-        @media only screen and (min-width: 480px) {
-            wrap()
-            wrap(center)
-            .persona-contacto {
-                col()
-                col(1,3)
-            }
-        }
     }
     .social-contacto {
         margin-top 20px
-        wrap(flexbox)
-        wrap(center)
         .social-contacto__logo {
             margin-right 20px
             &:last-child{
@@ -526,8 +469,6 @@
         font-range minScreenSize maxScreenSize
     }
     .page-footer__social-media {
-        wrap(flexbox)
-        wrap(center)
         a {
             margin-right 20px
             &:last-child {
