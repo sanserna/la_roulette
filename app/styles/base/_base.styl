@@ -1,4 +1,26 @@
 // -------------------
+// #RESPONSIVE FONT VARIABLES
+// -------------------
+
+// - rangos de pantalla
+$min-screen-size = 320px
+$max-screen-size = 1280px
+
+// max y min para titulos
+$main-title-range = 2rem 2.5rem
+$secondary-title-range = 1.2rem 1.9rem
+$tertiary-title-range = 1rem 1.4rem
+$sub-title-range = 0.8rem 1.3rem
+
+// max y min para textos normales
+$main-description-range = 1.2rem 1.7rem
+$secondary-description-range = .7rem 1.2rem
+$normal-text-range = 1rem 1.5rem
+$small-text-range = .5rem 1rem
+
+
+
+// -------------------
 // #ELEMENTS-BASE-STYLES
 // -------------------
 
@@ -11,11 +33,31 @@ a, a:visited, a:hover, a:active {
   text-decoration none
 }
 
-h1, h2, h3, h4, h5, h6, p, a{
+h1, h2, h3, h4, h5, h6, p{
     margin 0
     padding 0
     border 0
     font-size 100%
+}
+
+h1 {
+    font-size responsive $main-title-range
+    font-range $min-screen-size $max-screen-size
+}
+
+h2 {
+    font-size responsive $secondary-title-range
+    font-range $min-screen-size $max-screen-size
+}
+
+h3 {
+    font-size responsive $tertiary-title-range
+    font-range $min-screen-size $max-screen-size
+}
+
+h4 {
+    font-size responsive $sub-title-range
+    font-range $min-screen-size $max-screen-size
 }
 
 section {
@@ -28,19 +70,52 @@ section {
 
 
 // -------------------
-// #GENERIC-ELEMENTS-STYLES
+// #ESTILOS GENERICOS PARA TEXTOS
 // -------------------
 
-.titulo-seccion {
-    font-size responsive 1.875rem 3.12rem
-    font-range 320px 1280px
-    margin-bottom 30px
+h1.main-title, h2.secondary-title, h3.terciary-title {
     text-align center
     width 100%
 }
 
-.descripcion-seccion {
-    font-size responsive 1rem 1.5rem
-    font-range 320px 1280px
-    width 100%
+h1.main-title {
+    margin-bottom 1rem
+}
+
+h2.secondary-title {
+    margin-bottom 1rem
+}
+
+h3.terciary-title {
+    margin-bottom 0.2rem
+}
+
+h4.sub-title {
+    text-transform uppercase
+    font-weight 300
+}
+
+p.main-description {
+    font-size responsive $main-description-range
+    font-range $min-screen-size $max-screen-size
+    line-height 1.48
+}
+
+p.secondary-description {
+    font-size responsive $secondary-description-range
+    font-range $min-screen-size $max-screen-size
+    text-transform uppercase
+}
+
+p.normal-text, 
+label.normal-text, 
+textarea.normal-text, 
+input.normal-text {
+    font-size responsive $normal-text-range
+    font-range $min-screen-size $max-screen-size
+}
+
+p.small-text {
+    font-size responsive $small-text-range
+    font-range $min-screen-size $max-screen-size
 }

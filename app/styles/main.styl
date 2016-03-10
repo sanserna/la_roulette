@@ -69,9 +69,6 @@
                 width 120%
             }
         }
-        video {
-            position fixed !important
-        }
     }
     .main-header__overlayed-bg,
     .main-header__lr-logo,
@@ -101,12 +98,9 @@
     }
     .main-header__title {
         color white
-        font-size responsive mainTitleRange
-        font-range minScreenSize maxScreenSize
         font-weight 300
-        text-align center
+        margin 0
         text-shadow 0px 1px 1px black
-        width 100%
     }
     .main-header__hand-icon {
         background-image url(../img/hand_icon.png)
@@ -146,11 +140,6 @@
     display flex
     align-items center
     min-height 100vh
-    h1 {
-        font-size responsive mainTitleRange
-        text-align center
-        width 100%
-    }
 }
 
 
@@ -164,9 +153,6 @@
     padding-right 0
     .servicios__descripcion {
         color white
-        font-size responsive mainDescriptionTextRange
-        font-range minScreenSize maxScreenSize
-        line-height 1.48
         margin-bottom 1.5rem
     }
 }
@@ -202,14 +188,11 @@
         z-index 0
     }
     .servicio__titulo, .servicio__descripcion {
-        text-align center
         z-index 1
     }
     .servicio__titulo{
         color white
         line-height 1.3
-        font-size responsive secondaryTitleRange
-        font-range minScreenSize maxScreenSize
         font-weight 700
     }
     .servicio__titulo--yellow {
@@ -226,10 +209,7 @@
     }
     .servicio__descripcion {
         color white
-        font-size responsive descriptionTextRange
-        font-range minScreenSize maxScreenSize
         width 90%
-        text-transform uppercase
     }
 }
 
@@ -295,13 +275,13 @@
 
 .about {
     background-color $blackBG
-    .titulo-seccion {
+    .about__titulo {
         color $yellow-logo
         line-height 1.2
         margin 0
         text-align left
     }
-    .descripcion-seccion {
+    .about__descripcion {
         color white
     }
 }
@@ -325,15 +305,9 @@
     }
     .fundador__name {
         color $yellow-logo
-        font-size responsive tertiaryTitleRange
-        font-range minScreenSize maxScreenSize
     }
     .fundador__pro {
         color white
-        font-weight 300
-        font-size responsive descriptionTextRange
-        font-range minScreenSize maxScreenSize
-        text-transform uppercase
     }
 }
 
@@ -346,22 +320,6 @@
 .contacto {
     background-color white
     text-align center
-    h6 {
-        font-size responsive descriptionTextRange
-        font-range minScreenSize maxScreenSize
-        text-transform uppercase
-    }
-    a, h3 {
-        color $green-logo
-        font-size responsive tertiaryTitleRange
-        font-range minScreenSize maxScreenSize
-    }
-    p {
-        font-size responsive normalText
-        ont-range minScreenSize maxScreenSize
-        line-height 1.5
-        margin-top 40px
-    }
     .persona-contacto-container {
         margin-top 20px
     }
@@ -389,8 +347,6 @@
     .contact-form__text-area {
         color white
         border 2px solid rgba($green-logo,.7)
-        font-size responsive normalText
-        font-range minScreenSize maxScreenSize
         margin-bottom 1rem
         width 100%
     }
@@ -434,16 +390,12 @@
     .page-footer__logo {
         width 100px
     }
-    h6 {
-        font-size responsive tertiaryTitleRange
-        font-range minScreenSize maxScreenSize
+    .terciary-title {
         font-weight 300
         margin 15px 0
     }
-    p {
+    .small-text {
         margin-top 20px
-        font-size responsive descriptionTextRange
-        font-range minScreenSize maxScreenSize
     }
     .page-footer__social-media {
         a {
