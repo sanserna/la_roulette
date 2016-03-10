@@ -11,7 +11,6 @@
    *    without disabling user zoom.
    */
 html {
-  font-family: sans-serif;
   /* 1 */
   -ms-text-size-adjust: 100%;
   /* 2 */
@@ -375,13 +374,15 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
+  font-size: 16px;
   line-height: 1.5;
   color: #0a0a0a;
   background: #fefefe;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale; 
+  -webkit-text-size-adjust: 100% }
 
 img {
   max-width: 100%;
@@ -1347,7 +1348,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "lato", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   color: inherit;

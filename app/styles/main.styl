@@ -3,7 +3,7 @@
  * FRAMEWORKS
  * normalize.css................Estandariza los estilos.
  * animate.css..................Colección de animaciones.
- * flexiblegs-stylus.styl.......Responsive grid system
+ * foundation.css...............Responsive framework
  *
  * BASE
  * _fonts.......................Configuracion de la fuente principal.
@@ -193,7 +193,7 @@
         }
     }
     .servicio__image-filter {
-        background-color rgba(black,.5)
+        background-color rgba(black,.6)
         position absolute
         top 0px
         left 0px
@@ -295,23 +295,14 @@
 
 .about {
     background-color $blackBG
-    padding 50px 15px
-    .titulo-seccion,
-    .descripcion-seccion {
-        color white
-    }
     .titulo-seccion {
         color $yellow-logo
-        font-size responsive mainTitleRange
-        font-range minScreenSize maxScreenSize
         line-height 1.2
         margin 0
         text-align left
     }
     .descripcion-seccion {
-        line-height 1.3
-        font-size responsive mainDescriptionTextRange
-        font-range minScreenSize maxScreenSize
+        color white
     }
 }
 
@@ -321,22 +312,8 @@
 // @FUNDADOR
 // -------------------
 
-.fundadores-container {
-    margin-top 20px
-    > .container-support {
-        margin 20px 0
-        max-width 400px
-        &:last-child {
-            margin-bottom 0
-        }
-    }
-    .fundadores-container__item {
-        width 100%
-    }
-}
-
 .fundador {
-    text-align left
+    margin-top 20px
     .fundador__img {
         border-radius 4px
         box-shadow 0 2px 2px rgba(black,.5)
