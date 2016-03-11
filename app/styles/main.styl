@@ -25,19 +25,20 @@
  * .servicio....................Componente que define un servicio
  * .video-container.............Contenedor para videos de youtube
  * .fundador....................Componente para la seccion de about
+ * .contacto__item..............Componente para medios de contacto
  * .contact-form................Formulario de la seccion de contacto
+ * .contacto-social.............Contenedor de logos de redes sociales
  */
 
 // frameworks imports
-// @import 'frameworks/normalize'
 @import 'frameworks/foundation-flex.css'
 // @import 'frameworks/animate.css'
 
 // Base imports
 @import 'base/_fonts'
-@import 'base/_base'
-@import 'base/_base_mixins'
 @import 'base/_base_variables'
+@import 'base/_base_mixins'
+@import 'base/_base'
 
 
 
@@ -151,8 +152,14 @@
     background-color $blackBG
     padding-left 0
     padding-right 0
+    .servicios__titulo {
+        color $purple-logo
+        margin 0
+        text-align left
+    }
     .servicios__descripcion {
         color white
+        font-weight 300
         margin-bottom 1.5rem
     }
 }
@@ -175,8 +182,11 @@
     margin-bottom 10px
     &:active {
         .servicio__titulo {
-            color $yellow-logo
+            color $purple-logo
         }
+    }
+    .servicio__titulo {
+        margin 0
     }
     .servicio__image-filter {
         background-color rgba(black,.6)
@@ -195,21 +205,17 @@
         line-height 1.3
         font-weight 700
     }
-    .servicio__titulo--yellow {
-        color $yellow-logo
-    }
-    .servicio__titulo--purple {
-        color $purple-logo
-    }
-    .servicio__titulo--green {
-        color $green-logo
-    }
-    .servicio__titulo--teal {
-        color $teal-logo
-    }
     .servicio__descripcion {
         color white
+        text-align center
         width 90%
+    }
+    @media screen and (min-width: 40em) {
+        height 270px
+    }
+    @media screen and (min-width: 64em) {
+        height 300px
+        margin 5px
     }
 }
 
@@ -277,12 +283,12 @@
     background-color $blackBG
     .about__titulo {
         color $yellow-logo
-        line-height 1.2
         margin 0
         text-align left
     }
     .about__descripcion {
         color white
+        font-weight 300
     }
 }
 
@@ -293,21 +299,22 @@
 // -------------------
 
 .fundador {
-    margin-top 20px
+    margin-top 30px
     .fundador__img {
         border-radius 4px
         box-shadow 0 2px 2px rgba(black,.5)
         width 100%
     }
-    .fundador__name,
-    .fundador__pro {
-        line-height 1.4
-    }
     .fundador__name {
         color $yellow-logo
+        text-align left
+        margin 5px 0 2px 0
     }
     .fundador__pro {
         color white
+    }
+    @media screen and (min-width: 64em) {
+        margin 0
     }
 }
 
@@ -320,18 +327,42 @@
 .contacto {
     background-color white
     text-align center
-    .persona-contacto-container {
-        margin-top 20px
-    }
-    .social-contacto {
-        margin-top 20px
-        .social-contacto__logo {
-            margin-right 20px
-            &:last-child{
-                margin 0
-            }
+    .contacto__titulo {
+        @media screen and (min-width: 40em) {
+            margin-bottom 1rem   
+        }
+        @media screen and (min-width: 64em) {
+            margin-bottom 4rem
         }
     }
+    .contacto__normal-text{
+        margin 20px 0
+        @media screen and (min-width: 40em) {
+            margin-top 2rem   
+        }
+        @media screen and (min-width: 64em) {
+            margin-top 1rem
+        }
+    }
+}
+
+
+
+// -------------------
+// @CONTACTO-ITEM
+// -------------------
+
+.contacto-item {
+    margin-top 10px
+    .contacto-item__title{
+        color $green-logo
+        font-weight 400
+    }
+    @media screen and (min-width: 64em) {
+        margin 0
+        margin-bottom 2rem
+    }
+
 }
 
 
@@ -343,9 +374,11 @@
 .contact-form {
     margin-top 2rem
     text-align left
+    margin auto
+    max-width 500px
     .contact-form__input,
     .contact-form__text-area {
-        color white
+        color grey
         border 2px solid rgba($green-logo,.7)
         margin-bottom 1rem
         width 100%
@@ -353,10 +386,10 @@
     .contact-form__input {
         display block
         line-height 2.5
-        padding 0 1em
+        padding 0 .5em
     }
     .contact-form__text-area {
-        padding 1em
+        padding .5em
         height 120px
     }
     .contact-form__submit {
@@ -369,10 +402,24 @@
             background-color darken($green-logo, 20%)
         }
     }
-    @media only screen and (min-width: 480px) {
-        margin auto
-        margin-top 20px
-        width 70%
+    @media screen and (min-width: 40em) {
+        margin-top 3rem
+    }
+    @media screen and (min-width: 64em) {
+        margin-top 0
+    }
+}
+
+
+
+// -------------------
+// @CONTACTO-SOCIAL
+// -------------------
+
+.contacto-social {
+    justify-content center
+    .contacto-social__item{
+        flex none
     }
 }
 
@@ -397,15 +444,9 @@
     .small-text {
         margin-top 20px
     }
-    .page-footer__social-media {
-        a {
-            margin-right 20px
-            &:last-child {
-                margin 0
-            }
-            img {
-                width 50px
-            }
+    .contacto-social {
+        img {
+            max-width 50px
         }
     }
     .referenceLink {

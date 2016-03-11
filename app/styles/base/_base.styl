@@ -14,7 +14,7 @@ $sub-title-range = 0.8rem 1.3rem
 
 // max y min para textos normales
 $main-description-range = 1.2rem 1.7rem
-$secondary-description-range = .7rem 1.2rem
+$secondary-description-range = .7rem 1.1rem
 $normal-text-range = 1rem 1.5rem
 $small-text-range = .5rem 1rem
 
@@ -118,4 +118,16 @@ input.normal-text {
 p.small-text {
     font-size responsive $small-text-range
     font-range $min-screen-size $max-screen-size
+}
+
+
+
+// -------------------
+// #VERTICAL-RULE
+// -------------------
+
+.column.vr {
+    @media screen and (min-width: 64em) {
+        border-right 1px solid #ddd
+    }
 }
