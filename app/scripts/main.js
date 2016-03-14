@@ -7,7 +7,7 @@ app.ctrl = {
         'use strict';
         $(document).on('ready', function () {
 
-            // - centrar el logo al cambiar el tamaño de la ventana
+            // - listener para centrar el logo al cambiar el tamaño de la ventana
             $(window).resize(app.ctrl.centerHeaderContent);
             $(window).ready(app.ctrl.centerHeaderContent);
 
@@ -29,9 +29,63 @@ app.ctrl = {
 
         'use strict';
 
+        var transEndEventNames = {
+                WebkitTransition: 'webkitTransitionEnd',
+                MozTransition: 'transitionend',
+                OTransition: 'oTransitionEnd',
+                msTransition: 'MSTransitionEnd',
+                transition: 'transitionend'
+            },
+            support = {
+                transitions: Modernizr.csstransitions
+            },
+            transEndEventName = transEndEventNames[Modernizr.prefixed('transition')];
+
+        // MAIN NAVIGATION TOGGLE
+        $(document).on('click', '#trigger-main-nav, #main-nav-closeBtn', function (event) {
+
+            var $this = $(this),
+                $mainNav = $('#main-nav');
+
+            if ($mainNav.hasClass('open')) {
+
+                $mainNav.removeClass('open');
+                $mainNav.addClass('close');
+
+                if (support.transitions) {
+
+                    $mainNav.bind(transEndEventName, function (event) {
+
+                        if (event.originalEvent.propertyName !== 'visibility') {
+
+                            return;
+
+                        }
+
+                        $(this).unbind(event);
+                        $mainNav.removeClass('close');
+
+                    });
+
+                } else {
+
+                    $mainNav.removeClass('close');
+
+                }
+
+            } else if (!$mainNav.hasClass('close')) {
+
+                $mainNav.addClass('open');
+
+            }
+
+        });
+
     }()),
 
     defineHeaderBG: function (isMobile) {
+
+        'use strict';
 
         var $headerContainer = $('#main-header__bg');
 

@@ -1,9 +1,8 @@
 /** TABLA DE CONTENIDOS
  *
  * FRAMEWORKS
- * normalize.css................Estandariza los estilos.
  * animate.css..................Colección de animaciones.
- * foundation.css...............Responsive framework
+ * foundation.css...............Responsive framework, incluye normalize.css
  *
  * BASE
  * _fonts.......................Configuracion de la fuente principal.
@@ -22,6 +21,8 @@
  * .contacto....................Seccion de contacto
  *
  * COMPONENTES
+ * .main-nav....................Menu de navegacion principal del sitio
+ * .nav-trigger.................Boton que se encarga de abrir el menu de navegacion
  * .servicio....................Componente que define un servicio
  * .video-container.............Contenedor para videos de youtube
  * .fundador....................Componente para la seccion de about
@@ -30,15 +31,18 @@
  * .contacto-social.............Contenedor de logos de redes sociales
  */
 
-// frameworks imports
+// - frameworks imports
 @import 'frameworks/foundation-flex.css'
 // @import 'frameworks/animate.css'
 
-// Base imports
+// - Base imports
 @import 'base/_fonts'
 @import 'base/_base_variables'
 @import 'base/_base_mixins'
 @import 'base/_base'
+
+// - Modules imports
+@import 'modules/main-nav'
 
 
 
@@ -86,7 +90,7 @@
     .main-header__overlayed-bg {
         height 100%
         width 100%
-        background rgba(black,.2) url(../img/pattern.png)
+        background rgba(black,.2) url(img/pattern.png)
         z-index 0
     }
     .main-header__lr-logo {
@@ -104,7 +108,7 @@
         text-shadow 0px 1px 1px black
     }
     .main-header__hand-icon {
-        background-image url(../img/hand_icon.png)
+        background-image url(img/hand_icon.png)
         background-size 35px 35px
         background-repeat no-repeat
         left calc(50% - 17.5px)
@@ -180,6 +184,11 @@
     justify-content center
     position relative
     margin-bottom 10px
+    &:hover {
+        .servicio__titulo {
+            color $purple-logo
+        }
+    }
     &:active {
         .servicio__titulo {
             color $purple-logo
@@ -187,6 +196,7 @@
     }
     .servicio__titulo {
         margin 0
+        transition 0.3s color
     }
     .servicio__image-filter {
         background-color rgba(black,.6)
@@ -391,6 +401,7 @@
     .contact-form__text-area {
         padding .5em
         height 120px
+        resize none
     }
     .contact-form__submit {
         background-color $green-logo
@@ -431,7 +442,7 @@
 
 .page-footer {
     color white
-    background-image url(../img/footer.png)
+    background-image url(img/footer.png)
     padding 20px 10px
     text-align center
     .page-footer__logo {

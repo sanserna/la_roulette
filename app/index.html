@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <!-- Necesidades basicas -->
+    <!-- NECESIDADES BSICAS DE LA PAGINA -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="La Roulette, la mejor experiencia de una fiesta en casa!">
@@ -10,18 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>La Roulette</title>
 
-    <!-- Manifiesto -->
+    <!-- MANIFIESTO -->
     <link rel="manifest" href="manifest.json">
 
-    <!-- Estilos -->
+    <!-- ESTILOS -->
     <!-- build:css styles/main.min.css -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <!-- endbuild -->
 
-    <!-- Favicon -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- Facebook Pixel -->
+    <!-- FACEBOOK PIXEL CODE -->
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -32,10 +32,12 @@
       fbq('track', "PageView");
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1512958809021258&amp;ev=PageView&amp;noscript=1"></noscript>
-    <!-- Final del FB Pixel code -->
+    <!-- FINAL DEL FACEBOOK PIXEL CODE -->
   </head>
   <body>
-    <!-- LA ROULETTE LAYOUT -->
+    <!-- LA ROULETTE HOME LAYOUT -->
+
+    <!-- MAIN HEADER DE LA PAGINA -->
     <header id="main-header">
         <div id="main-header__bg"></div>
         <div class="main-header__overlayed-bg"></div>
@@ -44,6 +46,30 @@
         <div id="pointer-hand" class="main-header__hand-icon"></div>
     </header>
 
+    <!-- MAIN NAVIGATION -->
+    <div id="trigger-main-nav">
+      <div class="nav-trigger__lines">
+        <div class="line-top"></div>
+        <div class="line-middle"></div>
+        <div class="line-bottom"></div>
+      </div>
+    </div>
+    <div id="main-nav" class="main-nav main-nav--slidedown">
+      <button type="button" id="main-nav-closeBtn" class="main-nav__close">Cerrar</button>
+      <nav>
+        <ul>
+          <li>
+            <a href="https://www.flickr.com/cameraroll">Home Party</a>
+            <a href="#">Party Cocktail</a>
+            <a href="#">Office Party</a>
+            <a href="#">Delivery</a>
+            <a href="#">La Roulette Blog</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENIDO DE LA PAGINA -->
     <main class="page-content">
       <section class="frase-animada">
         <h1 class="main-title">Vive Diferente!</h1>
@@ -70,7 +96,7 @@
             <a href="#">
               <div class="servicio servicio--cocktail-party">
                 <div class="servicio__image-filter"></div>
-                <h2 class="servicio__titulo secondary-title">Coctail Party</h2>
+                <h2 class="servicio__titulo secondary-title">Party Cocktail</h2>
                 <p class="servicio__descripcion secondary-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, voluptatibus!</p>
               </div>
             </a>
@@ -219,6 +245,7 @@
       </section>
     </main>
 
+    <!-- MAIN FOOTER -->
     <footer class="page-footer expanded row">
       <div class="small-12 column">
         <img class="page-footer__logo" src="img/logoLaRoulette_blanco.png">
@@ -250,10 +277,12 @@
       </div>
     </footer>
 
-    <!-- Main scripts -->
+    <!-- MAIN SCRIPTS -->
     <!-- build:js scripts/main.min.js -->
+    <script src="scripts/vendors/modernizr-custom.js"></script>
     <script src="scripts/vendors/jquery.js"></script>
     <script src="scripts/vendors/jquery.vide.js"></script>
+    <script src="scripts/vendors/classie.js"></script>
     <script src="scripts/context.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->

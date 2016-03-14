@@ -1,0 +1,166 @@
+// - Variables imports
+@import 'base/_base_variables'
+
+
+
+// -------------------
+// @NAV-TRIGGER
+// -------------------
+
+#trigger-main-nav {
+    background-color $clouds
+    position fixed
+    right 18px
+    top 23px
+    height 44px
+    width 44px
+    border-radius 50px
+    z-index 1000
+    transition all 0.25s
+    &:hover {
+        cursor pointer
+        .nav-trigger__lines {
+            transform rotate(90deg)
+            height 20px
+            top 12px
+            .line-top {
+                top 9px
+            }
+            .line-middle {
+                transform rotate(90deg)
+            }
+            .line-bottom {
+                bottom 8px
+                opacity 0
+            }
+        } 
+    }
+    .nav-trigger__lines {
+        position absolute
+        margin 0 auto
+        height 14px
+        width 20px
+        top 14.6px
+        left 0px
+        right 0px
+        transition all 0.25s
+        .line-top, .line-middle, .line-bottom {
+            height 2px
+            background-color black
+            width 100%
+            position absolute
+            left 0px
+            transition all 0.35s
+        }
+        .line-top {
+            top 0px
+        }
+        .line-middle {
+            top 50%
+            margin-top -1px
+            opacity 1
+        }
+        .line-bottom {
+            bottom 0px
+        }
+    }
+    @media screen and (min-width: 40em) {
+        right 55px
+        top 50px
+        height 50px
+        width 50px
+        &:hover {
+            .nav-trigger__lines {
+                top 15px
+            }
+        }
+        .nav-trigger__lines {
+            height 16px
+            width 25px
+            top 17px
+        }
+    }
+}
+
+
+
+// -------------------
+// @MAIN-NAV
+// -------------------
+
+// - main-nav style
+.main-nav {
+    background-color bg-color = $navy
+    height 100%
+    position fixed
+    top 0
+    left 0
+    width 100%
+    z-index 1001
+    .main-nav__close {
+        width 80px
+        height 80px
+        position absolute
+        right 20px
+        top 20px
+        overflow hidden
+        border none
+        background url(img/cross.png) no-repeat center center
+        text-indent 200%
+        color transparent
+        outline none
+        z-index 100
+    }
+    nav {
+        text-align center
+        position relative
+        top 50%
+        height 60%
+        transform translateY(-50%)
+        ul {
+            list-style none
+            padding 0
+            margin 0 auto
+            display inline-block
+            height 100%
+            position relative
+            li {
+                display block
+                height 20%
+                height calc(100% / 5)
+                min-height 54px
+                backface-visibility hidden
+                a {
+                    font-size responsive 2rem 2.5rem
+                    font-range 320px 1280px
+                    font-weight 300
+                    display block
+                    color c = invert(bg-color)
+                    transition color 0.2s
+                    &:hover, &:focus {
+                        color darken(c, 50%)
+                    }
+                }
+            }
+        }
+        @media screen and (max-height: 30.5em) {
+            height 70%
+            font-size 34px
+            ul li {
+                min-height 34px
+            }
+        }
+    }
+}
+
+// - Effects
+.main-nav--slidedown {
+    visibility hidden
+    transform translateY(-100%)
+    transition transform 0.4s ease-in-out, visibility 0s 0.4s
+    &.open {
+        visibility visible
+        transform translateY(0%)
+        transition transform 0.4s ease-in-out
+    }
+}

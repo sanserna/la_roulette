@@ -58,6 +58,7 @@ gulp.task('lint', function() {
       'curly': 1,
       'eqeqeq': 0,
       'indent': [2, 4],
+      'max-len': 0,
       'no-alert': 0,
       'no-empty': 1,
       'no-use-before-define': 0,
@@ -76,7 +77,9 @@ gulp.task('lint', function() {
       '$': false,
       'document': false,
       'window': false,
-      'navigator': false
+      'navigator': false,
+      'classie': false,
+      'Modernizr': false
     }
   }))
   .pipe(eslint.format())
@@ -162,6 +165,7 @@ gulp.task('build:js', function() {
     // correctamente concatenados.
     'app/scripts/vendors/jquery.js',
     'app/scripts/vendors/jquery.vide.js',
+    'app/scripts/vendors/modernizr-custom.js',
     'app/scripts/context.js',
     'app/scripts/main.js'
   ])
@@ -214,13 +218,16 @@ gulp.task('clean', function() {
 // navegador. Crea un servidor estático en el directorio temporal.
 gulp.task('start', function(){
   browserSync({
+    ui: false,
     notify: false,
-    // Personaliza el prefijo de registro de la consola Browsersync.
     logPrefix: 'WCP',
     server: ['.tmp', 'app'],
-    // Previene el navegador de abrirse automáticamente.
     open: false,
-    port: 3000
+    port: 3000,
+    ghostMode: false,
+    online: false,
+    reloadDelay: 1000,
+    injectChanges: false,
   });
 
   gulp.watch(['app/**/*.html'], ['build:html', reload]);
