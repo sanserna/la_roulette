@@ -42,10 +42,11 @@ app.ctrl = {
             transEndEventName = transEndEventNames[Modernizr.prefixed('transition')];
 
         // MAIN NAVIGATION TOGGLE
-        $(document).on('click', '#trigger-main-nav, #main-nav-closeBtn', function (event) {
+        $(document).on('click', '#trigger-main-nav', function (event) {
 
             var $this = $(this),
-                $mainNav = $('#main-nav');
+                $mainNav = $('#main-nav'),
+                $body = $('body');
 
             if ($mainNav.hasClass('open')) {
 
@@ -64,18 +65,22 @@ app.ctrl = {
 
                         $(this).unbind(event);
                         $mainNav.removeClass('close');
+                        $body.removeClass('nav-active');
+                        console.log('endtran');
 
                     });
 
                 } else {
 
                     $mainNav.removeClass('close');
+                    $body.removeClass('nav-active');
 
                 }
 
             } else if (!$mainNav.hasClass('close')) {
 
                 $mainNav.addClass('open');
+                $body.addClass('nav-active');
 
             }
 

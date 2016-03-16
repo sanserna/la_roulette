@@ -8,14 +8,14 @@
 // -------------------
 
 #trigger-main-nav {
-    background-color $clouds
+    background-color $trigger-main-nav-bg-color
     position fixed
     right 18px
     top 23px
     height 44px
     width 44px
     border-radius 50px
-    z-index 1000
+    z-index 1001
     transition all 0.25s
     &:hover {
         cursor pointer
@@ -82,6 +82,34 @@
     }
 }
 
+// - Active navigation nav-trigger
+.nav-active {
+    #trigger-main-nav {
+        background-color darken($trigger-main-nav-bg-color, 10%)
+        .nav-trigger__lines {
+            transform rotate(135deg) !important
+            height 20px
+            top 12px
+            .line-top {
+                top 9px !important
+                background-color black
+            }
+            .line-middle {
+                background-color black
+                transform rotate(90deg) !important
+            }
+            .line-bottom {
+                bottom 8px
+                opacity 0
+            }
+            @media screen and (min-width: 40em) {
+                top 15px
+                width 25px
+            }
+        }
+    }
+}
+
 
 
 // -------------------
@@ -90,13 +118,13 @@
 
 // - main-nav style
 .main-nav {
-    background-color bg-color = $navy
+    background-color $main-nav-gb-color
     height 100%
     position fixed
     top 0
     left 0
     width 100%
-    z-index 1001
+    z-index 1000
     .main-nav__close {
         width 80px
         height 80px
@@ -135,7 +163,7 @@
                     font-range 320px 1280px
                     font-weight 300
                     display block
-                    color c = invert(bg-color)
+                    color c = invert($main-nav-gb-color)
                     transition color 0.2s
                     &:hover, &:focus {
                         color darken(c, 50%)

@@ -11,22 +11,32 @@
  * _base_variables..............Declaracion de variables globales.
  *
  * SECCIONES
+ * - Home
  * #main-header.................Contenedor del video del landing page y sus elementos.
  * .content.....................Contenedor principal.
- * .servicios...................Contenedor de los servicios
+ * .servicios...................Contenedor de los servicios del home
  * .frase-animada...............Contenedor donde se realiza la animacion de la frase
  * .videos-promocionales........Seccion que contiene videos promocionales
- * .page-foter..................Footer principal de la pagina
  * .about.......................Seccion sobre la empresa
  * .contacto....................Seccion de contacto
+ *
+ * - Home party
+ * .servicio-personal...........Layout que muestra el servicio de personal
+ * .servicio-juegos.............Layout que muestra el servicio de juegos
+ * .servicio-bebidas............Layout que muestra el servicio de bebidas
+ * .frase-reserva...............Texto del final
+ *
+ * - Comun
+ * .descripcion servicio........Intro de informacion sobre el servicio
+ * .page-foter..................Footer principal de la pagina
  *
  * COMPONENTES
  * .main-nav....................Menu de navegacion principal del sitio
  * .nav-trigger.................Boton que se encarga de abrir el menu de navegacion
- * .servicio....................Componente que define un servicio
+ * .servicio....................Componente que define un servicio en la navegacion de servicios
  * .video-container.............Contenedor para videos de youtube
- * .fundador....................Componente para la seccion de about
- * .contacto__item..............Componente para medios de contacto
+ * .fundador....................Componente para la seccion de about donde se muestra la informacion del fundador
+ * .contacto__item..............Componente medio de contacto
  * .contact-form................Formulario de la seccion de contacto
  * .contacto-social.............Contenedor de logos de redes sociales
  */
@@ -39,6 +49,7 @@
 @import 'base/_fonts'
 @import 'base/_base_variables'
 @import 'base/_base_mixins'
+// @import 'base/_base_animations'
 @import 'base/_base'
 
 // - Modules imports
@@ -123,6 +134,66 @@
     }
 }
 
+.secondary-header {
+    background black url(img/home-party/fondo_home_party-header.jpg) 50% 50% no-repeat
+    background-size cover
+    border-bottom 8px solid $yellow-logo
+    box-sizing content-box
+    display flex
+    flex-direction column
+    justify-content center
+    height 100vh
+    overflow hidden
+    padding 0px 50px
+    position relative
+    .secondary-header__overlayed-bg {
+        position absolute
+        top 0px
+        left 0px
+        width 100%
+        height 100vh
+        background-color rgba(black,.4)
+        z-index 0
+    }
+    h1, p {
+        color white
+        flex 0 1 auto
+        text-align center
+        text-shadow 0px 2px 1px rgba(black,.4)
+        z-index 1
+    }
+    h1 {
+        font-weight 700
+        margin 0px   
+    }
+    p {
+        font-weight 300
+    }
+    @media screen and (min-width: 40em) {
+        align-items flex-start
+        h1, p {
+            text-align left
+        }
+    }
+}
+
+
+
+// -------------------
+// @DESCRIPCION SERVICIO
+// -------------------
+
+.descripcion-servicio {
+    .descripcion-servicio__logo {
+        margin-bottom 20px
+        width 100%
+        max-width 400px
+        @media screen and (min-width: 40em) {
+            margin-bottom 40px
+        }
+    }
+}
+
 
 
 // -------------------
@@ -145,6 +216,14 @@
     display flex
     align-items center
     min-height 100vh
+}
+
+.frase-animada--ajustada {
+    background-color $blackBG
+    min-height 70vh
+    h1 {
+        color white
+    }
 }
 
 
@@ -243,6 +322,198 @@
 
 .servicio--delivery {
     background-image url(http://lorempixel.com/400/200/fashion/)
+}
+
+
+
+// -------------------
+// @SERVICIO-PERSONAL --------- UNIFICAR ESTILOS
+// -------------------
+
+.servicio-personal {
+    padding 0px
+    .servicio-personal__descripcion {
+        background url(img/home-party/servicio-contenido-1.jpg) 50% 50% no-repeat
+        background-size cover
+        display flex
+        flex-direction column
+        justify-content flex-end
+        color white
+        height 250px
+        padding 0px 20px 20px 20px
+        position relative
+        p, h2 {
+            flex none
+            z-index 1
+            position relative
+            text-shadow 0px 2px 1px rgba(black,.4)
+        }
+        p {
+            font-weight 300
+        }
+        h2 {
+            margin 0px
+            text-align left
+        }
+        @media screen and (min-width: 40em) {
+            height 300px
+        }
+        @media screen and (min-width: 64em) {
+            height 500px
+        }
+    }
+}
+
+
+
+// -------------------
+// @SERVICIO-JUEGOS --------- UNIFICAR ESTILOS
+// -------------------
+
+.servicio-juegos {
+    // background-color lighten($gray, 80%)
+    .servicio-juegos__descripcion {
+        p {
+            font-weight 300
+        }
+        h2 {
+            text-align left
+        }
+    }
+    .servicio-juegos__img {
+        padding 2px
+    }
+    @media screen and (min-width: 40em) {
+        padding 100px 10px
+        .image-crop {
+            height 300px
+            overflow hidden
+            img {
+                transform translateY(-100px)
+            }
+        }
+        .servicio-juegos__img {
+            padding 10px
+            &:nth-child(3) {
+                padding-right 5px
+            }
+            &:nth-child(4) {
+                padding-left 5px
+            }
+        }
+    }
+    @media screen and (min-width: 64em) {
+        .image-crop {
+            height 400px
+            overflow hidden
+            img {
+                transform translateY(-150px)
+            }
+        }
+    }
+}
+
+
+
+// -------------------
+// @SERVICIO-BEBIDAS --------- UNIFICAR ESTILOS
+// -------------------
+
+.servicio-bebidas {
+    background-color $blackBG
+    color white
+    padding 0px
+    .servicio-bebidas__descripcion {
+        background url(img/home-party/bebidas-img-1.jpg) 50% 50% no-repeat
+        background-size cover
+        display flex
+        flex-direction column
+        justify-content flex-end
+        color white
+        height 280px
+        padding 0px 20px 20px 20px
+        position relative
+        p, h2 {
+            flex none
+            z-index 1
+            position relative
+            text-shadow 0px 2px 1px rgba(black,.4)
+        }
+        p {
+            font-weight 300
+        }
+        h2 {
+            margin 0px
+            text-align left
+        }
+        @media screen and (min-width: 40em) {
+            height 600px
+            padding-bottom 50px
+        }
+    }
+    button {
+        flex 0 1 auto
+        align-self flex-start
+        margin-top 20px
+    }
+}
+
+
+
+// -------------------
+// @SERVICIO-AMBIENTACION --------- UNIFICAR ESTILOS CON JUEGOS
+// -------------------
+
+.servicio-ambientacion {
+    .servicio-ambientacion__descripcion {
+        p {
+            font-weight 300
+        }
+        h2 {
+            text-align left
+        }
+    }
+    .servicio-ambientacion__img {
+        padding 1px 2px
+    }
+    @media screen and (min-width: 40em) {
+        padding 100px 10px
+        .servicio-ambientacion__img {
+            &:nth-child(2) {
+                padding-right 5px
+                padding-bottom 5px
+            }
+            &:nth-child(3) {
+                padding-left 5px
+                padding-bottom 5px
+            }
+            &:nth-child(4) {
+                padding-right 5px
+                padding-top 5px
+            }
+            &:nth-child(5) {
+                padding-left 5px
+                padding-top 5px
+            }
+        }
+    }
+}
+
+
+
+// -------------------
+// @FRASE-RESERVA
+// -------------------
+
+.frase-reserva {
+    background-color $blackBG
+    color white
+    p {
+        text-align center
+        &:first-child {
+            margin-bottom 20px
+        }
+    }
 }
 
 
