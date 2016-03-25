@@ -21,6 +21,7 @@
  * .contacto....................Seccion de contacto
  *
  * - Home party
+ * secondary-header.............Header para secciones secundarias
  * .servicio-personal...........Layout que muestra el servicio de personal
  * .servicio-juegos.............Layout que muestra el servicio de juegos
  * .servicio-bebidas............Layout que muestra el servicio de bebidas
@@ -52,8 +53,12 @@
 // @import 'base/_base_animations'
 @import 'base/_base'
 
-// - Modules imports
-@import 'modules/main-nav'
+// - Component imports
+@import 'componentes/main-nav'
+@import 'componentes/servicio'
+@import 'componentes/video-container'
+@import 'componentes/contact-form'
+@import 'componentes/fundador'
 
 
 
@@ -245,83 +250,6 @@
         font-weight 300
         margin-bottom 1.5rem
     }
-}
-
-
-
-// -------------------
-// @SERVICIO
-// -------------------
-
-.servicio {
-    background-size cover
-    background-position 50% 50%
-    height 250px
-    display flex
-    align-items center
-    flex-direction column
-    justify-content center
-    position relative
-    margin-bottom 10px
-    &:hover {
-        .servicio__titulo {
-            color $purple-logo
-        }
-    }
-    &:active {
-        .servicio__titulo {
-            color $purple-logo
-        }
-    }
-    .servicio__titulo {
-        margin 0
-        transition 0.3s color
-    }
-    .servicio__image-filter {
-        background-color rgba(black,.6)
-        position absolute
-        top 0px
-        left 0px
-        height 100%
-        width 100%
-        z-index 0
-    }
-    .servicio__titulo, .servicio__descripcion {
-        z-index 1
-    }
-    .servicio__titulo{
-        color white
-        line-height 1.3
-        font-weight 700
-    }
-    .servicio__descripcion {
-        color white
-        text-align center
-        width 90%
-    }
-    @media screen and (min-width: 40em) {
-        height 270px
-    }
-    @media screen and (min-width: 64em) {
-        height 300px
-        margin 5px
-    }
-}
-
-.servicio--home-party {
-    background-image url(http://lorempixel.com/400/200/nightlife/)
-}
-
-.servicio--cocktail-party {
-    background-image url(http://lorempixel.com/400/200/city/)
-}
-
-.servicio--office-party {
-    background-image url(http://lorempixel.com/400/200/business/)
-}
-
-.servicio--delivery {
-    background-image url(http://lorempixel.com/400/200/fashion/)
 }
 
 
@@ -530,33 +458,6 @@
 
 
 // -------------------
-// @VIDEO-CONTAINER
-// -------------------
-
-.youtubevideowrap {
-    max-width 640px
-    margin 0 auto
-    width 80%
-}
-
-.video-container {
-    position relative
-    padding-bottom 56.25%
-    padding-top 30px
-    height 0
-    overflow hidden
-    iframe {
-        position absolute
-        top 0
-        left 0
-        width 100%
-        height 100%
-    }
-}
-
-
-
-// -------------------
 // @ABOUT
 // -------------------
 
@@ -570,32 +471,6 @@
     .about__descripcion {
         color white
         font-weight 300
-    }
-}
-
-
-
-// -------------------
-// @FUNDADOR
-// -------------------
-
-.fundador {
-    margin-top 30px
-    .fundador__img {
-        border-radius 4px
-        box-shadow 0 2px 2px rgba(black,.5)
-        width 100%
-    }
-    .fundador__name {
-        color $yellow-logo
-        text-align left
-        margin 5px 0 2px 0
-    }
-    .fundador__pro {
-        color white
-    }
-    @media screen and (min-width: 64em) {
-        margin 0
     }
 }
 
@@ -644,52 +519,6 @@
         margin-bottom 2rem
     }
 
-}
-
-
-
-// -------------------
-// @CONTACT-FORM
-// -------------------
-
-.contact-form {
-    margin-top 2rem
-    text-align left
-    margin auto
-    max-width 500px
-    .contact-form__input,
-    .contact-form__text-area {
-        color grey
-        border 2px solid rgba($green-logo,.7)
-        margin-bottom 1rem
-        width 100%
-    }
-    .contact-form__input {
-        display block
-        line-height 2.5
-        padding 0 .5em
-    }
-    .contact-form__text-area {
-        padding .5em
-        height 120px
-        resize none
-    }
-    .contact-form__submit {
-        background-color $green-logo
-        border none
-        color white
-        height 35px
-        width 100px
-        &:hover {
-            background-color darken($green-logo, 20%)
-        }
-    }
-    @media screen and (min-width: 40em) {
-        margin-top 3rem
-    }
-    @media screen and (min-width: 64em) {
-        margin-top 0
-    }
 }
 
 

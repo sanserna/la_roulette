@@ -22,6 +22,8 @@ var uglify = require('gulp-uglify');
 var eslint = require('gulp-eslint');
 
 var del = require('del');
+var lazypipe = require('lazypipe');
+var merge = require('merge-stream');
 var newer = require('gulp-newer');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
@@ -35,6 +37,8 @@ var imagemin = require('gulp-imagemin');
 
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+
+var distFiles;
 
 /** 
  * Por defecto el Care-Package cuenta con una estructura de proyecto estandar,
@@ -88,25 +92,36 @@ gulp.task('lint', function() {
 
 // Image task: optimizar imagenes.
 gulp.task('images', function() {
-  gulp.src(['app/img/**/*.png', 'app/img/**/*.jpg'])
-  .pipe(imagemin({
-    optimizationLevel: 5,
-    progressive: true,
-    interlaced: true
-  }))
-  .pipe(gulp.dest('dist/img'))
-  .pipe(size({title: 'images'}));
+  var mainImg = gulp.src(['app/img/**/*.png', 'app/img/**/*.jpg'])
+    .pipe(imagemin({
+      optimizationLevel: 5,
+      progressive: true,
+      interlaced: true
+    }))
+    .pipe(gulp.dest('dist/img'))
+    .pipe(size({title: 'main images'}));
+
+  var stylesImg = gulp.src(['app/styles/img/**/*.png', 'app/styles/img/**/*.jpg'])
+    .pipe(imagemin({
+      optimizationLevel: 5,
+      progressive: true,
+      interlaced: true
+    }))
+    .pipe(gulp.dest('dist/styles/img'))
+    .pipe(size({title: 'styles images'}));
+
+    return merge(mainImg, stylesImg);
 });
 
 // Copy task: copiar todos los archivos de la raiz del proyecto (app)
 gulp.task('copy', function() {
-  gulp.src([
-    'app/*',
-    '!app/*.html'
-  ], {
-    dot: true
-  }).pipe(gulp.dest('dist'))
-    .pipe(size({title: 'copy'}))
+  var rootFiles = gulp.src(['app/*', '!app/*.html'], {dot: true})
+    .pipe(gulp.dest('dist'))
+    .pipe(size({title: 'root files'}));
+
+  var videoFiles = gulp.src(['app/videos/**/*'])
+    .pipe(gulp.dest('dist/videos'))
+    .pipe(size({title: 'videos'}));
 });
 
 /**
@@ -115,6 +130,13 @@ gulp.task('copy', function() {
  * agregar mas plugins consulte la documentacion sobre su uso:
  * https://github.com/postcss/postcss
  */
+
+ var distCSS = lazypipe()
+    .pipe(cssnano)
+    .pipe(size, {title: 'styles'})
+    .pipe(sourcemaps.write, './')
+    .pipe(rename, {suffix:'.min'})
+    .pipe(gulp.dest, 'dist/styles');
 
 // CSS task: compilar y poner prefijos automaticamente a las hojas de estilo.
 gulp.task('build:css', function() {
@@ -149,14 +171,17 @@ gulp.task('build:css', function() {
     }))
     .pipe(postcss(processors))
     .pipe(gulp.dest('.tmp/styles'))
-    // Minify styles.
-    .pipe(cssnano())
-    .pipe(size({title: 'styles'}))
-    .pipe(sourcemaps.write('./'))
-    .pipe(rename({suffix:'.min'}))
-    .pipe(gulp.dest('dist/styles'));
-    //.pipe(reload({stream:true}));
+    // Procesar archivos para produccion
+    .pipe(gulpif(distFiles, distCSS()));
 });
+
+var distJS = lazypipe()
+    .pipe(concat, 'main.min.js')
+    .pipe(uglify)
+    // Output files
+    .pipe(size, {title: 'scripts'})
+    .pipe(sourcemaps.write, '.')
+    .pipe(gulp.dest, 'dist/scripts');
 
 // Scripts task: procesar codigo JS.
 gulp.task('build:js', function() {
@@ -171,12 +196,8 @@ gulp.task('build:js', function() {
   ])
     .pipe(sourcemaps.init())
     .pipe(gulp.dest('.tmp/scripts'))
-    .pipe(concat('main.min.js'))
-    .pipe(uglify())
-    // Output files
-    .pipe(size({title: 'scripts'}))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/scripts'));
+    // Procesar archivos para produccion
+    .pipe(gulpif(distFiles, distJS()));
 });
 
 // HTML task: compilar los templates.
@@ -217,6 +238,9 @@ gulp.task('clean', function() {
 // Browser-sync task: estar atento a los cambios en los archivos refrescar el
 // navegador. Crea un servidor estático en el directorio temporal.
 gulp.task('start', function(){
+
+  distFiles = false;
+
   browserSync({
     ui: false,
     notify: false,
@@ -230,10 +254,9 @@ gulp.task('start', function(){
     injectChanges: false,
   });
 
-  gulp.watch(['app/**/*.html'], ['build:html', reload]);
+  gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.styl'], ['build:css', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['lint', 'build:js']);
-  gulp.watch(['app/images/**/*'], reload);
 });
 
 // Crea un servidor estático en el directorio de producción (dist)
@@ -248,6 +271,9 @@ gulp.task('serve:dist', function() {
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function(cb) {
+
+  distFiles = true;
+
   runSequence(
     'build:css',
     ['lint', 'build:html', 'build:js', 'images', 'copy'],

@@ -1,0 +1,49 @@
+// - Base imports
+@import 'base/_base_variables'
+@import 'base/_base_mixins'
+
+
+
+// -------------------
+// @CONTACT-FORM
+// -------------------
+
+.contact-form {
+    margin-top 2rem
+    text-align left
+    margin auto
+    max-width 500px
+    .contact-form__input,
+    .contact-form__text-area {
+        color grey
+        border 2px solid rgba($green-logo,.7)
+        margin-bottom 1rem
+        width 100%
+    }
+    .contact-form__input {
+        display block
+        line-height 2.5
+        padding 0 .5em
+    }
+    .contact-form__text-area {
+        padding .5em
+        height 120px
+        resize none
+    }
+    .contact-form__submit {
+        background-color $green-logo
+        border none
+        color white
+        height 35px
+        width 100px
+        &:hover {
+            background-color darken($green-logo, 20%)
+        }
+    }
+    @media screen and (min-width: 40em) {
+        margin-top 3rem
+    }
+    @media screen and (min-width: 64em) {
+        margin-top 0
+    }
+}
