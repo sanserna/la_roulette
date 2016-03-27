@@ -9,3 +9,5 @@
 !/bower_components/jquery/dist
 /bower_components/vide/*
 !/bower_components/vide/dist
+/bower_components/plyr/*
+!/bower_components/plyr/dist

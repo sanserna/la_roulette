@@ -1,0 +1,220 @@
+// - Base imports
+@import 'base/_base_variables'
+@import 'base/_base_mixins'
+
+
+
+// -------------------
+// @MAIN-NAV
+// -------------------
+
+.main-nav {
+    min-width 320px
+    position fixed
+    top 0
+    right 0
+    left 0
+    z-index 9999
+    display block
+    margin 0
+    width 100%
+    height $main-nav-height
+    background rgba($main-nav-bg-color,.8)
+    font-size 18px
+    user-select none
+    transition 0.3s background ease-in-out
+    ul {
+        list-style none
+        margin 0
+    }
+    .main-nav__content {
+        margin 0 auto
+        max-width 980px
+        padding 0 22px
+        position relative
+        z-index 2
+    }
+    .main-nav__header {
+        display none
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height $main-nav-height
+        overflow hidden
+        z-index 3
+        .main-nav__item--logo {
+            display block
+            position absolute
+            width 48px
+            top 0
+            left 50%
+            margin-left -24px
+            text-align center
+            z-index 1
+        }
+    }
+    .main-nav__list {
+        display flex
+        align-items center
+        justify-content space-around
+        cursor default
+        width auto
+        user-select none
+        margin 0 -10px
+        height $main-nav-height
+        text-align justify
+    }
+    .main-nav__item {
+        display inline-block
+        position relative
+        height $main-nav-height
+        vertical-align top
+        z-index 1
+        text-align inherit
+        &--menuicon {
+            display none
+        }
+    }
+    .main-nav__link {
+        color $main-nav-item-color
+        font-size 1rem
+        line-height 2.75
+        font-weight 400
+        letter-spacing normal
+        position relative
+        z-index 1
+        display inline-block
+        padding 0 10px
+        height $main-nav-height
+        transition .3s color ease-in
+        &:hover {
+            color $yellow-logo
+        }
+        &--roulette {
+            background-image url(img/logoLaRoulette_blanco_small.png)
+            background-size 30px 29px
+            background-repeat no-repeat
+            background-position center center
+            padding 0
+            width 50px
+        }
+    }
+    @media only screen and (max-width: 40em) {
+        .main-nav__content {
+            padding 0
+            position absolute
+            top 0
+            width 100%
+            height 100%
+        }
+        .main-nav__item--logo {
+            display none
+        }
+        .main-nav__header {
+            display block
+            .main-nav__item--logo {
+                display block
+            }
+        }
+        .main-nav__item {
+            width 100%
+            &--menuicon {
+                display block
+                cursor pointer
+                position absolute
+                height 14px !important
+                width 20px !important
+                top 15px
+                left 15px
+                right 0px
+                transition all 0.25s
+                .line-top, .line-middle, .line-bottom {
+                    height 2px
+                    background-color white
+                    width 100%
+                    position absolute
+                    left 0px
+                    transition all 0.35s
+                }
+                .line-top {
+                    top 0px
+                }
+                .line-middle {
+                    top 50%
+                    margin-top -1px
+                    opacity 1
+                }
+                .line-bottom {
+                    bottom 0px
+                }
+            }
+            &--menu {
+                height $main-nav-height
+                opacity 0
+                top -30px
+                transform scale(0.7)
+                transition all 0.3s ease-in, top 0.5s ease-out, transform 0.6s ease-out
+                animationDelay($main-nav-num-items + 1)
+                .main-nav__link {
+                    display block
+                    width auto
+                    padding 0
+                    max-width none
+                }
+            }
+        }
+        .main-nav__link {
+            font-size 1.25rem
+            line-height 2.35
+            font-weight 300
+            letter-spacing normal
+            &--roulette {
+                width 100%
+            }
+        }
+        .main-nav__list {
+            display none
+            background-color $main-nav-bg-color
+            position absolute
+            z-index 2
+            top 44px
+            right 0
+            bottom 0
+            left 0
+            margin 0
+            padding 0 44px
+            padding-bottom pd = 14px
+            height $main-nav-height * $main-nav-num-items + pd
+            overflow hidden
+            overflow-y auto
+            text-align center
+        }
+    }
+}
+
+.main-nav--active {
+    background black
+    .main-nav__item--menu {
+        top 0
+        transform scale(1)
+        opacity 1
+    }
+    .main-nav__item--menuicon {
+        top 12px
+        .menuicon__lines {
+            transform rotate(135deg) !important
+            height 20px
+            .line-top {
+                top 9px !important
+            }
+            .line-middle {
+                transform rotate(90deg) !important
+            }
+            .line-bottom {
+                bottom 8px
+                opacity 0
+            }
+        }
+    }
+}

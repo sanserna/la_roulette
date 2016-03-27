@@ -21,7 +21,7 @@
  * .contacto....................Seccion de contacto
  *
  * - Home party
- * secondary-header.............Header para secciones secundarias
+ * .secondary-header.............Header para secciones secundarias
  * .servicio-personal...........Layout que muestra el servicio de personal
  * .servicio-juegos.............Layout que muestra el servicio de juegos
  * .servicio-bebidas............Layout que muestra el servicio de bebidas
@@ -32,10 +32,8 @@
  * .page-foter..................Footer principal de la pagina
  *
  * COMPONENTES
- * .main-nav....................Menu de navegacion principal del sitio
- * .nav-trigger.................Boton que se encarga de abrir el menu de navegacion
+ * .main-nav-header....................Menu de navegacion principal del sitio
  * .servicio....................Componente que define un servicio en la navegacion de servicios
- * .video-container.............Contenedor para videos de youtube
  * .fundador....................Componente para la seccion de about donde se muestra la informacion del fundador
  * .contacto__item..............Componente medio de contacto
  * .contact-form................Formulario de la seccion de contacto
@@ -45,6 +43,7 @@
 // - frameworks imports
 @import 'frameworks/foundation-flex.css'
 // @import 'frameworks/animate.css'
+@import 'frameworks/plyr.css'
 
 // - Base imports
 @import 'base/_fonts'
@@ -54,9 +53,8 @@
 @import 'base/_base'
 
 // - Component imports
-@import 'componentes/main-nav'
+@import 'componentes/main-nav-header'
 @import 'componentes/servicio'
-@import 'componentes/video-container'
 @import 'componentes/contact-form'
 @import 'componentes/fundador'
 
@@ -453,6 +451,11 @@
 .videos-promocionales {
     background-color $silver
     width 100%
+    .plyr {
+        max-width 640px
+        margin 0 auto
+        width 80%
+    }
 }
 
 

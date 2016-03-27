@@ -83,7 +83,9 @@ gulp.task('lint', function() {
       'window': false,
       'navigator': false,
       'classie': false,
-      'Modernizr': false
+      'Modernizr': false,
+      'plyr': false,
+      'XMLHttpRequest': false
     }
   }))
   .pipe(eslint.format())
@@ -132,7 +134,7 @@ gulp.task('copy', function() {
  */
 
  var distCSS = lazypipe()
-    .pipe(cssnano)
+    .pipe(cssnano, {discardComments: {removeAll: true}})
     .pipe(size, {title: 'styles'})
     .pipe(sourcemaps.write, './')
     .pipe(rename, {suffix:'.min'})
@@ -190,6 +192,7 @@ gulp.task('build:js', function() {
     // correctamente concatenados.
     'app/scripts/vendors/jquery.js',
     'app/scripts/vendors/jquery.vide.js',
+    'app/scripts/vendors/plyr.js',
     'app/scripts/vendors/modernizr-custom.js',
     'app/scripts/context.js',
     'app/scripts/main.js'

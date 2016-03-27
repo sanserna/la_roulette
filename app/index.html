@@ -36,6 +36,44 @@
   </head>
   <body>
     <!-- LA ROULETTE HOME LAYOUT -->
+    <!-- MAIN NAVIGATION -->
+    <nav id="globalnav" class="main-nav" role="navigation">
+      <div class="main-nav__content">
+        <ul class="main-nav__header">
+          <li id="trigger-main-nav" class="main-nav__item main-nav__item--menuicon">
+            <div class="menuicon__lines">
+              <div class="line-top"></div>
+              <div class="line-middle"></div>
+              <div class="line-bottom"></div>
+            </div>
+          </li>
+          <li class="main-nav__item main-nav__item--logo">
+            <a href="/" class="main-nav__link main-nav__link--roulette"></a>
+          </li>
+        </ul>
+
+        <ul id="main-nav-menu" class="main-nav__list">
+          <li class="main-nav__item main-nav__item--logo">
+            <a href="/" class="main-nav__link main-nav__link--roulette"></a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Home Party</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Party Cocktail</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Office Party</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Delivery</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- MAIN HEADER DE LA PAGINA -->
     <header id="main-header">
@@ -45,29 +83,6 @@
         <h1 id="header-title" class="main-header__title main-title">Vive Diferente!</h1>
         <div id="pointer-hand" class="main-header__hand-icon"></div>
     </header>
-
-    <!-- MAIN NAVIGATION -->
-    <div id="trigger-main-nav">
-      <div class="nav-trigger__lines">
-        <div class="line-top"></div>
-        <div class="line-middle"></div>
-        <div class="line-bottom"></div>
-      </div>
-    </div>
-    <div id="main-nav" class="main-nav main-nav--slidedown">
-      <!-- <button type="button" id="main-nav-closeBtn" class="main-nav__close">Cerrar</button> -->
-      <nav>
-        <ul>
-          <li>
-            <a href="#">Home Party</a>
-            <a href="#">Party Cocktail</a>
-            <a href="#">Office Party</a>
-            <a href="#">Delivery</a>
-            <a href="#">La Roulette Blog</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
 
     <!-- CONTENIDO DE LA PAGINA -->
     <main class="page-content">
@@ -126,34 +141,8 @@
 
       <section class="videos-promocionales">
         <h1 class="main-title">Lorem ipsum dolor.</h1>
-        <div class="youtubevideowrap">
-          <div class="video-container">
-            <div id="video-player"></div>
-            <script>
-              // 2. This code loads the IFrame Player API code asynchronously.
-              var tag = document.createElement('script');
-              
-              tag.src = "https://www.youtube.com/iframe_api";
-              var firstScriptTag = document.getElementsByTagName('script')[0];
-              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-              
-              // 3. This function creates an <iframe> (and YouTube player)
-              //    after the API code downloads.
-              var player;
-              function onYouTubeIframeAPIReady() {
-                player = new YT.Player('video-player', {
-                  height: '315',
-                  width: '560',
-                  videoId: 'rwej-YmrlYw',
-                  playerVars: {
-                    //controls: 0,
-                    rel: 0,
-                    showinfo: 0
-                  }
-                });
-              }
-            </script>
-          </div>
+        <div class="plyr">
+          <div data-video-id="rwej-YmrlYw" data-type="youtube"></div>
         </div>
       </section>
 
@@ -282,9 +271,14 @@
     <script src="scripts/vendors/modernizr-custom.js"></script>
     <script src="scripts/vendors/jquery.js"></script>
     <script src="scripts/vendors/jquery.vide.js"></script>
+    <script src="scripts/vendors/plyr.js"></script>
     <script src="scripts/context.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
+    
+    <script>
+      app.ctrl.inicio.init();
+    </script>
 
     <!-- Google Analytics -->
     <script>

@@ -1,5 +1,17 @@
 // Este es un ejemplo que puedes aplicar a los elementos para poder saber 
 // visualmente que area ocupa.
-area(color = red, grosor = 1px)
+area(color = red, grosor = 1px) {
 	border grosor solid color
-	box-sizing border-box   
+	box-sizing border-box
+}   
+ 
+// animation delay menu items
+animationDelay(numItems) {
+    for num in (2..numItems) {
+        &:nth-child({num}) {
+            delay = num * 0.1
+            transition-delay unit(delay, 's')
+        }
+    }
+}
+    

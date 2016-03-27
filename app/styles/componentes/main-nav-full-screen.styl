@@ -1,13 +1,37 @@
 // - Variables imports
 @import 'base/_base_variables'
 
+/*
+<div id="#trigger-main-nav-full-screen">
+  <div class="nav-trigger__lines">
+    <div class="line-top"></div>
+    <div class="line-middle"></div>
+    <div class="line-bottom"></div>
+  </div>
+</div>
+<div id="main-nav-full-screen" class="main-nav-full-screen main-nav-full-screen--slidedown">
+  <!-- <button type="button" id="main-nav-full-screen-closeBtn" class="main-nav-full-screen__close">Cerrar</button> -->
+  <nav>
+    <ul>
+      <li>
+        <a href="#">Home Party</a>
+        <a href="#">Party Cocktail</a>
+        <a href="#">Office Party</a>
+        <a href="#">Delivery</a>
+        <a href="#">La Roulette Blog</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+*/
+
 
 
 // -------------------
 // @NAV-TRIGGER
 // -------------------
 
-#trigger-main-nav {
+#trigger-main-nav-full-screen {
     background-color $trigger-main-nav-bg-color
     position fixed
     right 18px
@@ -117,7 +141,7 @@
 // -------------------
 
 // - main-nav style
-.main-nav {
+.main-nav-full-screen {
     background-color $main-nav-gb-color
     height 100%
     position fixed
@@ -125,7 +149,7 @@
     left 0
     width 100%
     z-index 1000
-    .main-nav__close {
+    .main-nav-full-screen__close {
         width 80px
         height 80px
         position absolute
@@ -182,7 +206,7 @@
 }
 
 // - Effects
-.main-nav--slidedown {
+.main-nav-full-screen--slidedown {
     visibility hidden
     transform translateY(-100%)
     transition transform 0.4s ease-in-out, visibility 0s 0.4s

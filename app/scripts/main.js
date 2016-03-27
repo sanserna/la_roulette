@@ -2,24 +2,26 @@ var app = app || {};
 
 app.ctrl = {
 
+    data: {},
+
     init: (function () {
 
         'use strict';
+
         $(document).on('ready', function () {
 
-            // - listener para centrar el logo al cambiar el tamaño de la ventana
-            $(window).resize(app.ctrl.centerHeaderContent);
-            $(window).ready(app.ctrl.centerHeaderContent);
-
-            if (app.context.isMobile()) {
-
-                app.ctrl.defineHeaderBG(true);
-
-            } else {
-
-                app.ctrl.defineHeaderBG(false);
-
-            }
+            // inicializar variables globales
+            app.ctrl.data.transEndEventNames = {
+                WebkitTransition: 'webkitTransitionEnd',
+                MozTransition: 'transitionend',
+                OTransition: 'oTransitionEnd',
+                msTransition: 'MSTransitionEnd',
+                transition: 'transitionend'
+            };
+            app.ctrl.data.transEndEventName = app.ctrl.data.transEndEventNames[Modernizr.prefixed('transition')];
+            app.ctrl.data.support = {
+                transitions: Modernizr.csstransitions
+            };
 
         });
 
@@ -29,65 +31,64 @@ app.ctrl = {
 
         'use strict';
 
-        var transEndEventNames = {
-                WebkitTransition: 'webkitTransitionEnd',
-                MozTransition: 'transitionend',
-                OTransition: 'oTransitionEnd',
-                msTransition: 'MSTransitionEnd',
-                transition: 'transitionend'
-            },
-            support = {
-                transitions: Modernizr.csstransitions
-            },
-            transEndEventName = transEndEventNames[Modernizr.prefixed('transition')];
-
         // MAIN NAVIGATION TOGGLE
         $(document).on('click', '#trigger-main-nav', function (event) {
 
             var $this = $(this),
-                $mainNav = $('#main-nav'),
-                $body = $('body');
+                $mainNav = $('#globalnav'),
+                $mainNavMenu = $('#main-nav-menu'),
+                $mainNavMenuItem = $('.main-nav__item--menu');
 
-            if ($mainNav.hasClass('open')) {
+            $mainNavMenu.slideToggle(300);
+            $mainNav.toggleClass('main-nav--active');
 
-                $mainNav.removeClass('open');
-                $mainNav.addClass('close');
+        });
 
-                if (support.transitions) {
+    }())
 
-                    $mainNav.bind(transEndEventName, function (event) {
+};
 
-                        if (event.originalEvent.propertyName !== 'visibility') {
+app.ctrl.inicio = {
 
-                            return;
+    init: function () {
 
-                        }
+        'use strict';
 
-                        $(this).unbind(event);
-                        $mainNav.removeClass('close');
-                        $body.removeClass('nav-active');
-                        console.log('endtran');
+        $(document).on('ready', function () {
 
-                    });
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.inicio.settings();
 
-                } else {
+            // - load controls sprite
+            app.ctrl.inicio.loadVideoControlsSrpite(document, '../img/plyr-sprite.svg');
 
-                    $mainNav.removeClass('close');
-                    $body.removeClass('nav-active');
+            plyr.setup();
 
-                }
+            // - listener para centrar el logo al cambiar el tamaño de la ventana
+            $(window).resize(app.ctrl.inicio.centerHeaderContent);
+            $(window).ready(app.ctrl.inicio.centerHeaderContent);
 
-            } else if (!$mainNav.hasClass('close')) {
+            if (app.context.isMobile()) {
 
-                $mainNav.addClass('open');
-                $body.addClass('nav-active');
+                app.ctrl.inicio.defineHeaderBG(true);
+
+            } else {
+
+                app.ctrl.inicio.defineHeaderBG(false);
 
             }
 
         });
 
-    }()),
+    },
 
+    settings: function () {
+
+        'use strict';
+
+    },
+
+    // HELPER SECTION FUNCTIONS
     defineHeaderBG: function (isMobile) {
 
         'use strict';
@@ -121,6 +122,7 @@ app.ctrl = {
 
         var $container = $('#main-header'),
             $logo = $('#lr-logo'),
+            $mainNavMenu = $('#main-nav-menu'),
             $title = $('#header-title'),
             $pointerHand = $('#pointer-hand'),
             containerW = $container.width(),
@@ -143,10 +145,29 @@ app.ctrl = {
             top: $title.position().top + (titleH + 20)
         });
 
+    },
+
+    loadVideoControlsSrpite: function (d, p) {
+
+        // 'use strict';
+
+        // var a = new XMLHttpRequest(),
+        //     b = d.body;
+
+        // a.open('GET', p, true);
+        // a.send();
+        // a.onload = function () {
+
+        //     var c = d.createElement('div');
+        //     c.setAttribute('hidden', '');
+        //     c.innerHTML = a.responseText;
+        //     b.insertBefore(c, b.childNodes[0]);
+
+        // };
+
     }
 
 };
-
 
 
 
