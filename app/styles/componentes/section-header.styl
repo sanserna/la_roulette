@@ -1,0 +1,58 @@
+// - Base imports
+@import 'base/_base_variables'
+@import 'base/_base_mixins'
+
+
+
+// -------------------
+// @SECTION-HEADER
+// -------------------
+
+.section-header {
+    background-color black
+    background-position 50% 50%
+    background-repeat no-repeat
+    background-size cover
+    box-sizing content-box
+    display flex
+    flex-direction column
+    justify-content center
+    height 100vh
+    overflow hidden
+    padding 0px 50px
+    position relative
+    .section-header__overlayed-bg {
+        position absolute
+        top 0px
+        left 0px
+        width 100%
+        height 100vh
+        background-color rgba(black,.4)
+        z-index 0
+    }
+    .section-header__title, .section-header__description {
+        color white
+        flex 0 1 auto
+        text-align center
+        text-shadow 0px 2px 1px rgba(black,.4)
+        z-index 1
+    }
+    .section-header__title {
+        font-weight 700
+        margin 0px   
+    }
+    .section-header__description {
+        font-weight 300
+    }
+    @media screen and (min-width: 40em) {
+        align-items flex-start
+        .section-header__title, .section-header__description {
+            text-align left
+        }
+    }
+}
+
+.section-header--home-party {
+    background-image url(img/home-party/fondo_home_party-header.jpg)
+    border-bottom 8px solid $yellow-logo
+}

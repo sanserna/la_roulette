@@ -1,0 +1,41 @@
+// - Base imports
+@import 'base/_base_variables'
+@import 'base/_base_mixins'
+
+
+
+// -------------------
+// @SERVICIO-CONTENT-ITEM
+// -------------------
+
+.servicio-content-item {
+    padding 0
+    .overlayed-bg {
+        background-color rgba(#222526,.5)
+    }
+    .servicio-content-item__descripcion {
+        background-position 50% 50%
+        background-repeat no-repeat
+        background-size cover
+        display flex
+        flex-direction column
+        justify-content flex-end
+        color white
+        height 80vh
+        padding 0px 40px 40px 40px
+        position relative
+        p, h1 {
+            flex none
+            z-index 1
+            text-shadow 0px 1px 1px rgba(black,.7)
+        }
+        p {
+            font-weight 400
+        }
+        h1 {
+            margin 0px
+            text-align left
+            font-weight 300
+        }
+    }
+}

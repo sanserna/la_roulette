@@ -36,74 +36,79 @@
   </head>
   <body>
     <!-- LA ROULETTE HOME PARTY LAYOUT -->
-
-    <!-- MAIN HEADER DE LA PAGINA -->
-    <header class="secondary-header">
-      <div class="secondary-header__overlayed-bg"></div>
-      <h1 class="secondary-header__title main-title main-title--big">Home Party</h1>
-      <p class="main-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic molestias vitae maxime. Voluptates delectus debitis quibusdam laboriosam veniam natus temporibus?</p>
-    </header>
-
     <!-- MAIN NAVIGATION -->
-    <div id="trigger-main-nav">
-      <div class="nav-trigger__lines">
-        <div class="line-top"></div>
-        <div class="line-middle"></div>
-        <div class="line-bottom"></div>
-      </div>
-    </div>
-    <div id="main-nav" class="main-nav main-nav--slidedown">
-      <!-- <button type="button" id="main-nav-closeBtn" class="main-nav__close">Cerrar</button> -->
-      <nav>
-        <ul>
-          <li>
-            <a href="#">Home Party</a>
-            <a href="#">Party Cocktail</a>
-            <a href="#">Office Party</a>
-            <a href="#">Delivery</a>
-            <a href="#">La Roulette Blog</a>
+    <nav id="globalnav" class="main-nav" role="navigation">
+      <div class="main-nav__content">
+        <ul class="main-nav__header">
+          <li id="trigger-main-nav" class="main-nav__item main-nav__item--menuicon">
+            <div class="menuicon__lines">
+              <div class="line-top"></div>
+              <div class="line-middle"></div>
+              <div class="line-bottom"></div>
+            </div>
+          </li>
+          <li class="main-nav__item main-nav__item--logo">
+            <a href="/" class="main-nav__link main-nav__link--roulette"></a>
           </li>
         </ul>
-      </nav>
-    </div>
+
+        <ul id="main-nav-menu" class="main-nav__list">
+          <li class="main-nav__item main-nav__item--logo">
+            <a href="/" class="main-nav__link main-nav__link--roulette"></a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Home Party</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Party Cocktail</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Office Party</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Delivery</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
+            <a href="/" class="main-nav__link">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- MAIN HEADER DE LA PAGINA -->
+    <header class="section-header section-header--home-party">
+      <div class="section-header__overlayed-bg"></div>
+      <h1 class="section-header__title big-title">Home Party</h1>
+      <p class="section-header__description big-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic molestias vitae maxime. Voluptates delectus debitis quibusdam laboriosam veniam natus temporibus?</p>
+    </header>
 
     <!-- CONTENIDO DE LA PAGINA -->
     <main class="page-content">
-      <section class="descripcion-servicio row align-center expanded">
+      <section class="section-intro row align-center expanded">
         <div class="shrink column">
-          <img class="descripcion-servicio__logo" src="img/logoHomeParty.png" alt="home party">
+          <img class="section-intro__logo" src="img/logoHomeParty.png" alt="home party">
         </div>
 
         <div class="small-12 column">
-          <p class="descripcion-servicio__txt main-description">Alguna vez estuviste planeando organizar una fiesta especial y te diste cuenta de todo el tiempo y esfuerzo que implica? Bueno, nosotros nos encargamos de llevarte una nueva experiencia y como resultado vivirás una celebración diferente en la cual tú y tus invitados únicamente se dedicarán a disfrutar.</p>
+          <p class="section-intro__txt section-description">Alguna vez estuviste planeando organizar una fiesta especial y te diste cuenta de todo el tiempo y esfuerzo que implica? Bueno, nosotros nos encargamos de llevarte una nueva experiencia y como resultado vivirás una celebración diferente en la cual tú y tus invitados únicamente se dedicarán a disfrutar.</p>
         </div>
       </section>
 
-      <section class="frase-animada frase-animada--ajustada">
-        <h1 class="main-title">Asi es como lo logramos</h1>
-      </section>
+      <div class="frase-animada frase-animada--home-party">
+        <h1 class="big-title">Asi es como lo logramos</h1>
+      </div>
 
-      <section class="servicio-personal small-collapse row expanded">
-        <div class="servicio-personal__descripcion small-12 column">
-          <div class="overlayed-bg"></div>
-          <p class="secondary-description">Personal de atención</p>
-          <h2 class="secondary-title">Dj con la mejor música, barman con deliciosos cocteles y anfitriona con la única función de que tu evento sea un éxito</h2>
-        </div>
-
-        <div class="small-4 column">
-          <img src="img/home-party/servicio-personal-img-1.jpg" alt="la roulette">
-        </div>
-        
-        <div class="small-4 column">
-          <img src="img/home-party/servicio-personal-img-2.jpg" alt="bongzilla">
-        </div>
-        
-        <div class="small-4 column">
-          <img src="img/home-party/servicio-personal-img-3.jpg" alt="beer pong">
+      <section class="servicio-content-item small-collapse row expanded">
+        <div class="small-12 column">
+          <div class="js-sc-item servicio-content-item__descripcion" data-bg-img-src="img/home-party/servicio-personal-bg.jpg">
+            <div class="overlayed-bg"></div>
+            <p class="item-description">Personal de atención</p>
+            <h1 class="section-title">Dj con la mejor música, barman con deliciosos cocteles y anfitriona con la única función de que tu evento sea un éxito</h1>
+          </div>
         </div>
       </section>
 
-      <section class="servicio-juegos row expanded">
+      <!-- <section class="servicio-juegos row expanded">
         <div class="servicio-juegos__descripcion small-12 column">
           <p class="secondary-description">Juegos</p>
           <h2 class="secondary-title">Beer pong, bongzilla y ruleta con sus juegos complementarios para que tu Home Party sea toda una experiencia.</h2>
@@ -209,34 +214,13 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
     </main>
 
-    <!-- MAIN FOOTER -->
+     <!-- MAIN FOOTER -->
     <footer class="page-footer expanded row">
       <div class="small-12 column">
         <img class="page-footer__logo" src="img/logoLaRoulette_blanco.png">
-      </div>
-
-      <div class="contacto-social small-12 column row">
-        <h3 class="terciary-title small-12 column">Siguenos en:</h3>
-
-          <div class="contacto-social__item column">
-            <a href="http://www.facebook.com/partylaroulette" target="_blank">
-              <img src="img/facebook.png">
-            </a>
-          </div>
-          <div class="contacto-social__item column">
-            <a href="http://www.twitter.com/partylaroulette" target="_blank">
-              <img src="img/twitter.png">
-            </a>
-          </div>
-          <div class="contacto-social__item column">
-            <a href="http://www.instagram.com/partylaroulette" target="_blank">
-              <img src="img/instagram.png">
-            </a>
-          </div>
-        </div>
       </div>
 
       <div class="small-12 column">
@@ -248,10 +232,14 @@
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/vendors/modernizr-custom.js"></script>
     <script src="scripts/vendors/jquery.js"></script>
-    <script src="scripts/vendors/jquery.vide.js"></script>
     <script src="scripts/context.js"></script>
+    <script src="scripts/main.js"></script>
     <!-- <script src="scripts/main.js"></script> -->
     <!-- endbuild -->
+
+    <script>
+      app.ctrl.homeParty.init();
+    </script>
 
     <!-- Google Analytics -->
     <script>

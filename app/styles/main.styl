@@ -3,6 +3,7 @@
  * FRAMEWORKS
  * animate.css..................Colección de animaciones.
  * foundation.css...............Responsive framework, incluye normalize.css
+ * plyr.css.....................Estilos para reproductores de video
  *
  * BASE
  * _fonts.......................Configuracion de la fuente principal.
@@ -11,39 +12,30 @@
  * _base_variables..............Declaracion de variables globales.
  *
  * SECCIONES
- * - Home
- * #main-header.................Contenedor del video del landing page y sus elementos.
- * .content.....................Contenedor principal.
- * .servicios...................Contenedor de los servicios del home
- * .frase-animada...............Contenedor donde se realiza la animacion de la frase
- * .videos-promocionales........Seccion que contiene videos promocionales
- * .about.......................Seccion sobre la empresa
- * .contacto....................Seccion de contacto
- *
- * - Home party
- * .secondary-header.............Header para secciones secundarias
- * .servicio-personal...........Layout que muestra el servicio de personal
- * .servicio-juegos.............Layout que muestra el servicio de juegos
- * .servicio-bebidas............Layout que muestra el servicio de bebidas
- * .frase-reserva...............Texto del final
+ * inicio.......................Contiene los estilos de la seccion inicio
+ * home-party...................Contiene los estilos de la seccion home-party
  *
  * - Comun
- * .descripcion servicio........Intro de informacion sobre el servicio
+ * .contacto....................Seccion de contacto
+ * .section-intro...............Intro de informacion sobre el servicio
  * .page-foter..................Footer principal de la pagina
  *
  * COMPONENTES
- * .main-nav-header....................Menu de navegacion principal del sitio
+ * .main-nav-header.............Menu de navegacion principal del sitio
+ * .frase-animada...............Frase que introduce una seccion con animacion
+ * .section-header..............Header para secciones secundarias
  * .servicio....................Componente que define un servicio en la navegacion de servicios
+ * .servicio-content-item.......Item que describe lo que incluye cada servicio
  * .fundador....................Componente para la seccion de about donde se muestra la informacion del fundador
  * .contacto__item..............Componente medio de contacto
  * .contact-form................Formulario de la seccion de contacto
  * .contacto-social.............Contenedor de logos de redes sociales
  */
 
-// - frameworks imports
+// - Frameworks imports
 @import 'frameworks/foundation-flex.css'
 // @import 'frameworks/animate.css'
-@import 'frameworks/plyr.css'
+// @import 'frameworks/plyr.css'
 
 // - Base imports
 @import 'base/_fonts'
@@ -52,150 +44,18 @@
 // @import 'base/_base_animations'
 @import 'base/_base'
 
+// - Section imports
+@import 'secciones/inicio.styl'
+@import 'secciones/home-party'
+
 // - Component imports
 @import 'componentes/main-nav-header'
+@import 'componentes/frase-animada'
 @import 'componentes/servicio'
 @import 'componentes/contact-form'
 @import 'componentes/fundador'
-
-
-
-// -------------------
-// @MAIN-HEADER
-// -------------------
-
-#main-header {
-    border-bottom 8px solid $purple-logo
-    box-sizing content-box
-    height 100vh
-    overflow hidden
-    position relative
-    width 100%
-    #main-header__bg {
-        height 100vh
-        position relative
-        width 100%
-        img {
-            height 100%
-            position absolute
-            top 0px
-            left 50%
-            max-width none
-            transform translate(-50%, 0)
-            z-index -1
-            @media only screen and (min-device-width : 320px) and (orientation: landscape) {
-                height auto
-                width 120%
-            }
-        }
-    }
-    .main-header__overlayed-bg,
-    .main-header__lr-logo,
-    .main-header__title,
-    .main-header__hand-icon {
-        position absolute
-        top 0px
-    }
-    .main-header__overlayed-bg,
-    .main-header__lr-logo,
-    .main-header__title {
-        left 0px
-    }
-    .main-header__overlayed-bg {
-        height 100%
-        width 100%
-        background rgba(black,.2) url(img/pattern.png)
-        z-index 0
-    }
-    .main-header__lr-logo {
-        width 50%
-        max-width 300px
-        z-index 1
-        @media only screen and (min-device-width : 320px) and (orientation : landscape) {
-            width 40%
-        }
-    }
-    .main-header__title {
-        color white
-        font-weight 300
-        margin 0
-        text-shadow 0px 1px 1px black
-    }
-    .main-header__hand-icon {
-        background-image url(img/hand_icon.png)
-        background-size 35px 35px
-        background-repeat no-repeat
-        left calc(50% - 17.5px)
-        height 35px
-        width 35px
-        @media only screen and (min-device-width : 320px) and (orientation : landscape) {
-            display none
-        }
-        @media only screen and (min-width: 1024px) {
-            display block
-        } 
-    }
-}
-
-.secondary-header {
-    background black url(img/home-party/fondo_home_party-header.jpg) 50% 50% no-repeat
-    background-size cover
-    border-bottom 8px solid $yellow-logo
-    box-sizing content-box
-    display flex
-    flex-direction column
-    justify-content center
-    height 100vh
-    overflow hidden
-    padding 0px 50px
-    position relative
-    .secondary-header__overlayed-bg {
-        position absolute
-        top 0px
-        left 0px
-        width 100%
-        height 100vh
-        background-color rgba(black,.4)
-        z-index 0
-    }
-    h1, p {
-        color white
-        flex 0 1 auto
-        text-align center
-        text-shadow 0px 2px 1px rgba(black,.4)
-        z-index 1
-    }
-    h1 {
-        font-weight 700
-        margin 0px   
-    }
-    p {
-        font-weight 300
-    }
-    @media screen and (min-width: 40em) {
-        align-items flex-start
-        h1, p {
-            text-align left
-        }
-    }
-}
-
-
-
-// -------------------
-// @DESCRIPCION SERVICIO
-// -------------------
-
-.descripcion-servicio {
-    .descripcion-servicio__logo {
-        margin-bottom 20px
-        width 100%
-        max-width 400px
-        @media screen and (min-width: 40em) {
-            margin-bottom 40px
-        }
-    }
-}
+@import 'componentes/section-header'
+@import 'componentes/servicio-content-item'
 
 
 
@@ -205,275 +65,25 @@
 
 .page-content {
     width 100%
-    background transparent
 }
 
 
 
 // -------------------
-// @FRASE-ANIMADA
+// @SECTION-INTRO
 // -------------------
 
-.frase-animada {
-    background-color white
-    display flex
-    align-items center
-    min-height 100vh
-}
-
-.frase-animada--ajustada {
-    background-color $blackBG
-    min-height 70vh
-    h1 {
-        color white
-    }
-}
-
-
-// -------------------
-// @SERVICIOS
-// -------------------
-
-.servicios {
-    background-color $blackBG
-    padding-left 0
-    padding-right 0
-    .servicios__titulo {
-        color $purple-logo
-        margin 0
-        text-align left
-    }
-    .servicios__descripcion {
-        color white
-        font-weight 300
-        margin-bottom 1.5rem
-    }
-}
-
-
-
-// -------------------
-// @SERVICIO-PERSONAL --------- UNIFICAR ESTILOS
-// -------------------
-
-.servicio-personal {
-    padding 0px
-    .servicio-personal__descripcion {
-        background url(img/home-party/servicio-contenido-1.jpg) 50% 50% no-repeat
-        background-size cover
-        display flex
-        flex-direction column
-        justify-content flex-end
-        color white
-        height 250px
-        padding 0px 20px 20px 20px
-        position relative
-        p, h2 {
-            flex none
-            z-index 1
-            position relative
-            text-shadow 0px 2px 1px rgba(black,.4)
-        }
-        p {
-            font-weight 300
-        }
-        h2 {
-            margin 0px
-            text-align left
-        }
+.section-intro {
+    .section-intro__logo {
+        margin-bottom 20px
+        width 100%
+        max-width 400px
         @media screen and (min-width: 40em) {
-            height 300px
-        }
-        @media screen and (min-width: 64em) {
-            height 500px
+            margin-bottom 40px
         }
     }
-}
-
-
-
-// -------------------
-// @SERVICIO-JUEGOS --------- UNIFICAR ESTILOS
-// -------------------
-
-.servicio-juegos {
-    // background-color lighten($gray, 80%)
-    .servicio-juegos__descripcion {
-        p {
-            font-weight 300
-        }
-        h2 {
-            text-align left
-        }
-    }
-    .servicio-juegos__img {
-        padding 2px
-    }
-    @media screen and (min-width: 40em) {
-        padding 100px 10px
-        .image-crop {
-            height 300px
-            overflow hidden
-            img {
-                transform translateY(-100px)
-            }
-        }
-        .servicio-juegos__img {
-            padding 10px
-            &:nth-child(3) {
-                padding-right 5px
-            }
-            &:nth-child(4) {
-                padding-left 5px
-            }
-        }
-    }
-    @media screen and (min-width: 64em) {
-        .image-crop {
-            height 400px
-            overflow hidden
-            img {
-                transform translateY(-150px)
-            }
-        }
-    }
-}
-
-
-
-// -------------------
-// @SERVICIO-BEBIDAS --------- UNIFICAR ESTILOS
-// -------------------
-
-.servicio-bebidas {
-    background-color $blackBG
-    color white
-    padding 0px
-    .servicio-bebidas__descripcion {
-        background url(img/home-party/bebidas-img-1.jpg) 50% 50% no-repeat
-        background-size cover
-        display flex
-        flex-direction column
-        justify-content flex-end
-        color white
-        height 280px
-        padding 0px 20px 20px 20px
-        position relative
-        p, h2 {
-            flex none
-            z-index 1
-            position relative
-            text-shadow 0px 2px 1px rgba(black,.4)
-        }
-        p {
-            font-weight 300
-        }
-        h2 {
-            margin 0px
-            text-align left
-        }
-        @media screen and (min-width: 40em) {
-            height 600px
-            padding-bottom 50px
-        }
-    }
-    button {
-        flex 0 1 auto
-        align-self flex-start
-        margin-top 20px
-    }
-}
-
-
-
-// -------------------
-// @SERVICIO-AMBIENTACION --------- UNIFICAR ESTILOS CON JUEGOS
-// -------------------
-
-.servicio-ambientacion {
-    .servicio-ambientacion__descripcion {
-        p {
-            font-weight 300
-        }
-        h2 {
-            text-align left
-        }
-    }
-    .servicio-ambientacion__img {
-        padding 1px 2px
-    }
-    @media screen and (min-width: 40em) {
-        padding 100px 10px
-        .servicio-ambientacion__img {
-            &:nth-child(2) {
-                padding-right 5px
-                padding-bottom 5px
-            }
-            &:nth-child(3) {
-                padding-left 5px
-                padding-bottom 5px
-            }
-            &:nth-child(4) {
-                padding-right 5px
-                padding-top 5px
-            }
-            &:nth-child(5) {
-                padding-left 5px
-                padding-top 5px
-            }
-        }
-    }
-}
-
-
-
-// -------------------
-// @FRASE-RESERVA
-// -------------------
-
-.frase-reserva {
-    background-color $blackBG
-    color white
-    p {
+    .section-intro__txt {
         text-align center
-        &:first-child {
-            margin-bottom 20px
-        }
-    }
-}
-
-
-
-// -------------------
-// @VIDEOS-PROMOCIONALES
-// -------------------
-
-.videos-promocionales {
-    background-color $silver
-    width 100%
-    .plyr {
-        max-width 640px
-        margin 0 auto
-        width 80%
-    }
-}
-
-
-
-// -------------------
-// @ABOUT
-// -------------------
-
-.about {
-    background-color $blackBG
-    .about__titulo {
-        color $yellow-logo
-        margin 0
-        text-align left
-    }
-    .about__descripcion {
-        color white
-        font-weight 300
     }
 }
 
@@ -503,6 +113,15 @@
             margin-top 1rem
         }
     }
+    .contact-form {
+        margin-top 2rem
+        @media screen and (min-width: 40em) {
+            margin-top 3rem
+        }
+        @media screen and (min-width: 64em) {
+            margin-top 0
+        }
+    }
 }
 
 
@@ -521,7 +140,6 @@
         margin 0
         margin-bottom 2rem
     }
-
 }
 
 
@@ -532,7 +150,7 @@
 
 .contacto-social {
     justify-content center
-    .contacto-social__item{
+    .contacto-social__item {
         flex none
     }
 }
@@ -551,17 +169,8 @@
     .page-footer__logo {
         width 100px
     }
-    .terciary-title {
-        font-weight 300
-        margin 15px 0
-    }
     .small-text {
-        margin-top 20px
-    }
-    .contacto-social {
-        img {
-            max-width 50px
-        }
+        margin-top 10px
     }
     .referenceLink {
         color $teal-logo

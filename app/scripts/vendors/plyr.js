@@ -413,7 +413,7 @@
         }
 
         function K() {
-            $(V("iframe")), Ce.container.plyr.embed = Ce.embed, Fe()
+            Ce.container.plyr.embed = Ce.embed, Fe(), $(V("iframe"))
         }
 
         function U(t, n) {
@@ -960,7 +960,7 @@
     }, S.setup = function(e, n) {
         var r = [];
         if ("string" == typeof e ? e = t.querySelectorAll(e) : e instanceof HTMLElement ? e = [e] : e instanceof NodeList || "string" == typeof e || ("undefined" == typeof n && "object" == typeof e && (n = e), e = t.querySelectorAll(A.selectors.container)), !S.supported().basic || !e.length) return !1;
-        for (var s = e.length - 1; s >= 0; s--) {
+        for (var s = 0; s < e.length; s++) {
             var a = e[s];
             if ("undefined" == typeof a.plyr) {
                 var o = T(A, n, JSON.parse(a.getAttribute("data-plyr")));

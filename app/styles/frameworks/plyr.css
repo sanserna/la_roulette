@@ -4,6 +4,10 @@
     -webkit-font-smoothing: antialiased;
     text-align: center
 }
+.plyr__tooltip,
+.plyr__video-embed.plyr iframe {
+    pointer-events: none
+}
 @-webkit-keyframes plyr-progress {
     to {
         background-position: 40px 0
@@ -77,9 +81,6 @@
     padding-bottom: 200%;
     -webkit-transform: translateY(-35.95%);
     transform: translateY(-35.95%)
-}
-.plyr__video-embed.plyr iframe {
-    pointer-events: none
 }
 .plyr__captions {
     display: none;

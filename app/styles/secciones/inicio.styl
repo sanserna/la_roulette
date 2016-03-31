@@ -1,0 +1,189 @@
+/** TABLA DE CONTENIDOS
+ *
+ * SECCIONES
+ * #main-header.................Contenedor del video del landing page y sus elementos.
+ * .content.....................Contenedor principal.
+ * .servicios...................Contenedor de los servicios del home
+ * .videos-promocionales........Seccion que contiene videos promocionales
+ * .about.......................Seccion sobre la empresa
+ */
+ 
+
+
+// - Base imports
+@import 'base/_base_variables'
+@import 'base/_base_mixins'
+
+
+
+// -------------------
+// @MAIN-HEADER
+// -------------------
+
+#main-header {
+    border-bottom 8px solid $purple-logo
+    box-sizing content-box
+    height 100vh
+    overflow hidden
+    position relative
+    width 100%
+    #main-header__bg {
+        height 100vh
+        position relative
+        width 100%
+        .img-bg {
+            background black url(img/inicio/fondo_main-header.jpg) 50% 50% no-repeat
+            background-size cover
+            height 100%
+            width 100%
+            position absolute
+            top 0px
+            z-index -1
+        }
+    }
+    .main-header__overlayed-bg,
+    .main-header__lr-logo,
+    .main-header__title,
+    .main-header__hand-icon {
+        position absolute
+        top 0px
+    }
+    .main-header__overlayed-bg,
+    .main-header__lr-logo,
+    .main-header__title {
+        left 0px
+    }
+    .main-header__overlayed-bg {
+        height 100%
+        width 100%
+        background rgba(black,.2) url(img/pattern.png)
+        z-index 0
+    }
+    .main-header__lr-logo {
+        width 50%
+        max-width 300px
+        z-index 1
+        @media only screen and (min-device-width : 320px) and (orientation : landscape) {
+            width 40%
+        }
+    }
+    .main-header__hand-icon {
+        background-image url(img/hand_icon.png)
+        background-size 50px 50px
+        background-repeat no-repeat
+        left calc(50% - 25px)
+        height 50px
+        width 50px
+    }
+}
+
+
+
+// -------------------
+// @SERVICIOS
+// -------------------
+
+.servicios {
+    background-color $blackBG
+    .servicios__titulo {
+        color $purple-logo
+        margin 0
+        text-align left
+    }
+    .servicios__descripcion {
+        color white
+        font-weight 300
+        margin-bottom 1.5rem
+    }
+    .row {
+        .column {
+            &:last-child {
+                .servicio {
+                    margin-bottom 0
+                }
+            }
+            @media screen and (min-width: 40em) {
+                .servicio {
+                    margin 5px
+                }
+                &:nth-last-child(1), &:nth-last-child(2) {
+                    margin-bottom 0
+                }
+            }
+        }
+        .servicio {
+            margin-bottom 10px
+        }
+    }
+}
+
+
+
+// -------------------
+// @VIDEOS-PROMOCIONALES
+// -------------------
+
+.videos-promocionales {
+    background-color $silver
+    width 100%
+    .main-title {
+        margin-bottom 4rem
+    }
+    .column {
+        &:last-child {
+            .plyr {
+                margin-bottom 0
+            }
+        }
+        @media screen and (min-width: 64em) {
+            &:nth-last-child(1), &:nth-last-child(2) {
+                .plyr {
+                    margin-bottom 0
+                }
+            }
+        }
+    }
+    .plyr {
+        margin-bottom 30px
+        @media screen and (max-width: 425px) {
+            .plyr__controls {
+                display none
+            }
+        }
+    }
+}
+
+
+
+// -------------------
+// @ABOUT
+// -------------------
+
+.about {
+    background-color $blackBG
+    .row {
+        .column {
+            .fundador {
+                margin-bottom 1.5rem
+                @media screen and (min-width: 40em) {
+                    margin 0
+                }
+            }
+            &:last-child {
+                .fundador {
+                    margin 0
+                }
+            }
+        }
+    }
+    .about__titulo {
+        color $yellow-logo
+        margin 0
+    }
+    .about__descripcion {
+        color white
+        font-weight 300
+        margin-bottom 1.5rem
+        text-align center
+    }
+}

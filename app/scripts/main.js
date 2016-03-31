@@ -62,7 +62,9 @@ app.ctrl.inicio = {
             // - load controls sprite
             app.ctrl.inicio.loadVideoControlsSrpite(document, '../img/plyr-sprite.svg');
 
-            plyr.setup();
+            // plyr.setup({
+            //     controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions"]
+            // });
 
             // - listener para centrar el logo al cambiar el tamaño de la ventana
             $(window).resize(app.ctrl.inicio.centerHeaderContent);
@@ -97,7 +99,7 @@ app.ctrl.inicio = {
 
         if (isMobile) {
 
-            $headerContainer.append('<img src="img/fondo_main-header.jpg" alt="la roulette">');
+            $headerContainer.append('<div class="img-bg"></div>');
 
         } else {
 
@@ -122,65 +124,87 @@ app.ctrl.inicio = {
 
         var $container = $('#main-header'),
             $logo = $('#lr-logo'),
-            $mainNavMenu = $('#main-nav-menu'),
-            $title = $('#header-title'),
             $pointerHand = $('#pointer-hand'),
             containerW = $container.width(),
             containerH = $container.height(),
             logoW = $logo.width(),
-            logoH = $logo.height(),
-            titleW = $title.width(),
-            titleH = $title.height();
+            logoH = $logo.height();
 
         $logo.css({
             top: containerH / 2.5 - logoH / 2,
             left: containerW / 2 - logoW / 2
         });
 
-        $title.css({
-            top: $logo.position().top + (logoH + titleH / 2)
-        });
-
         $pointerHand.css({
-            top: $title.position().top + (titleH + 20)
+            top: $logo.position().top + (logoH + containerH / 15)
         });
 
     },
 
     loadVideoControlsSrpite: function (d, p) {
 
-        // 'use strict';
+        'use strict';
 
-        // var a = new XMLHttpRequest(),
-        //     b = d.body;
+        var a = new XMLHttpRequest(),
+            b = d.body;
 
-        // a.open('GET', p, true);
-        // a.send();
-        // a.onload = function () {
+        a.open('GET', p, true);
+        a.send();
+        a.onload = function () {
 
-        //     var c = d.createElement('div');
-        //     c.setAttribute('hidden', '');
-        //     c.innerHTML = a.responseText;
-        //     b.insertBefore(c, b.childNodes[0]);
+            var c = d.createElement('div');
+            c.setAttribute('hidden', '');
+            c.innerHTML = a.responseText;
+            b.insertBefore(c, b.childNodes[0]);
 
-        // };
+        };
 
     }
 
 };
 
+app.ctrl.homeParty = {
 
+    init: function () {
 
+        'use strict';
 
+        $(document).on('ready', function () {
 
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.homeParty.settings();
 
+            // - establecer imagenes de soporte para cada descripcion de servicio
+            app.ctrl.homeParty.setServiceContentItemBg();
 
+        });
 
+    },
 
+    settings: function () {
 
+        'use strict';
 
+        // settings
 
+    },
 
+    // HELPER SECTION FUNCTIONS
+    setServiceContentItemBg: function () {
 
+        'use strict';
 
+        var $serviceItem = $('.js-sc-item');
 
+        $.each($serviceItem, function (i, item) {
+
+            var $item = $(item),
+                path = $item.data().bgImgSrc;
+
+            $item.css('background-image', 'url(' + path + ')');
+
+        });
+
+    }
+
+};
