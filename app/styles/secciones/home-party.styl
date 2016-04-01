@@ -1,10 +1,10 @@
 /** TABLA DE CONTENIDOS
  *
  * SECCIONES
- * .servicio-personal...........Layout que muestra el servicio de personal
- * .servicio-juegos.............Layout que muestra el servicio de juegos
- * .servicio-bebidas............Layout que muestra el servicio de bebidas
  * .frase-reserva...............Texto del final
+ *
+ * COMPONENTES
+ * .item-divider.............Bloque horizontal que divide la secripcion de los servicion
  */
  
 
@@ -15,153 +15,18 @@
 
 
 
-// -------------------
-// @SERVICIO-PERSONAL --------- UNIFICAR ESTILOS
-// -------------------
-
-
-
-// -------------------
-// @SERVICIO-JUEGOS --------- UNIFICAR ESTILOS
-// -------------------
-
-.servicio-juegos {
-    // background-color lighten($gray, 80%)
-    .servicio-juegos__descripcion {
-        p {
-            font-weight 300
-        }
-        h2 {
-            text-align left
-        }
-    }
-    .servicio-juegos__img {
-        padding 2px
-    }
-    @media screen and (min-width: 40em) {
-        padding 100px 10px
-        .image-crop {
-            height 300px
-            overflow hidden
-            img {
-                transform translateY(-100px)
-            }
-        }
-        .servicio-juegos__img {
-            padding 10px
-            &:nth-child(3) {
-                padding-right 5px
-            }
-            &:nth-child(4) {
-                padding-left 5px
-            }
-        }
-    }
-    @media screen and (min-width: 64em) {
-        .image-crop {
-            height 400px
-            overflow hidden
-            img {
-                transform translateY(-150px)
-            }
-        }
-    }
+.item-divider {
+    background-color $blackMed
+    height 20vh
+    width 100%
 }
-
-
-
-// -------------------
-// @SERVICIO-BEBIDAS --------- UNIFICAR ESTILOS
-// -------------------
-
-.servicio-bebidas {
-    background-color $blackBG
-    color white
-    padding 0px
-    .servicio-bebidas__descripcion {
-        background url(img/home-party/bebidas-img-1.jpg) 50% 50% no-repeat
-        background-size cover
-        display flex
-        flex-direction column
-        justify-content flex-end
-        color white
-        height 280px
-        padding 0px 20px 20px 20px
-        position relative
-        p, h2 {
-            flex none
-            z-index 1
-            position relative
-            text-shadow 0px 2px 1px rgba(black,.4)
-        }
-        p {
-            font-weight 300
-        }
-        h2 {
-            margin 0px
-            text-align left
-        }
-        @media screen and (min-width: 40em) {
-            height 600px
-            padding-bottom 50px
-        }
-    }
-    button {
-        flex 0 1 auto
-        align-self flex-start
-        margin-top 20px
-    }
-}
-
-
-
-// -------------------
-// @SERVICIO-AMBIENTACION --------- UNIFICAR ESTILOS CON JUEGOS
-// -------------------
-
-.servicio-ambientacion {
-    .servicio-ambientacion__descripcion {
-        p {
-            font-weight 300
-        }
-        h2 {
-            text-align left
-        }
-    }
-    .servicio-ambientacion__img {
-        padding 1px 2px
-    }
-    @media screen and (min-width: 40em) {
-        padding 100px 10px
-        .servicio-ambientacion__img {
-            &:nth-child(2) {
-                padding-right 5px
-                padding-bottom 5px
-            }
-            &:nth-child(3) {
-                padding-left 5px
-                padding-bottom 5px
-            }
-            &:nth-child(4) {
-                padding-right 5px
-                padding-top 5px
-            }
-            &:nth-child(5) {
-                padding-left 5px
-                padding-top 5px
-            }
-        }
-    }
-}
-
-
 
 // -------------------
 // @FRASE-RESERVA
 // -------------------
 
 .frase-reserva {
-    background-color $blackBG
+    background-color $blackMed
     color white
     p {
         text-align center

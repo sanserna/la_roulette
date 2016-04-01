@@ -1,4 +1,5 @@
 // - Base imports
+@import 'base/_base_animations'
 @import 'base/_base_variables'
 @import 'base/_base_mixins'
 
@@ -19,7 +20,7 @@
     justify-content center
     height 100vh
     overflow hidden
-    padding 0px 50px
+    padding 0px 15px
     position relative
     .section-header__overlayed-bg {
         position absolute
@@ -27,14 +28,14 @@
         left 0px
         width 100%
         height 100vh
-        background-color rgba(black,.4)
+        background-image url('img/pattern.png')
+        background-color rgba(black,.1)
         z-index 0
     }
     .section-header__title, .section-header__description {
         color white
         flex 0 1 auto
         text-align center
-        text-shadow 0px 2px 1px rgba(black,.4)
         z-index 1
     }
     .section-header__title {
@@ -46,6 +47,7 @@
     }
     @media screen and (min-width: 40em) {
         align-items flex-start
+        padding 0px 50px
         .section-header__title, .section-header__description {
             text-align left
         }
@@ -54,5 +56,18 @@
 
 .section-header--home-party {
     background-image url(img/home-party/fondo_home_party-header.jpg)
-    border-bottom 8px solid $yellow-logo
+    &:after {
+        content ''
+        display block
+        position absolute
+        left 0px
+        bottom 0px
+        height 7px
+        background-color $yellow-logo
+        animation-name widthLeftToRight
+        animation-duration 2s
+        animation-fill-mode forwards
+        animation-timing-function ease-in-out
+        animation-delay 2s
+    }
 }
