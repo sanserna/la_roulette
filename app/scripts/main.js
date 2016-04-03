@@ -48,7 +48,13 @@ app.ctrl = {
 
 };
 
+// INICIO
 app.ctrl.inicio = {
+
+    flikrAuth: {
+        api_key: 'b5a15c73a84e621e304052f94c847246',
+        user_id: '140878839@N02'
+    },
 
     init: function () {
 
@@ -79,6 +85,17 @@ app.ctrl.inicio = {
                 app.ctrl.inicio.defineHeaderBG(false);
 
             }
+
+            // app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
+
+            //     console.log(data.photosets);
+
+            // }, function (resp) {
+
+            //     console.log('fail');
+            //     console.log(resp);
+
+            // });
 
         });
 
@@ -159,10 +176,75 @@ app.ctrl.inicio = {
 
         };
 
+    },
+
+    getFlikrAlbums: function (page, done, fail) {
+
+        'use strict';
+
+        app.services.flikrAlbums({
+            key: app.ctrl.inicio.flikrAuth.api_key,
+            id: app.ctrl.inicio.flikrAuth.user_id,
+            extras: 'url_s, url_m',
+            page: page,
+            perPage: 5
+        })
+        .done(function (data, textStatus, xhr) {
+
+            if (done) {
+
+                done(data, textStatus, xhr);
+
+            }
+
+        })
+        .fail(function (resp) {
+
+            if (fail) {
+
+                fail(resp);
+
+            }
+
+        });
+
+    },
+
+    getFlikrAlbumsPhotos: function (albumId, done, fail) {
+
+        'use strict';
+
+        app.services.flikrAlbumsPhotos({
+            key: app.ctrl.inicio.flikrAuth.api_key,
+            id: app.ctrl.inicio.flikrAuth.user_id,
+            photosetId: albumId,
+            extras: 'url_t, url_s, url_m',
+            format: 'json'
+        })
+        .done(function (data, textStatus, xhr) {
+
+            if (done) {
+
+                done(data, textStatus, xhr);
+
+            }
+
+        })
+        .fail(function (resp) {
+
+            if (fail) {
+
+                fail(resp);
+
+            }
+
+        });
+
     }
 
 };
 
+// HOME PARTY
 app.ctrl.homeParty = {
 
     init: function () {

@@ -58,7 +58,7 @@ gulp.task('lint', function() {
   gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/**'])
   .pipe(eslint({
     'rules': {
-      'camelcase': 1,
+      'camelcase': [1, {properties: "never"}],
       'curly': 1,
       'eqeqeq': 0,
       'indent': [2, 4],
@@ -124,6 +124,8 @@ gulp.task('copy', function() {
   var videoFiles = gulp.src(['app/videos/**/*'])
     .pipe(gulp.dest('dist/videos'))
     .pipe(size({title: 'videos'}));
+
+    return merge(rootFiles, videoFiles);
 });
 
 /**
@@ -187,7 +189,7 @@ var distJS = lazypipe()
 
 // Scripts task: procesar codigo JS.
 gulp.task('build:js', function() {
-  gulp.src([
+  return gulp.src([
     // Nota: en listar los scripts explícitamente en el orden para que sean
     // correctamente concatenados.
     'app/scripts/vendors/jquery.js',
@@ -195,6 +197,7 @@ gulp.task('build:js', function() {
     'app/scripts/vendors/plyr.js',
     'app/scripts/vendors/modernizr-custom.js',
     'app/scripts/context.js',
+    'app/scripts/services.js',
     'app/scripts/main.js'
   ])
     .pipe(sourcemaps.init())
