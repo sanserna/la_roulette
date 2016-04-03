@@ -30,6 +30,7 @@
  * .contacto__item..............Componente medio de contacto
  * .contact-form................Formulario de la seccion de contacto
  * .contacto-social.............Contenedor de logos de redes sociales
+ * .buttons.....................Estilos generales para botones que usa la pagina
  */
 
 // - Frameworks imports
@@ -56,6 +57,7 @@
 @import 'componentes/fundador'
 @import 'componentes/section-header'
 @import 'componentes/servicio-content-item'
+@import 'componentes/buttons'
 
 
 
@@ -104,21 +106,55 @@
 .contacto {
     background-color white
     text-align center
+    .row {
+        margin 0
+    }
     .contacto__titulo {
         @media screen and (min-width: 40em) {
-            margin-bottom 1rem   
+            margin-bottom 1rem
         }
         @media screen and (min-width: 64em) {
             margin-bottom 4rem
         }
     }
     .contacto__normal-text{
-        margin 20px 0
+        padding 20px 0
         @media screen and (min-width: 40em) {
-            margin-top 2rem   
+            padding 1.5rem 0
         }
         @media screen and (min-width: 64em) {
-            margin-top 1rem
+            padding 1rem 0
+        }
+    }
+    .contacto__item {
+        padding 10px 0
+        h2 {
+            color $green-logo
+            font-weight 400
+        }
+        @media screen and (min-width: 64em) {
+            padding 1rem 0
+        }
+    }
+    .contacto__social {
+        justify-content center
+        padding 10px 0
+        > div {
+            flex none
+        }
+        img {
+            border-radius 50%
+            max-width 60px
+            transition 0.3s background-color ease-in
+            &[src*=facebook]:hover {
+                background-color #3B5998
+            }
+            &[src*=twitter]:hover {
+                background-color #55ACEE
+            }
+            &[src*=instagram]:hover {
+                background-color #125688
+            }
         }
     }
     .contact-form {
@@ -135,43 +171,12 @@
 
 
 // -------------------
-// @CONTACTO-ITEM
-// -------------------
-
-.contacto-item {
-    margin-top 10px
-    .contacto-item__title{
-        color $green-logo
-        font-weight 400
-    }
-    @media screen and (min-width: 64em) {
-        margin 0
-        margin-bottom 2rem
-    }
-}
-
-
-
-// -------------------
-// @CONTACTO-SOCIAL
-// -------------------
-
-.contacto-social {
-    justify-content center
-    .contacto-social__item {
-        flex none
-    }
-}
-
-
-
-// -------------------
 // @PAGE-FOOTER
 // -------------------
 
 .page-footer {
     color white
-    background-image url(img/footer.png)
+    background-image url(img/assets/footer.png)
     padding 20px 10px
     text-align center
     .page-footer__logo {

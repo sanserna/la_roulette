@@ -87,12 +87,12 @@
         display inline-block
         padding 0 10px
         height $main-nav-height
-        transition .3s color ease-in
-        &:hover {
-            color $yellow-logo
+        transition .3s color ease-out
+        &.current, &:hover {
+            color $main-nav-item-current-color
         }
         &--roulette {
-            background-image url(img/logoLaRoulette_blanco_small.png)
+            background-image url(img/assets/logoLaRoulette_blanco_small.png)
             background-size 30px 29px
             background-repeat no-repeat
             background-position center center

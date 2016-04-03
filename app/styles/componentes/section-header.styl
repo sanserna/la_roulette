@@ -28,7 +28,7 @@
         left 0px
         width 100%
         height 100vh
-        background-image url('img/pattern.png')
+        background-image url(img/assets/pattern.png)
         background-color rgba(black,.1)
         z-index 0
     }
@@ -45,6 +45,19 @@
     .section-header__description {
         font-weight 300
     }
+    &:after {
+        content ''
+        display block
+        position absolute
+        left 0px
+        bottom 0px
+        height 7px
+        animation-name widthLeftToRight
+        animation-duration 2s
+        animation-fill-mode forwards
+        animation-timing-function ease-in-out
+        animation-delay 2s
+    }
     @media screen and (min-width: 40em) {
         align-items flex-start
         padding 0px 50px
@@ -54,20 +67,18 @@
     }
 }
 
+// - Home-party section-header
 .section-header--home-party {
     background-image url(img/home-party/fondo_home_party-header.jpg)
     &:after {
-        content ''
-        display block
-        position absolute
-        left 0px
-        bottom 0px
-        height 7px
         background-color $yellow-logo
-        animation-name widthLeftToRight
-        animation-duration 2s
-        animation-fill-mode forwards
-        animation-timing-function ease-in-out
-        animation-delay 2s
+    }
+}
+
+// - party-cocktail section-header
+.section-header--party-cocktail {
+    background-image url(img/home-party/fondo_home_party-header.jpg)
+    &:after {
+        background-color $purple-logo
     }
 }

@@ -15,11 +15,17 @@
 
 
 
+// -------------------
+// @ITEM_DIVIDER
+// -------------------
+
 .item-divider {
     background-color $blackMed
     height 20vh
     width 100%
 }
+
+
 
 // -------------------
 // @FRASE-RESERVA
@@ -28,10 +34,13 @@
 .frase-reserva {
     background-color $blackMed
     color white
+    min-height 100vh
     p {
         text-align center
-        &:first-child {
-            margin-bottom 20px
-        }
+        padding 20px 0px
+    }
+    .big-description {
+        color $yellow-logo
+        font-weight 700
     }
 }

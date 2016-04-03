@@ -66,7 +66,7 @@ app.ctrl.inicio = {
             app.ctrl.inicio.settings();
 
             // - load controls sprite
-            app.ctrl.inicio.loadVideoControlsSrpite(document, '../img/plyr-sprite.svg');
+            app.ctrl.inicio.loadVideoControlsSrpite(document, '../img/assets/plyr-sprite.svg');
 
             // plyr.setup({
             //     controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions"]
@@ -286,6 +286,32 @@ app.ctrl.homeParty = {
             $item.css('background-image', 'url(' + path + ')');
 
         });
+
+    }
+
+};
+
+// PARTY COCKTAIL
+app.ctrl.partyCocktail = {
+
+    init: function () {
+
+        'use strict';
+
+        $(document).on('ready', function () {
+
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.partyCocktail.settings();
+
+        });
+
+    },
+
+    settings: function () {
+
+        'use strict';
+
+        // settings
 
     }
 

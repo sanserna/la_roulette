@@ -107,7 +107,8 @@ p.small-text {
 p.normal-text, 
 label.normal-text, 
 textarea.normal-text, 
-input.normal-text {
+input.normal-text,
+button.normal-text {
     font-size responsive $normal-text-range
     font-range $min-screen-size $max-screen-size
 }
@@ -127,55 +128,6 @@ input.normal-text {
     height 100%
     background-color rgba(black,.4)
     z-index 0
-}
-
-
-
-// -------------------
-// @BUTTONS
-// -------------------
-
-.btn {
-    border none
-    background none
-    cursor pointer
-    padding 20px 40px
-    display inline-block
-    text-transform uppercase
-    letter-spacing 1px
-    font-weight 700
-    outline none
-    position relative
-    transition all 0.3s
-    &:after {
-        content ''
-        position absolute
-        z-index -1
-        transition all 0.3s
-    }
-}
-
-.btn-1 {
-    border 3px solid #fff
-    color #fff
-}
-
-.btn-1b {
-    &:after {
-        width 100%
-        height 0
-        top 0
-        left 0
-        background #fff
-    }
-    &:hover,
-    &:active {
-        color #0e83cd
-    }
-    &:hover:after,
-    &:active:after {
-        height 100%
-    }
 }
 
 
