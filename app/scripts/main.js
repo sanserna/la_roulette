@@ -10,7 +10,7 @@ app.ctrl = {
 
         $(document).on('ready', function () {
 
-            // inicializar variables globales
+            // - inicializar variables globales
             app.ctrl.data.transEndEventNames = {
                 WebkitTransition: 'webkitTransitionEnd',
                 MozTransition: 'transitionend',
@@ -22,6 +22,9 @@ app.ctrl = {
             app.ctrl.data.support = {
                 transitions: Modernizr.csstransitions
             };
+
+            // - set elements image backgrounds
+            app.ctrl.setElementImgBg();
 
         });
 
@@ -44,7 +47,25 @@ app.ctrl = {
 
         });
 
-    }())
+    }()),
+
+    // HELPER FUNCTIONS
+    setElementImgBg: function () {
+
+        'use strict';
+
+        var $element = $('[media-bg-img]');
+
+        $.each($element, function (i, e) {
+
+            var $e = $(e),
+                path = $e.attr('media-bg-img');
+
+            $e.css('background-image', 'url(' + path + ')');
+
+        });
+
+    }
 
 };
 
@@ -256,9 +277,6 @@ app.ctrl.homeParty = {
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.homeParty.settings();
 
-            // - establecer imagenes de soporte para cada descripcion de servicio
-            app.ctrl.homeParty.setServiceContentItemBg();
-
         });
 
     },
@@ -269,25 +287,9 @@ app.ctrl.homeParty = {
 
         // settings
 
-    },
+    }
 
     // HELPER SECTION FUNCTIONS
-    setServiceContentItemBg: function () {
-
-        'use strict';
-
-        var $serviceItem = $('.js-sc-item');
-
-        $.each($serviceItem, function (i, item) {
-
-            var $item = $(item),
-                path = $item.data().bgImgSrc;
-
-            $item.css('background-image', 'url(' + path + ')');
-
-        });
-
-    }
 
 };
 

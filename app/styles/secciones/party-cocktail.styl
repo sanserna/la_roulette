@@ -3,6 +3,7 @@
  * SECCIONES
  *
  * COMPONENTES
+ * .half........................Componente que describe cada coctel junto con su imagen
  */
  
 
@@ -10,3 +11,83 @@
 // - Base imports
 @import 'base/_base_variables'
 @import 'base/_base_mixins'
+
+
+
+// -------------------
+// @HALF
+// -------------------
+
+.half {
+    background-color lighten(gray, 80%)
+    .half__description {
+        padding 20px
+        .section-title, .normal-text {
+            margin 0
+            padding 5px 0
+        }
+        .section-title {
+            text-align left
+            font-weight 700
+        }
+        .normal-text {
+            font-weight 300
+        }
+    }
+    .half__image {
+        height 50vh
+    }
+    @media screen and (min-width: 40em) {
+        min-height 90vh
+        .half__description {
+            display flex
+            flex-direction column
+            justify-content center
+            .section-title, .normal-text {
+                padding 15px 0
+                width 100%
+            }
+        }
+        .half__image {
+            height 90vh
+        }
+    }
+    @media screen and (min-width: 64em) {
+        .half__description {
+            padding 50px
+        }
+    }
+}
+
+// - Fallen apple
+.half--fallen-apple {
+    background-color c = $rojo-1
+    .section-title {
+        color darken(c, 50%)
+    }
+    .normal-text {
+        color lighten(c, 50%)
+    }
+}
+
+// - Coconut breeze
+.half--coconut-breeze {
+    background-color c = #98664A
+    .section-title {
+        color darken(c, 50%)
+    }
+    .normal-text {
+        color lighten(c, 50%)
+    }
+}
+
+// - Strawberry explotion
+.half--strawberry-explotion {
+    background-color c = $rojo-3
+    .section-title {
+        color darken(c, 50%)
+    }
+    .normal-text {
+        color lighten(c, 50%)
+    }
+}

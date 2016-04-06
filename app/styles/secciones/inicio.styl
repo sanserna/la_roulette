@@ -21,7 +21,6 @@
 // -------------------
 
 #main-header {
-    border-bottom 8px solid $purple-logo
     box-sizing content-box
     height 100vh
     overflow hidden
@@ -32,7 +31,7 @@
         position relative
         width 100%
         .img-bg {
-            background black url(img/inicio/fondo_main-header.jpg) 50% 50% no-repeat
+            background black url(../img/inicio/inicio-header-bg.jpg) 50% 50% no-repeat
             background-size cover
             height 100%
             width 100%
@@ -75,6 +74,20 @@
         height 50px
         width 50px
     }
+    &:after {
+        content ''
+        display block
+        position absolute
+        left 0px
+        bottom 0px
+        height 7px
+        animation-name widthLeftToRight
+        animation-duration 2s
+        animation-fill-mode forwards
+        animation-timing-function ease-in-out
+        animation-delay 2s
+        background-color $purple-logo
+    }
 }
 
 
@@ -97,22 +110,7 @@
     }
     .row {
         .column {
-            &:last-child {
-                .servicio {
-                    margin-bottom 0
-                }
-            }
-            @media screen and (min-width: 40em) {
-                .servicio {
-                    margin 5px
-                }
-                &:nth-last-child(1), &:nth-last-child(2) {
-                    margin-bottom 0
-                }
-            }
-        }
-        .servicio {
-            margin-bottom 10px
+            padding 5px
         }
     }
 }
@@ -161,21 +159,6 @@
 
 .about {
     background-color $blackBG
-    .row {
-        .column {
-            .fundador {
-                margin-bottom 1.5rem
-                @media screen and (min-width: 40em) {
-                    margin 0
-                }
-            }
-            &:last-child {
-                .fundador {
-                    margin 0
-                }
-            }
-        }
-    }
     .about__titulo {
         color $yellow-logo
         margin 0
@@ -183,7 +166,7 @@
     .about__descripcion {
         color white
         font-weight 300
-        margin-bottom 1.5rem
+        padding-bottom 1.5rem
         text-align center
     }
 }

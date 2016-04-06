@@ -4,7 +4,6 @@
 /.tmp
 /dist
 /node_modules
-/recursos
 /bower_components/jquery/*
 !/bower_components/jquery/dist
 /bower_components/vide/*

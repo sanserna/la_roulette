@@ -1,5 +1,6 @@
 // - Variables imports
 @import 'base/_base_variables'
+@import 'base/_base_mixins'
 
 
 
@@ -120,6 +121,7 @@ button.normal-text {
 // @GENERAL HELPERS
 // -------------------
 
+// - Fondo oscuro sobre expuesto sobre elementos
 .overlayed-bg {
     position absolute
     top 0px
@@ -128,6 +130,13 @@ button.normal-text {
     height 100%
     background-color rgba(black,.4)
     z-index 0
+}
+
+// - Elementos con imagen de fondo añadida dinamicamente
+[media-bg-img] {
+    background-position 50% 50%
+    background-repeat no-repeat
+    background-size cover
 }
 
 
