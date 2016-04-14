@@ -179,14 +179,6 @@ gulp.task('build:css', function() {
     .pipe(gulpif(distFiles, distCSS()));
 });
 
-var distJS = lazypipe()
-    .pipe(concat, 'main.min.js')
-    .pipe(uglify)
-    // Output files
-    .pipe(size, {title: 'scripts'})
-    .pipe(sourcemaps.write, '.')
-    .pipe(gulp.dest, 'dist/scripts');
-
 // Scripts task: procesar codigo JS.
 gulp.task('build:js', function() {
   return gulp.src([
@@ -200,10 +192,13 @@ gulp.task('build:js', function() {
     'app/scripts/services.js',
     'app/scripts/main.js'
   ])
-    .pipe(sourcemaps.init())
-    .pipe(gulp.dest('.tmp/scripts'))
-    // Procesar archivos para produccion
-    .pipe(gulpif(distFiles, distJS()));
+  .pipe(sourcemaps.init())
+  .pipe(concat('main.min.js'))
+  .pipe(uglify())
+  // Output files
+  .pipe(size({title: 'scripts'}))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest('dist/scripts'));
 });
 
 // HTML task: compilar los templates.
@@ -262,7 +257,7 @@ gulp.task('start', function(){
 
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.styl'], ['build:css', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['lint', 'build:js']);
+  gulp.watch(['app/scripts/**/*.js'], 'lint');
 });
 
 // Crea un servidor estático en el directorio de producción (dist)
