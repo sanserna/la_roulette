@@ -63,6 +63,7 @@ gulp.task('lint', function() {
       'eqeqeq': 0,
       'indent': [2, 4],
       'max-len': 0,
+      'max-nested-callbacks': 0,
       'no-alert': 0,
       'no-empty': 1,
       'no-use-before-define': 0,
@@ -85,7 +86,8 @@ gulp.task('lint', function() {
       'classie': false,
       'Modernizr': false,
       'plyr': false,
-      'XMLHttpRequest': false
+      'XMLHttpRequest': false,
+      'slm': false
     }
   }))
   .pipe(eslint.format())
@@ -188,8 +190,10 @@ gulp.task('build:js', function() {
     'app/scripts/vendors/jquery.vide.js',
     'app/scripts/vendors/plyr.js',
     'app/scripts/vendors/modernizr-custom.js',
+    'app/scripts/slm.js',
     'app/scripts/context.js',
     'app/scripts/services.js',
+    'app/scripts/templates.js',
     'app/scripts/main.js'
   ])
   .pipe(sourcemaps.init())
@@ -257,7 +261,7 @@ gulp.task('start', function(){
 
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.styl'], ['build:css', reload]);
-  gulp.watch(['app/scripts/**/*.js'], 'lint');
+  gulp.watch(['app/scripts/**/*.js'], ['lint']);
 });
 
 // Crea un servidor estático en el directorio de producción (dist)

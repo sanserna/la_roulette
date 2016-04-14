@@ -27,7 +27,7 @@ app.services = {
         'use strict';
 
         return $.ajax({
-            url: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getList',
+            url: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos',
             data: {
                 api_key: params.key,
                 user_id: params.id,
@@ -37,6 +37,38 @@ app.services = {
             },
             jsonpCallback: 'jsonFlickrApi',
             dataType: 'JSONP'
+        });
+
+    },
+
+    youtubeChannel: function (params) {
+
+        'use strict';
+
+        return $.ajax({
+            url: 'https://www.googleapis.com/youtube/v3/channels',
+            data: {
+                key: params.key,
+                part: params.part,
+                id: params.channelId
+            },
+            dataType: 'JSON'
+        });
+
+    },
+
+    youtubeChannelVideos: function (params) {
+
+        'use strict';
+
+        return $.ajax({
+            url: 'https://www.googleapis.com/youtube/v3/playlistItems',
+            data: {
+                key: params.key,
+                part: params.part,
+                playlistId: params.playlistId,
+                maxResults: params.maxResults
+            }
         });
 
     }

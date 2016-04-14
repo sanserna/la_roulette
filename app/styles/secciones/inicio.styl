@@ -124,25 +124,21 @@
 .videos-promocionales {
     background-color $silver
     width 100%
-    .main-title {
-        margin-bottom 4rem
-    }
-    .column {
-        &:last-child {
-            .plyr {
-                margin-bottom 0
-            }
+    .section-title {
+        margin-bottom 1rem
+        @media screen and (min-width: 40em) {
+            margin-bottom 3rem
         }
-        @media screen and (min-width: 64em) {
-            &:nth-last-child(1), &:nth-last-child(2) {
-                .plyr {
-                    margin-bottom 0
-                }
+    }
+    .row {
+        .column {
+            padding 10px
+            @media screen and (min-width: 40em) {
+                padding 20px
             }
         }
     }
     .plyr {
-        margin-bottom 30px
         @media screen and (max-width: 425px) {
             .plyr__controls {
                 display none

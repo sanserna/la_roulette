@@ -77,6 +77,12 @@ app.ctrl.inicio = {
         user_id: '140878839@N02'
     },
 
+    youTubeAuth: {
+        api_key: 'AIzaSyDCAnbI51T-sgKTtYaPI7-8YAOg0tVttIg',
+        user_name: '',
+        channel_id: 'UCp2irPEY6KT4392YGoC6ZBQ'
+    },
+
     init: function () {
 
         'use strict';
@@ -86,12 +92,8 @@ app.ctrl.inicio = {
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.inicio.settings();
 
-            // - load controls sprite
+            // - load plyr controls sprite
             app.ctrl.inicio.loadVideoControlsSrpite(document, '../img/assets/plyr-sprite.svg');
-
-            // plyr.setup({
-            //     controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions"]
-            // });
 
             // - listener para centrar el logo al cambiar el tamaño de la ventana
             $(window).resize(app.ctrl.inicio.centerHeaderContent);
@@ -109,14 +111,77 @@ app.ctrl.inicio = {
 
             // app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
 
-            //     console.log(data.photosets);
+            //     // - Done getFlikrAlbums
+
+            //     var id = data.photosets.photoset[0].id;
+
+            //     app.ctrl.inicio.getFlikrAlbumsPhotos(id, function (data, textStatus, xhr) {
+
+            //         // - Done getFlikrAlbumsPhotos
+
+            //         console.log(data);
+
+            //     }, function (resp) {
+
+            //         // - Fail getFlikrAlbumsPhotos
+
+            //     });
 
             // }, function (resp) {
+
+            //     // - Fail getFlikrAlbums
 
             //     console.log('fail');
             //     console.log(resp);
 
             // });
+
+            app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
+
+                // - Done getYoutubeChannel
+
+                var items = data.items;
+
+                $.each(items, function (i, item) {
+
+                    var playlistId = item.contentDetails.relatedPlaylists.favorites;
+
+                    app.ctrl.inicio.getYoutubeChannelVideos(playlistId, function (data, textStatus, xhr) {
+
+                        // - Done getYoutubeChannelVideos
+
+                        var items = data.items,
+                            $container = $('#videosContainer');
+
+                        $.each(items, function (i, item) {
+
+                            var videoObj = {
+                                titulo: item.snippet.title,
+                                videoId: item.snippet.resourceId.videoId
+                            };
+
+                            $container.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
+
+                        });
+
+                        // - Se inicializa plyr quien se encarga se setiar los videos
+                        plyr.setup({
+                            controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
+                        });
+
+                    }, function (resp) {
+
+                        // - Fail getYoutubeChannelVideos
+
+                    });
+
+                });
+
+            }, function (resp) {
+
+                // - Fail getYoutubeChannel
+
+            });
 
         });
 
@@ -169,7 +234,7 @@ app.ctrl.inicio = {
             logoH = $logo.height();
 
         $logo.css({
-            top: containerH / 2.5 - logoH / 2,
+            top: containerH / 2 - logoH / 2,
             left: containerW / 2 - logoW / 2
         });
 
@@ -239,8 +304,68 @@ app.ctrl.inicio = {
             key: app.ctrl.inicio.flikrAuth.api_key,
             id: app.ctrl.inicio.flikrAuth.user_id,
             photosetId: albumId,
-            extras: 'url_t, url_s, url_m',
-            format: 'json'
+            extras: 'url_t, url_s, url_m'
+        })
+        .done(function (data, textStatus, xhr) {
+
+            if (done) {
+
+                done(data, textStatus, xhr);
+
+            }
+
+        })
+        .fail(function (resp) {
+
+            if (fail) {
+
+                fail(resp);
+
+            }
+
+        });
+
+    },
+
+    getYoutubeChannel: function (done, fail) {
+
+        'use strict';
+
+        app.services.youtubeChannel({
+            key: app.ctrl.inicio.youTubeAuth.api_key,
+            part: 'contentDetails',
+            channelId: app.ctrl.inicio.youTubeAuth.channel_id
+        })
+        .done(function (data, textStatus, xhr) {
+
+            if (done) {
+
+                done(data, textStatus, xhr);
+
+            }
+
+        })
+        .fail(function (resp) {
+
+            if (fail) {
+
+                fail(resp);
+
+            }
+
+        });
+
+    },
+
+    getYoutubeChannelVideos: function (playlistId, done, fail) {
+
+        'use strict';
+
+        app.services.youtubeChannelVideos({
+            key: app.ctrl.inicio.youTubeAuth.api_key,
+            part: 'snippet',
+            playlistId: playlistId,
+            maxResults: 10
         })
         .done(function (data, textStatus, xhr) {
 
