@@ -12,8 +12,8 @@ app.services = {
                 api_key: params.key,
                 user_id: params.id,
                 primary_photo_extras: params.extras,
-                page: params.page,
-                per_page: params.perPage,
+                // page: params.page,
+                // per_page: params.perPage,
                 format: 'json'
             },
             jsonpCallback: 'jsonFlickrApi',

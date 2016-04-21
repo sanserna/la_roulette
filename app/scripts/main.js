@@ -93,9 +93,6 @@ app.ctrl.inicio = {
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.inicio.settings();
 
-            // - load plyr controls sprite
-            app.ctrl.inicio.loadVideoControlsSrpite(document, '../img/assets/plyr-sprite.svg');
-
             // - listener para centrar el logo al cambiar el tamaño de la ventana
             $(window).resize(app.ctrl.inicio.centerHeaderContent);
             $(window).ready(app.ctrl.inicio.centerHeaderContent);
@@ -110,27 +107,42 @@ app.ctrl.inicio = {
 
             }
 
+            // - load plyr controls sprite
+            $.get('img/assets/plyr-sprite.svg', function (data) {
+
+                $('body').prepend('<div hidden>' + data + '</div>');
+
+            }, 'html');
+
             // OBTENCION DE DATOS DE LA API DE FLIKR
-            app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
+            // app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
 
-                // - Done getFlikrAlbums
+            //     // - Done getFlikrAlbums
 
-                var albums = data.photosets.photoset;
+            //     var albums = data.photosets.photoset;
 
-                $.each(albums, function (i, album) {
+            //     $.each(albums, function (i, album) {
 
-                    album.index = i;
-                    app.ctrl.inicio.setAlbum(album);
+            //         album.index = i;
+            //         app.ctrl.inicio.setAlbum(album);
 
-                });
+            //     });
 
-            }, function (resp) {
+            // }, function (resp) {
 
-                // - Fail getFlikrAlbums
+            //     // - Fail getFlikrAlbums
 
-                console.log('fail');
-                console.log(resp);
+            //     console.log('fail');
+            //     console.log(resp);
 
+            // });
+
+            // testing
+            $("div.holder").jPages({
+                containerID: "albumsContainer",
+                perPage: 8,
+                minHeight: false,
+                animation: 'fadeInUpAlbum'
             });
 
             // OBTENCION DE DATOS DE LA API DE YOUTBE
@@ -149,7 +161,7 @@ app.ctrl.inicio = {
                         // - Done getYoutubeChannelVideos
 
                         var items = data.items,
-                            $container = $('#videosContainer');
+                            $owlCarousel = $('.owl-carousel');
 
                         $.each(items, function (i, item) {
 
@@ -158,11 +170,34 @@ app.ctrl.inicio = {
                                 videoId: item.snippet.resourceId.videoId
                             };
 
-                            $container.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
+                            $owlCarousel.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
 
                         });
 
-                        // - Se inicializa plyr quien se encarga se setiar los videos
+                        $owlCarousel.owlCarousel({
+                            items: 1,
+                            nav: true,
+                            loop: true,
+                            center: true,
+                            mouseDrag: false,
+                            touchDrag: false,
+                            navText: ['<', '>'],
+                            responsive: {
+                                0: {
+                                    dots: false
+                                },
+                                640: {
+                                    stagePadding: 100,
+                                    margin: 50
+                                },
+                                1024: {
+                                    stagePadding: 300,
+                                    margin: 150
+                                }
+                            }
+                        });
+
+                        // - se inicializa plyr quien se encarga se setiar los videos
                         plyr.setup({
                             controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
                         });
@@ -191,7 +226,7 @@ app.ctrl.inicio = {
 
         var gallery;
 
-        // - Open album
+        // - open album
         $(document).on('click', '.js-album', function () {
 
             var $this = $(this),
@@ -251,10 +286,10 @@ app.ctrl.inicio = {
 
                 gallery = new PhotoSwipe($pswpElement, PhotoSwipeUI_Default, items, options);
 
-                // - Inicializar galeria
+                // - inicializar galeria
                 gallery.init();
 
-                // - Gallery starts closing
+                // - gallery starts closing
                 gallery.listen('close', function () {
 
                     var $body = $('body');
@@ -286,7 +321,7 @@ app.ctrl.inicio = {
         var $headerContainer = $('#main-header__bg');
 
         // testing
-        // isMobile = true;
+        isMobile = true;
 
         if (isMobile) {
 
@@ -309,49 +344,6 @@ app.ctrl.inicio = {
 
     },
 
-    centerHeaderContent: function () {
-
-        'use strict';
-
-        var $container = $('#main-header'),
-            $logo = $('#lr-logo'),
-            $pointerHand = $('#pointer-hand'),
-            containerW = $container.width(),
-            containerH = $container.height(),
-            logoW = $logo.width(),
-            logoH = $logo.height();
-
-        $logo.css({
-            top: containerH / 2 - logoH / 2,
-            left: containerW / 2 - logoW / 2
-        });
-
-        $pointerHand.css({
-            top: $logo.position().top + (logoH + containerH / 15)
-        });
-
-    },
-
-    loadVideoControlsSrpite: function (d, p) {
-
-        'use strict';
-
-        var a = new XMLHttpRequest(),
-            b = d.body;
-
-        a.open('GET', p, true);
-        a.send();
-        a.onload = function () {
-
-            var c = d.createElement('div');
-            c.setAttribute('hidden', '');
-            c.innerHTML = a.responseText;
-            b.insertBefore(c, b.childNodes[0]);
-
-        };
-
-    },
-
     getFlikrAlbums: function (page, done, fail) {
 
         'use strict';
@@ -360,6 +352,7 @@ app.ctrl.inicio = {
             key: app.ctrl.inicio.flikrAuth.api_key,
             id: app.ctrl.inicio.flikrAuth.user_id,
             extras: 'url_s, url_m',
+            // - actualmente no se esta enviando page y perPage
             page: page,
             perPage: 5
         })
@@ -472,6 +465,29 @@ app.ctrl.inicio = {
 
             }
 
+        });
+
+    },
+
+    centerHeaderContent: function () {
+
+        'use strict';
+
+        var $container = $('#main-header'),
+            $logo = $('#lr-logo'),
+            $pointerHand = $('#pointer-hand'),
+            containerW = $container.width(),
+            containerH = $container.height(),
+            logoW = $logo.width(),
+            logoH = $logo.height();
+
+        $logo.css({
+            top: containerH / 2 - logoH / 2,
+            left: containerW / 2 - logoW / 2
+        });
+
+        $pointerHand.css({
+            top: $logo.position().top + (logoH + containerH / 15)
         });
 
     },

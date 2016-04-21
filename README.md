@@ -54,6 +54,10 @@ en el funcionamiento y se corregirán errores con respecto a la visualización d
 sitio web en dispositivos móviles y navegadores de diferentes marcas, cada una 
 de las fechas de entrega esta sujeta a cambios dependiendo de esta etapa.
 
+## Referencias
+
+- [http://springsummer.dk](http://springsummer.dk)
+
 ## Licencia
 
 Copyright 2015, Santiago Serna.

@@ -1,0 +1,61 @@
+// - Base imports
+@import 'base/_base_variables'
+@import 'base/_base_mixins'
+
+
+
+.owl-carousel {
+    .owl-controls {
+        width 100%
+        padding-top 10px
+        .owl-nav {
+            padding 5px 0
+            text-align center
+            .owl-prev, .owl-next {
+                background-color rgba(white,.5)
+                border-radius 3px
+                color #3498DB
+                display inline-block
+                font-size responsive 2rem 3rem
+                font-range $min-screen-size $max-screen-size
+                line-height 1
+                margin 0 2px
+                width 50px
+                transition 0.5s ease
+                &:hover {
+                    background-color white
+                }
+            }
+            @media screen and (min-width: 40em) {
+                padding 10px 0
+                .owl-prev, .owl-next {
+                    margin 0 4px
+                    width 80px
+                }
+            }
+        }
+        .owl-dots {
+            line-height normal
+            padding-top 25px
+            text-align center
+            .owl-dot {
+                background-color rgba(white,.5)
+                display inline-block
+                border-radius 10px
+                margin 0 10px
+                height 20px
+                width 20px
+                transition 0.5s ease
+                &:hover {
+                    background-color rgba(#3498DB,.5)
+                }
+            }
+            .active {
+                background-color #3498DB
+            }
+        }
+        @media screen and (min-width: 40em) {
+            padding-top 30px
+        }
+    }
+}

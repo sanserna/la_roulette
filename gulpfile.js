@@ -58,7 +58,7 @@ gulp.task('lint', function() {
   gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/**'])
   .pipe(eslint({
     'rules': {
-      'camelcase': [1, {properties: "never"}],
+      'camelcase': 0,
       'curly': 1,
       'eqeqeq': 0,
       'indent': [2, 4],
@@ -194,6 +194,8 @@ gulp.task('build:js', function() {
     'app/scripts/vendors/modernizr-custom.js',
     'app/scripts/vendors/photoswipe.js',
     'app/scripts/vendors/photoswipe-ui-default.js',
+    'app/scripts/vendors/owl.carousel.js',
+    'app/scripts/vendors/jPages.js',
     'app/scripts/slm.js',
     'app/scripts/context.js',
     'app/scripts/services.js',
