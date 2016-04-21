@@ -1,3 +1,12 @@
+// - Variables imports
+@import 'base/_base_variables'
+
+
+
+// -------------------
+// @MIXINS
+// -------------------
+
 // Este es un ejemplo que puedes aplicar a los elementos para poder saber 
 // visualmente que area ocupa.
 area(color = red, grosor = 1px) {
@@ -5,7 +14,7 @@ area(color = red, grosor = 1px) {
 	box-sizing border-box
 }   
  
-// animation delay menu items
+// Animation delay menu items
 animationDelay(numItems) {
     for num in (2..numItems) {
         &:nth-child({num}) {

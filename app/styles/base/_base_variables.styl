@@ -1,4 +1,30 @@
 // -------------------
+// #COMUN VARS
+// -------------------
+
+$base-font-size = 16px
+
+
+
+// -------------------
+// #MAIN MEDIA QUERIES INIT VAR
+// -------------------
+
+mediaQ = {
+    min-screen-size: 320px
+    max-screen-size: 1280px
+    small-cutoff: 39.9375em
+    medium-cutoff: 40em
+    large-cutoff: 64em
+    hd-cutoff: 112.5em
+    base-font-size: $base-font-size
+    density-queries: 'dppx' 'webkit' 'moz' 'dpi'
+    retina-density: 1.5
+}
+
+
+
+// -------------------
 // #COLORES BASE
 // -------------------
 
@@ -91,8 +117,8 @@ $main-nav-num-items = 5
 // -------------------
 
 // - rangos de pantalla
-$min-screen-size = 320px
-$max-screen-size = 1280px
+$min-screen-size = mediaQ.min-screen-size
+$max-screen-size = mediaQ.max-screen-size
 
 // max y min para titulos
 $big-title-range = 2rem 4rem

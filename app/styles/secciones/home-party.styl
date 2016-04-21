@@ -4,7 +4,7 @@
  * .frase-reserva...............Texto del final
  *
  * COMPONENTES
- * .item-divider.............Bloque horizontal que divide la secripcion de los servicion
+ *
  */
  
 
@@ -16,13 +16,19 @@
 
 
 // -------------------
-// @ITEM_DIVIDER
+// @PAGE-CONTENT
 // -------------------
 
-.item-divider {
-    background-color $blackMed
-    height 20vh
-    width 100%
+.page-content--home-party {
+    .frase-animada {
+        background-color $blackMed
+        h1 {
+            color white
+        }
+    }
+    .item-divider {
+        background-color $blackMed
+    }
 }
 
 
@@ -41,6 +47,6 @@
     }
     .big-description {
         color $yellow-logo
-        font-weight 700
+        font-weight 400
     }
 }

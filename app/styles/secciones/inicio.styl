@@ -5,6 +5,7 @@
  * .content.....................Contenedor principal.
  * .servicios...................Contenedor de los servicios del home
  * .videos-promocionales........Seccion que contiene videos promocionales
+ * .galeria.....................Seccion que contiene la galeria de imagenes
  * .about.......................Seccion sobre la empresa
  */
  
@@ -13,6 +14,20 @@
 // - Base imports
 @import 'base/_base_variables'
 @import 'base/_base_mixins'
+
+
+
+// -------------------
+// @PAGE-CONTENT
+// -------------------
+
+.page-content--inicio {
+    .frase-animada {
+        h1 {
+            color $blackMed
+        }
+    }
+}
 
 
 
@@ -81,12 +96,8 @@
         left 0px
         bottom 0px
         height 7px
-        animation-name widthLeftToRight
-        animation-duration 2s
-        animation-fill-mode forwards
-        animation-timing-function ease-in-out
-        animation-delay 2s
         background-color $purple-logo
+        width 100%
     }
 }
 
@@ -112,6 +123,27 @@
         .column {
             padding 5px
         }
+    }
+}
+
+
+
+// -------------------
+// @GALERIA
+// -------------------
+
+.galeria {
+    background-color darken($silver, 10%)
+    .section-title {
+        margin 0
+        padding 10px 0
+    }
+    .section-description {
+        text-align center
+    }
+    .photo-albums {
+        padding-top 30px
+        padding-bottom 30px
     }
 }
 

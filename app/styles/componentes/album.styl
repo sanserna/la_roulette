@@ -1,0 +1,53 @@
+// - Base imports
+@import 'base/_base_variables'
+@import 'base/_base_mixins'
+
+
+
+// -------------------
+// @ALBUM
+// -------------------
+
+.album {
+    box-shadow 0 2px 2px 1px rgba(black,.3)
+    cursor pointer
+    display flex
+    flex-direction column
+    align-items flex-end
+    justify-content center
+    overflow hidden
+    margin-bottom 10px
+    height 200px
+    &, .album__title, .album__date {
+        transition 0.3s ease-out-cubic
+    }
+    .album__title {
+        background rgba(29,29,33,.7)
+        color white
+        padding 5px 20px
+    }
+    .album__date {
+        background rgba(white,.7)
+        color $blackBG
+        padding 2px 20px
+    }
+    &:hover {
+        transform scale(1.02)
+        .album__title {
+            background rgba(29,29,33,1)
+        }
+        .album__date {
+            background rgba(white,1)
+        }
+    }
+    @media screen and (min-width: 64em) {
+        height 250px
+    }
+}
+
+
+
+
+
+
+

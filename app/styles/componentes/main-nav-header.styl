@@ -22,7 +22,7 @@
     background rgba($main-nav-bg-color,.8)
     font-size 18px
     user-select none
-    transition 0.3s background ease-in-out
+    transition 0.3s background ease-in-out, 0.1s top
     ul {
         list-style none
         margin 0
@@ -217,5 +217,12 @@
                 opacity 0
             }
         }
+    }
+}
+
+// Para la version movil se oculta la navegacion cuando se abre la galeria
+.gallery-open {
+    .main-nav {
+        top - $main-nav-height
     }
 }

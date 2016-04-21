@@ -22,6 +22,7 @@ app.ctrl = {
             app.ctrl.data.support = {
                 transitions: Modernizr.csstransitions
             };
+            app.ctrl.data.isTablet = Modernizr.mq('(min-device-width : 601px) and (orientation: portrait) ');
 
             // - set elements image backgrounds
             app.ctrl.setElementImgBg();
@@ -109,33 +110,30 @@ app.ctrl.inicio = {
 
             }
 
-            // app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
+            // OBTENCION DE DATOS DE LA API DE FLIKR
+            app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
 
-            //     // - Done getFlikrAlbums
+                // - Done getFlikrAlbums
 
-            //     var id = data.photosets.photoset[0].id;
+                var albums = data.photosets.photoset;
 
-            //     app.ctrl.inicio.getFlikrAlbumsPhotos(id, function (data, textStatus, xhr) {
+                $.each(albums, function (i, album) {
 
-            //         // - Done getFlikrAlbumsPhotos
+                    album.index = i;
+                    app.ctrl.inicio.setAlbum(album);
 
-            //         console.log(data);
+                });
 
-            //     }, function (resp) {
+            }, function (resp) {
 
-            //         // - Fail getFlikrAlbumsPhotos
+                // - Fail getFlikrAlbums
 
-            //     });
+                console.log('fail');
+                console.log(resp);
 
-            // }, function (resp) {
+            });
 
-            //     // - Fail getFlikrAlbums
-
-            //     console.log('fail');
-            //     console.log(resp);
-
-            // });
-
+            // OBTENCION DE DATOS DE LA API DE YOUTBE
             app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
 
                 // - Done getYoutubeChannel
@@ -191,6 +189,93 @@ app.ctrl.inicio = {
 
         'use strict';
 
+        var gallery;
+
+        // - Open album
+        $(document).on('click', '.js-album', function () {
+
+            var $this = $(this),
+                $pswpElement = $('.pswp')[0],
+                id = $this.data().id,
+                items = [],
+                options = {
+                    getThumbBoundsFn: function () {
+
+                        var offset = $this.offset(),
+                            width = $this.width();
+
+                        return {
+                            x: offset.left,
+                            y: offset.top,
+                            w: width
+                        };
+
+                    }
+                };
+
+            if (app.context.isMobile()) {
+
+                $('body').addClass('gallery-open');
+
+            }
+
+            app.ctrl.inicio.getFlikrAlbumsPhotos(id, function (data, textStatus, xhr) {
+
+                // - Done getFlikrAlbumsPhotos
+
+                var photos = data.photoset.photo;
+
+                $.each(photos, function (i, photo) {
+
+                    var photoObj = {
+                        // mediumImage: {
+                        //     src: photo.url_s,
+                        //     w: Number(photo.width_s),
+                        //     h: Number(photo.height_s)
+                        // },
+                        // originalImage: {
+                        //     src: photo.url_m,
+                        //     w: Number(photo.width_m),
+                        //     h: Number(photo.height_m)
+                        // },
+                        src: photo.url_m,
+                        w: Number(photo.width_m),
+                        h: Number(photo.height_m),
+                        author: data.ownername,
+                        title: photo.title
+                    };
+
+                    items.push(photoObj);
+
+                });
+
+                gallery = new PhotoSwipe($pswpElement, PhotoSwipeUI_Default, items, options);
+
+                // - Inicializar galeria
+                gallery.init();
+
+                // - Gallery starts closing
+                gallery.listen('close', function () {
+
+                    var $body = $('body');
+
+                    if ($body.hasClass('gallery-open')) {
+
+                        $body.removeClass('gallery-open');
+
+                    }
+
+                });
+
+
+            }, function (resp) {
+
+                // - Fail getFlikrAlbumsPhotos
+
+            });
+
+        });
+
     },
 
     // HELPER SECTION FUNCTIONS
@@ -199,6 +284,9 @@ app.ctrl.inicio = {
         'use strict';
 
         var $headerContainer = $('#main-header__bg');
+
+        // testing
+        // isMobile = true;
 
         if (isMobile) {
 
@@ -304,7 +392,7 @@ app.ctrl.inicio = {
             key: app.ctrl.inicio.flikrAuth.api_key,
             id: app.ctrl.inicio.flikrAuth.user_id,
             photosetId: albumId,
-            extras: 'url_t, url_s, url_m'
+            extras: 'url_s, url_m'
         })
         .done(function (data, textStatus, xhr) {
 
@@ -385,6 +473,55 @@ app.ctrl.inicio = {
             }
 
         });
+
+    },
+
+    setAlbum: function (albumObj) {
+
+        'use strict';
+
+        var $albumsContainer = $('#albumsContainer'),
+            dataObj = {},
+            imgUrl;
+
+        if (app.context.isMobile()) {
+
+            if (app.ctrl.data.isTablet) {
+
+                imgUrl = albumObj.primary_photo_extras.url_m;
+
+            } else {
+
+                imgUrl = albumObj.primary_photo_extras.url_s;
+
+            }
+
+        } else {
+
+            imgUrl = albumObj.primary_photo_extras.url_m;
+
+        }
+
+        if (albumObj) {
+
+            dataObj.id = albumObj.id;
+            dataObj.numPhotos = albumObj.photos;
+            dataObj.title = albumObj.title._content;
+            dataObj.description = albumObj.description._content;
+            dataObj.creationDate = new Date(albumObj.date_create * 1000);
+            dataObj.creationYear = dataObj.creationDate.getFullYear();
+
+        }
+
+        $albumsContainer.append(slm.tmpltParser(app.templates.album, dataObj));
+
+        if (albumObj) {
+
+            $('#' + dataObj.id)
+                .data(dataObj)
+                .css('background-image', 'url(' + imgUrl + ')');
+
+        }
 
     }
 

@@ -87,7 +87,9 @@ gulp.task('lint', function() {
       'Modernizr': false,
       'plyr': false,
       'XMLHttpRequest': false,
-      'slm': false
+      'slm': false,
+      'PhotoSwipe': false,
+      'PhotoSwipeUI_Default': false
     }
   }))
   .pipe(eslint.format())
@@ -96,7 +98,7 @@ gulp.task('lint', function() {
 
 // Image task: optimizar imagenes.
 gulp.task('images', function() {
-  var mainImg = gulp.src(['app/img/**/*.png', 'app/img/**/*.jpg'])
+  var mainImg = gulp.src('app/img/**/*')
     .pipe(imagemin({
       optimizationLevel: 5,
       progressive: true,
@@ -105,7 +107,7 @@ gulp.task('images', function() {
     .pipe(gulp.dest('dist/img'))
     .pipe(size({title: 'main images'}));
 
-  var stylesImg = gulp.src(['app/styles/img/**/*.png', 'app/styles/img/**/*.jpg'])
+  var stylesImg = gulp.src('app/styles/img/**/*')
     .pipe(imagemin({
       optimizationLevel: 5,
       progressive: true,
@@ -114,7 +116,7 @@ gulp.task('images', function() {
     .pipe(gulp.dest('dist/styles/img'))
     .pipe(size({title: 'styles images'}));
 
-    return merge(mainImg, stylesImg);
+  return merge(mainImg, stylesImg);
 });
 
 // Copy task: copiar todos los archivos de la raiz del proyecto (app)
@@ -127,7 +129,7 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('dist/videos'))
     .pipe(size({title: 'videos'}));
 
-    return merge(rootFiles, videoFiles);
+  return merge(rootFiles, videoFiles);
 });
 
 /**
@@ -190,6 +192,8 @@ gulp.task('build:js', function() {
     'app/scripts/vendors/jquery.vide.js',
     'app/scripts/vendors/plyr.js',
     'app/scripts/vendors/modernizr-custom.js',
+    'app/scripts/vendors/photoswipe.js',
+    'app/scripts/vendors/photoswipe-ui-default.js',
     'app/scripts/slm.js',
     'app/scripts/context.js',
     'app/scripts/services.js',
