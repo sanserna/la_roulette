@@ -37,5 +37,18 @@ app.context = {
 
         return false;
 
+    },
+    isTablet: function () {
+
+        var mq = Modernizr.mq;
+
+        if (mq('(min-device-width : 550px) and (orientation: portrait)') || mq('(min-device-width : 800px) and (orientation: landscape)')) {
+
+            return true;
+
+        }
+
+        return false;
+
     }
 };

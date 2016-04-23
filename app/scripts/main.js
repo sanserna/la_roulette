@@ -22,7 +22,6 @@ app.ctrl = {
             app.ctrl.data.support = {
                 transitions: Modernizr.csstransitions
             };
-            app.ctrl.data.isTablet = Modernizr.mq('(min-device-width : 601px) and (orientation: portrait) ');
 
             // - set elements image backgrounds
             app.ctrl.setElementImgBg();
@@ -128,6 +127,16 @@ app.ctrl.inicio = {
 
             //     });
 
+            //     // - inicializar la paginacion de la galeria
+            //     $("div.holder").jPages({
+            //         previous: 'anterior',
+            //         next: 'siguiente',
+            //         containerID: "albumsContainer",
+            //         perPage: 8,
+            //         minHeight: false,
+            //         animation: 'fadeInUpAlbum'
+            //     });
+
             // }, function (resp) {
 
             //     // - Fail getFlikrAlbums
@@ -137,84 +146,80 @@ app.ctrl.inicio = {
 
             // });
 
-            // testing
-            $("div.holder").jPages({
-                containerID: "albumsContainer",
-                perPage: 8,
-                minHeight: false,
-                animation: 'fadeInUpAlbum'
-            });
-
             // OBTENCION DE DATOS DE LA API DE YOUTBE
-            app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
+            // app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
 
-                // - Done getYoutubeChannel
+            //     // - Done getYoutubeChannel
 
-                var items = data.items;
+            //     var items = data.items;
 
-                $.each(items, function (i, item) {
+            //     $.each(items, function (i, item) {
 
-                    var playlistId = item.contentDetails.relatedPlaylists.favorites;
+            //         var playlistId = item.contentDetails.relatedPlaylists.favorites;
 
-                    app.ctrl.inicio.getYoutubeChannelVideos(playlistId, function (data, textStatus, xhr) {
+            //         app.ctrl.inicio.getYoutubeChannelVideos(playlistId, function (data, textStatus, xhr) {
 
-                        // - Done getYoutubeChannelVideos
+            //             // - Done getYoutubeChannelVideos
 
-                        var items = data.items,
-                            $owlCarousel = $('.owl-carousel');
+            //             var items = data.items,
+            //                 $owlCarousel = $('.owl-carousel');
 
-                        $.each(items, function (i, item) {
+            //             $.each(items, function (i, item) {
 
-                            var videoObj = {
-                                titulo: item.snippet.title,
-                                videoId: item.snippet.resourceId.videoId
-                            };
+            //                 var videoObj = {
+            //                     titulo: item.snippet.title,
+            //                     videoId: item.snippet.resourceId.videoId
+            //                 };
 
-                            $owlCarousel.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
+            //                 $owlCarousel.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
 
-                        });
+            //             });
 
-                        $owlCarousel.owlCarousel({
-                            items: 1,
-                            nav: true,
-                            loop: true,
-                            center: true,
-                            mouseDrag: false,
-                            touchDrag: false,
-                            navText: ['<', '>'],
-                            responsive: {
-                                0: {
-                                    dots: false
-                                },
-                                640: {
-                                    stagePadding: 100,
-                                    margin: 50
-                                },
-                                1024: {
-                                    stagePadding: 300,
-                                    margin: 150
-                                }
-                            }
-                        });
+            //             // - se inicializa owl-carousel
+            //             $owlCarousel.owlCarousel({
+            //                 items: 1,
+            //                 nav: true,
+            //                 loop: true,
+            //                 center: true,
+            //                 mouseDrag: false,
+            //                 touchDrag: false,
+            //                 navText: ['<', '>'],
+            //                 responsive: {
+            //                     0: {
+            //                         dots: false
+            //                     },
+            //                     640: {
+            //                         stagePadding: 100,
+            //                         margin: 50
+            //                     },
+            //                     1024: {
+            //                         stagePadding: 300,
+            //                         margin: 150
+            //                     }
+            //                 },
+            //                 onInitialized: function () {
 
-                        // - se inicializa plyr quien se encarga se setiar los videos
-                        plyr.setup({
-                            controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
-                        });
+            //                     // - se inicializa plyr quien se encarga se setiar los videos
+            //                     plyr.setup({
+            //                         controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
+            //                     });
 
-                    }, function (resp) {
+            //                 }
+            //             });
 
-                        // - Fail getYoutubeChannelVideos
+            //         }, function (resp) {
 
-                    });
+            //             // - Fail getYoutubeChannelVideos
 
-                });
+            //         });
 
-            }, function (resp) {
+            //     });
 
-                // - Fail getYoutubeChannel
+            // }, function (resp) {
 
-            });
+            //     // - Fail getYoutubeChannel
+
+            // });
 
         });
 
@@ -233,7 +238,9 @@ app.ctrl.inicio = {
                 $pswpElement = $('.pswp')[0],
                 id = $this.data().id,
                 items = [],
+                imgProps = app.ctrl.inicio.defineImgProps(),
                 options = {
+                    // - establecer ubicacion y dimensiones del album al que se le da click
                     getThumbBoundsFn: function () {
 
                         var offset = $this.offset(),
@@ -263,19 +270,9 @@ app.ctrl.inicio = {
                 $.each(photos, function (i, photo) {
 
                     var photoObj = {
-                        // mediumImage: {
-                        //     src: photo.url_s,
-                        //     w: Number(photo.width_s),
-                        //     h: Number(photo.height_s)
-                        // },
-                        // originalImage: {
-                        //     src: photo.url_m,
-                        //     w: Number(photo.width_m),
-                        //     h: Number(photo.height_m)
-                        // },
-                        src: photo.url_m,
-                        w: Number(photo.width_m),
-                        h: Number(photo.height_m),
+                        src: photo[imgProps.imgType],
+                        w: Number(photo[imgProps.w]),
+                        h: Number(photo[imgProps.h]),
                         author: data.ownername,
                         title: photo.title
                     };
@@ -314,36 +311,6 @@ app.ctrl.inicio = {
     },
 
     // HELPER SECTION FUNCTIONS
-    defineHeaderBG: function (isMobile) {
-
-        'use strict';
-
-        var $headerContainer = $('#main-header__bg');
-
-        // testing
-        isMobile = true;
-
-        if (isMobile) {
-
-            $headerContainer.append('<div class="img-bg"></div>');
-
-        } else {
-
-            $('#main-header__bg').vide({
-                mp4: 'videos/videoRoulette',
-                webm: 'videos/videoRoulette',
-                poster: 'videos/videoRoulette'
-            }, {
-                position: '50% 50%',
-                posterType: 'jpg',
-                resizing: true,
-                bgColor: 'transparent'
-            });
-
-        }
-
-    },
-
     getFlikrAlbums: function (page, done, fail) {
 
         'use strict';
@@ -469,6 +436,36 @@ app.ctrl.inicio = {
 
     },
 
+    defineHeaderBG: function (isMobile) {
+
+        'use strict';
+
+        var $headerContainer = $('#main-header__bg');
+
+        // testing
+        isMobile = true;
+
+        if (isMobile) {
+
+            $headerContainer.append('<div class="img-bg"></div>');
+
+        } else {
+
+            $('#main-header__bg').vide({
+                mp4: 'videos/videoRoulette',
+                webm: 'videos/videoRoulette',
+                poster: 'videos/videoRoulette'
+            }, {
+                position: '50% 50%',
+                posterType: 'jpg',
+                resizing: true,
+                bgColor: 'transparent'
+            });
+
+        }
+
+    },
+
     centerHeaderContent: function () {
 
         'use strict';
@@ -498,25 +495,7 @@ app.ctrl.inicio = {
 
         var $albumsContainer = $('#albumsContainer'),
             dataObj = {},
-            imgUrl;
-
-        if (app.context.isMobile()) {
-
-            if (app.ctrl.data.isTablet) {
-
-                imgUrl = albumObj.primary_photo_extras.url_m;
-
-            } else {
-
-                imgUrl = albumObj.primary_photo_extras.url_s;
-
-            }
-
-        } else {
-
-            imgUrl = albumObj.primary_photo_extras.url_m;
-
-        }
+            imgUrl = albumObj.primary_photo_extras[app.ctrl.inicio.defineImgProps().imgType];
 
         if (albumObj) {
 
@@ -538,6 +517,40 @@ app.ctrl.inicio = {
                 .css('background-image', 'url(' + imgUrl + ')');
 
         }
+
+    },
+
+    defineImgProps: function () {
+
+        'use strict';
+
+        var propsObj = {};
+
+        if (app.context.isMobile()) {
+
+            if (app.context.isTablet()) {
+
+                propsObj.imgType = 'url_m';
+                propsObj.w = 'width_m';
+                propsObj.h = 'height_m';
+
+            } else {
+
+                propsObj.imgType = 'url_s';
+                propsObj.w = 'width_s';
+                propsObj.h = 'height_s';
+
+            }
+
+        } else {
+
+            propsObj.imgType = 'url_m';
+            propsObj.w = 'width_m';
+            propsObj.h = 'height_m';
+
+        }
+
+        return propsObj;
 
     }
 

@@ -1,7 +1,7 @@
 var app = app || {};
 app.templates = {};
 
-app.templates.youTubeVideoPlyr = '<div class="plyr">' +
+app.templates.youTubeVideoPlyr = '<div class="js-plyr plyr">' +
     '   <div class="item-video" data-video-id="{{videoId}}" data-type="youtube"></div>' +
     '</div>';
 

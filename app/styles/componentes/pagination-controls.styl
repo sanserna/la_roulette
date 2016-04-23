@@ -1,0 +1,38 @@
+// -------------------
+// @PAGINATION-CONTROLS
+// -------------------
+
+// - Holder
+.holder {
+    padding-top 15px
+    padding-bottom 15px
+    text-align center
+    a {
+        font-size responsive .7rem 1rem
+        font-range $min-screen-size $max-screen-size
+        cursor pointer
+        color $paginacion-normal-color
+        &, &.jp-previous, &.jp-next {
+            padding 5px 10px
+        }
+        &.jp-current, &.jp-current:hover,
+        &.jp-disabled, &.jp-disabled:hover {
+            cursor default 
+            background none
+        }
+        &.jp-current, &.jp-current:hover { 
+            color $paginacion-current-color
+            font-weight bold
+        }
+        &.jp-disabled, &.jp-disabled:hover {
+            color $paginacion-disabled-color
+        }
+        &:hover {
+            background-color $paginacion-normal-color
+            color white
+        }
+    }
+    span {
+        padding 0 5px
+    }
+}
