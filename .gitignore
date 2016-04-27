@@ -10,3 +10,5 @@
 !/bower_components/vide/dist
 /bower_components/plyr/*
 !/bower_components/plyr/dist
+/bower_components/scrollreveal/*
+!/bower_components/scrollreveal/dist

@@ -1,10 +1,14 @@
 // -------------------
-// @GENERIC ANIMATED CLASS
+// @GENERIC ANIMATED CLASS HELPERS
 // -------------------
 
 .animated {
   animation-duration 1s
   animation-fill-mode both
+}
+
+.animated.infinite {
+  animation-iteration-count infinite
 }
 
 
@@ -27,6 +31,30 @@
 
 .fadeInUpAlbum {
   animation-name fadeInUpAlbum
+}
+
+
+
+// -------------------
+// @SLIDE-DOWN-UP
+// -------------------
+
+@-webkit-keyframes slideDownUp {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -40%, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideDownUp {
+  animation-name: slideDownUp;
 }
 
 

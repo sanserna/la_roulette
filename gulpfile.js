@@ -89,7 +89,9 @@ gulp.task('lint', function() {
       'XMLHttpRequest': false,
       'slm': false,
       'PhotoSwipe': false,
-      'PhotoSwipeUI_Default': false
+      'PhotoSwipeUI_Default': false,
+      'ScrollReveal': false,
+      'sr': false
     }
   }))
   .pipe(eslint.format())
@@ -196,6 +198,7 @@ gulp.task('build:js', function() {
     'app/scripts/vendors/photoswipe-ui-default.js',
     'app/scripts/vendors/owl.carousel.js',
     'app/scripts/vendors/jPages.js',
+    'app/scripts/vendors/scrollreveal.js',
     'app/scripts/slm.js',
     'app/scripts/context.js',
     'app/scripts/services.js',
