@@ -14,14 +14,19 @@
 // -------------------
 
 .page-content--home-party {
-    .frase-animada {
+    &,
+    .frase-animada,
+    .items-wrapper,
+    .item-divider {
         background-color $blackMed
+    }
+    .frase-animada {
         h1 {
             color white
         }
     }
-    .item-divider {
-        background-color $blackMed
+    .items-wrapper {
+        padding 0
     }
 }
 
@@ -37,9 +42,11 @@
     min-height 100vh
     p {
         text-align center
+    }
+    p:nth-child(1) {
         padding 20px 10px
     }
-    .big-description {
+    p:nth-child(3) {
         color $yellow-logo
         font-weight 400
     }

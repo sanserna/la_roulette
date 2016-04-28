@@ -3,6 +3,7 @@
 // -------------------
 
 .section-header {
+    visibility hidden // scroll reveal
     background-color black
     box-sizing content-box
     display flex
@@ -19,7 +20,7 @@
         width 100%
         height 100vh
         background-image url(img/assets/pattern.png)
-        background-color rgba(black,.1)
+        background-color rgba(black,.2)
         z-index 0
     }
     .section-header__title, .section-header__description {
@@ -53,6 +54,7 @@
         padding 0px 50px
         .section-header__title, .section-header__description {
             text-align left
+            width 80%
         }
     }
 }

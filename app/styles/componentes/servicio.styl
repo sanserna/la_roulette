@@ -3,37 +3,32 @@
 // -------------------
 
 .servicio {
+    background-color $silver
     height 30vh
     display flex
     align-items center
     flex-direction column
     justify-content center
     position relative
-    &:hover {
-        .servicio__titulo {
-            color $purple-logo
-        }
-    }
-    &:active {
-        .servicio__titulo {
-            color $purple-logo
-        }
-    }
+    transition 0.5s ease-in
     .servicio__titulo {
         margin 0
-        transition 0.3s color
+        transition 0.3s ease-in-out
+        text-transform uppercase
     }
     .servicio__image-filter {
-        background-color rgba(black,.6)
+        background-color rgba(black,.2)
         position absolute
         top 0px
         left 0px
         height 100%
         width 100%
         z-index 0
+        transition 0.3s ease-in-out
     }
     .servicio__titulo, .servicio__descripcion {
         z-index 1
+        text-shadow 0 1px 2px rgba(black,0.6)
     }
     .servicio__titulo{
         color white
@@ -45,6 +40,24 @@
         text-align center
         width 90%
     }
+    &:hover {
+        .servicio__image-filter {
+            background-color rgba(black,.5)
+        }
+        .servicio__titulo {
+            color $purple-logo
+            padding-bottom 15px
+        }
+    }
+    &:active {
+        .servicio__image-filter {
+            background-color rgba(black,.5)
+        }
+        .servicio__titulo {
+            color $purple-logo
+            padding-bottom 15px
+        }
+    }
     @media screen and (min-width: 35em) and (orientation: landscape) {
         height 40vh
     }
@@ -53,6 +66,10 @@
     }
     @media screen and (min-width: 64em) {
         height 40vh
+        filter grayscale(100%)
+        &:hover {
+            filter grayscale(0)
+        }
     }
 }
 

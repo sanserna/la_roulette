@@ -4,11 +4,5 @@
 /.tmp
 /dist
 /node_modules
-/bower_components/jquery/*
-!/bower_components/jquery/dist
-/bower_components/vide/*
-!/bower_components/vide/dist
-/bower_components/plyr/*
-!/bower_components/plyr/dist
-/bower_components/scrollreveal/*
-!/bower_components/scrollreveal/dist
+/recursos
+/bower_components
