@@ -10,7 +10,7 @@
     min-height 50vh
     padding 0px 20px 20px 20px
     position relative
-    p {
+    p, h1, h2 {
         flex none
         z-index 1
     }
@@ -19,13 +19,13 @@
         background-color rgba(black,.1)
     }
     .item-description-big {
-        color $yellow-logo
+        color $home-party-primary-color
         font-weight 400
     }
     .big-description {
         margin 0px
         text-align left
-        font-weight 400
+        font-weight 300
         max-width 900px
     }
     @media screen and (min-width: 40em) {
@@ -34,5 +34,25 @@
     }
     @media screen and (min-width: 64em) {
         min-height 100vh
+    }
+}
+
+.servicio-content-item--center {
+    justify-content center
+    align-items center
+    padding 50px
+    text-align center
+    .item-title-big {
+        padding-bottom 20px
+    }
+    .item-description {
+        @media screen and (min-width: 40em) {
+            padding-left 50px
+            padding-right 50px
+        }
+        @media screen and (min-width: 64em) {
+            padding-left 150px
+            padding-right 150px
+        }
     }
 }

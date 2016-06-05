@@ -3,7 +3,7 @@
 // -------------------
 
 .servicio {
-    background-color $silver
+    background-color black
     height 30vh
     display flex
     align-items center
@@ -37,25 +37,24 @@
     }
     .servicio__descripcion {
         color white
+        font-weight 300
         text-align center
         width 90%
+        transition 0.3s ease-in-out
+        @media screen and (min-width: 64em) {
+            opacity 0
+        }
     }
-    &:hover {
+    &:hover, &:active {
         .servicio__image-filter {
             background-color rgba(black,.5)
         }
         .servicio__titulo {
-            color $purple-logo
+            color $home-primary-color
             padding-bottom 15px
         }
-    }
-    &:active {
-        .servicio__image-filter {
-            background-color rgba(black,.5)
-        }
-        .servicio__titulo {
-            color $purple-logo
-            padding-bottom 15px
+        .servicio__descripcion {
+            opacity 1
         }
     }
     @media screen and (min-width: 35em) and (orientation: landscape) {
@@ -66,10 +65,6 @@
     }
     @media screen and (min-width: 64em) {
         height 40vh
-        filter grayscale(100%)
-        &:hover {
-            filter grayscale(0)
-        }
     }
 }
 

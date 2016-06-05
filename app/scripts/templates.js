@@ -8,6 +8,6 @@ app.templates.youTubeVideoPlyr = '<div class="js-plyr plyr">' +
 app.templates.album = '<div class="small-12 medium-6 large-3 column">' +
     '   <div id="{{id}}" class="js-album album" media-bg-img>' +
     '       <p class="album__title item-description">{{title}}</p>' +
-    '       <p class="album__date item-description">{{creationYear}}</p>' +
+    // '       <p class="album__date item-description">{{creationYear}}</p>' +
     '   </div>' +
     '</div>';

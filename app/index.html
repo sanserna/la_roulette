@@ -4,8 +4,8 @@
     <!-- NECESIDADES BSICAS DE LA PAGINA -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="La Roulette, la mejor experiencia de una fiesta en casa!">
-    <meta name="keywords" content="la roulette, home party, cocktail party, fiesta en casa, fiesta, delivery, experiencia, cocteles, beer pong, shots">
+    <meta name="description" content="¿Quieres celebrar una ocasión espcial y no sabes qué hacer para que sea diferente? Bueno, déjanos contarte las propuestas que tenemos para ti.">
+    <meta name="keywords" content="la roulette, home party, cocktail party, office party, fiesta en casa, fiesta, experiencia, cocteles, beer pong, shots, cumpleaños, celebraciones, matrimonio, despedida de soltera, grado, regalo, fiesta sorpresa, fiestas empresariales">
     <meta name="author" content="http://www.laroulette.com.co/humans.txt">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>La Roulette</title>
@@ -36,6 +36,7 @@
   </head>
   <body>
     <!-- LA ROULETTE HOME LAYOUT -->
+
     <!-- MAIN NAVIGATION -->
     <nav id="globalnav" class="main-nav" role="navigation">
       <div class="main-nav__content">
@@ -60,10 +61,10 @@
             <a href="home-party.html" class="main-nav__link">Home Party</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="party-cocktail.html" class="main-nav__link">Party Cocktail</a>
+            <a href="party-cocktails.html" class="main-nav__link">Party Cocktails</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="/" class="main-nav__link">Office Party</a>
+            <a href="office-party.html" class="main-nav__link">Office Party</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
             <a href="/" class="main-nav__link">Delivery</a>
@@ -82,24 +83,24 @@
       <header id="main-header">
           <div id="main-header__bg"></div>
           <div class="main-header__overlayed-bg"></div>
-          <img id="lr-logo" class="main-header__lr-logo fadeIn" src="img/assets/logoLaRoulette_blanco.png" alt="la roulette">
+          <img id="lr-logo" class="main-header__lr-logo animated fadeIn" src="img/assets/logoLaRoulette_blanco.png" alt="la roulette">
           <div id="pointer-hand" class="main-header__hand-icon animated slideDownUp infinite"></div>
       </header>
       
       <div class="frase-animada">
-        <h1 class="big-title">Vive diferente, Celebra Diferente</h1>
+        <h1 class="big-title">Vive Diferente, celebra diferente</h1>
       </div>
 
       <section class="servicios expanded row">
         <div class="small-12 column">
-          <h1 class="servicios__titulo section-title">Lorem ipsum dolor.</h1>
-          <p class="servicios__descripcion section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sed magnam dicta ducimus nostrum numquam, praesentium consequatur velit culpa voluptates.</p>
+          <h1 class="servicios__titulo section-title">Nuestros servicios, tus experiencias</h1>
+          <p class="servicios__descripcion section-description">Quieres celebrar una ocasión especial y no sabes qué hacer para que sea diferente? Bueno, déjanos contarte las propuestas que tenemos para ti.</p>
         </div>
 
         <div class="small-12 column row medium-collapse">
           <div class="small-12 medium-6 column">
             <div class="sr-servicio">
-              <a href="#">
+              <a href="home-party.html">
                 <div class="servicio servicio--home-party" media-bg-img="img/inicio/home-party-nav-bg.jpg">
                   <div class="servicio__image-filter"></div>
                   <h2 class="servicio__titulo item-title">Home Party</h2>
@@ -111,7 +112,7 @@
 
           <div class="small-12 medium-6 column">
             <div class="sr-servicio">
-              <a href="#">
+              <a href="party-cocktail.html">
                 <div class="servicio servicio--cocktail-party" media-bg-img="img/inicio/party-cocktail-nav-bg.jpg">
                   <div class="servicio__image-filter"></div>
                   <h2 class="servicio__titulo item-title">Party Cocktail</h2>
@@ -149,8 +150,8 @@
 
       <section class="galeria expanded row">
         <div class="small-12 column">
-          <h1 class="section-title">Lorem ipsum dolor.</h1>
-          <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, officia. Quae eius esse eum tenetur molestias sequi nesciunt cum, modi dolores! Quos veritatis molestiae tempora at sint incidunt facilis. Dicta.</p>
+          <h1 class="section-title">Así será tu próxima celebración</h1>
+          <p class="section-description">Todas las fiestas especiales merecen un recuerdo inolvidable.</p>
         </div>
         
         <!-- PAGINACION SUPERIOR ALBUMS -->
@@ -229,7 +230,7 @@
 
       <section class="about expanded row">
         <div class="small-12 column">
-          <h1 class="about__titulo section-title">Lorem ipsum dolor.</h1>
+          <h1 class="about__titulo section-title">Nosotros</h1>
           <p class="about__descripcion section-description">“Nos conocimos trabajando en una gran empresa de tecnología y pronto descubrimos que teníamos tres gustos en común: el emprendimiento, ser anfitriones de fiestas y conocer el mundo. Decidimos seguir nuestros sueños y crear una experiencia que divirtiera y nos divirtiera. Cada vez que organizamos una fiesta es como si fuera para nuestro propio cumpleaños, por eso nos aseguramos de que todos nuestros eventos sean inolvidables” – David y Sebastián, Co-creadores de La Roulette.</p>
         </div>
 
@@ -251,8 +252,9 @@
             </div>
         </div>
       </section>
-
-      <section class="contacto expanded align-center row">
+      
+      <!-- CONTACTO -->
+      <!-- <section class="contacto expanded align-center row">
         <div class="small-12 column">
           <h1 class="contacto__titulo section-title">Contacto</h1>
         </div>
@@ -312,7 +314,7 @@
               <input type="submit" id="saveForm" name="saveForm" class="contact-form__submit" value="Enviar">
           </form>
         </div>
-      </section>
+      </section> -->
     </main>
 
     <!-- MAIN FOOTER -->

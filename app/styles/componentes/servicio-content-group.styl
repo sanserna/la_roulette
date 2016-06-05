@@ -1,0 +1,79 @@
+// -------------------
+// @SERVICIO-CONTENT-GROUP
+// -------------------
+
+.servicio-content-group {
+    position relative
+    p, h2 {
+        text-align center
+        z-index 1
+    }
+    .overlayed-bg {
+        background-image url(img/assets/pattern.png)
+    }
+    .servicio-content-group__header,
+    .servicio-content-group__item {
+        display flex
+        flex-direction column
+        justify-content center
+        align-items center
+    }
+    .servicio-content-group__header {
+        min-height 70vh
+        padding 30px
+        position relative
+        p {
+            color white
+            flex none
+        }
+        .overlayed-bg {
+            background-color rgba(black,.1)
+        }
+        .item-description {
+            font-weight 400
+        }
+        .item-title-big {
+            color $office-party-primary-color
+            margin 0px
+            font-weight 400
+            padding-bottom 20px
+        }
+        @media screen and (min-width: 40em) {
+            min-height 70vh
+            padding 110px
+            .item-description {
+                padding-left 50px
+                padding-right 50px
+            }
+        }
+        @media screen and (min-width: 64em) {
+            .item-description {
+                padding-left 150px
+                padding-right 150px
+            }
+        }
+    }
+    .servicio-content-group__item {
+        min-height 210px
+        padding 10px
+        text-align center
+        position relative
+        .overlayed-bg {
+            background-color rgba($azul-3,.2)
+        }
+        .big-description,
+        .item-description {
+            color white
+        }
+        .item-description {
+            font-weight 300
+        }
+        @media screen and (min-width: 40em) {
+            padding 20px
+            min-height 240px
+        }
+        @media screen and (min-width: 64em) {
+            min-height 40vh
+        }
+    }
+}

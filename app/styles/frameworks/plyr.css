@@ -158,7 +158,7 @@
 }
 .plyr__controls button.tab-focus:focus,
 .plyr__controls button:hover {
-    background: #3498DB;
+    background: #3E9EBC;
     color: #fff
 }
 .plyr__controls .plyr__time,
@@ -301,7 +301,7 @@
 }
 .plyr__progress--played[value] {
     z-index: 2;
-    color: #3498DB
+    color: #3E9EBC
 }
 .plyr__progress--buffer[value] {
     color: rgba(86, 93, 100, .25)
@@ -452,13 +452,13 @@
     cursor: ew-resize
 }
 .plyr__volume[type=range]:focus::-webkit-slider-thumb {
-    background: #3498DB
+    background: #3E9EBC
 }
 .plyr__volume[type=range]:focus::-moz-range-thumb {
-    background: #3498DB
+    background: #3E9EBC
 }
 .plyr__volume[type=range]:focus::-ms-thumb {
-    background: #3498DB
+    background: #3E9EBC
 }
 .plyr--is-ios .plyr__volume,
 .plyr--is-ios [data-plyr=mute],

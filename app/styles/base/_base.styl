@@ -59,6 +59,7 @@ h1.big-title {
 }
 
 h1.section-title {
+    padding 15px
     font-size responsive $section-title-range
     font-range $min-screen-size $max-screen-size
     margin 1rem 0
@@ -75,9 +76,18 @@ h2.item-title-big {
 }
 
 p.section-description {
+    padding-bottom 15px
     font-size responsive $section-description-range
     font-range $min-screen-size $max-screen-size
     line-height 1.48
+    @media screen and (min-width: 40em) {
+        padding-left 50px
+        padding-right 50px
+    }
+    @media screen and (min-width: 64em) {
+        padding-left 150px
+        padding-right 150px
+    }
 }
 
 p.big-description {

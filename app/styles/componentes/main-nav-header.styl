@@ -4,7 +4,8 @@
 
 .main-nav {
     min-width 320px
-    position absolute
+    // position absolute // correccion
+    position fixed // correccion
     top 0
     right 0
     left 0
@@ -13,7 +14,8 @@
     margin 0
     width 100%
     height $main-nav-height
-    background rgba($main-nav-bg-color,.8)
+    // background rgba($main-nav-bg-color,.8)
+    background $main-nav-bg-color
     font-size 18px
     user-select none
     transition 0.3s background ease-in-out, 0.1s top
@@ -95,7 +97,7 @@
         }
     }
     @media only screen and (max-width: 40em) {
-        position fixed
+        // position fixed // coreccion
         .main-nav__content {
             padding 0
             position absolute

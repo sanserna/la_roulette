@@ -8,7 +8,7 @@
             .owl-prev, .owl-next {
                 background-color rgba(white,.5)
                 border-radius 3px
-                color #3498DB
+                color $home-primary-color
                 display inline-block
                 font-size responsive 2rem 3rem
                 font-range $min-screen-size $max-screen-size
@@ -41,11 +41,11 @@
                 width 20px
                 transition 0.5s ease
                 &:hover {
-                    background-color rgba(#3498DB,.5)
+                    background-color rgba($home-primary-color,.5)
                 }
             }
             .active {
-                background-color #3498DB
+                background-color $home-primary-color
             }
         }
         @media screen and (min-width: 40em) {

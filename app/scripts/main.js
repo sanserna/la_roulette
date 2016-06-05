@@ -78,25 +78,27 @@ app.ctrl.inicio = {
     data: {
         flikrAuth: {
             // - la roulette api key
-            // api_key: 'd95dcce57dea2cd47bcb0c1b692783f9',
+            api_key: 'd95dcce57dea2cd47bcb0c1b692783f9',
             // - test api key
-            api_key: 'b5a15c73a84e621e304052f94c847246',
+            // api_key: 'b5a15c73a84e621e304052f94c847246',
             // - la roulette user id
-            // user_id: '142065498@N08',
+            user_id: '142065498@N08',
             // - test user id
-            user_id: '140878839@N02'
+            // user_id: '140878839@N02'
         },
 
         youTubeAuth: {
             // - la roulette api key
             // api_key: 'AIzaSyCpEgQmSQC2TRDl73yy5Tn9U1ngZDFy9Ls',
             // - test api key
-            api_key: 'AIzaSyDCAnbI51T-sgKTtYaPI7-8YAOg0tVttIg',
+            // api_key: 'AIzaSyDCAnbI51T-sgKTtYaPI7-8YAOg0tVttIg',
+            // - test roulette api key
+            api_key: 'AIzaSyBPPX9x7Aj3wQ_aTTMXH7nrl2ddb9v-MdU',
             user_name: '',
             // - la roulette channel id
-            // channel_id: 'UC7CtU1sK_A8uboBCJLfzj2g',
+            channel_id: 'UC7CtU1sK_A8uboBCJLfzj2g',
             // - test channel id
-            channel_id: 'UCp2irPEY6KT4392YGoC6ZBQ'
+            // channel_id: 'UCp2irPEY6KT4392YGoC6ZBQ'
         }
     },
 
@@ -130,117 +132,119 @@ app.ctrl.inicio = {
 
             }, 'html');
 
-            // OBTENCION DE DATOS DE LA API DE FLIKR
-            // app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
+            // // OBTENCION DE DATOS DE LA API DE FLIKR
+            app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
 
-            //     // - Done getFlikrAlbums
+                // - Done getFlikrAlbums
 
-            //     var albums = data.photosets.photoset;
+                var albums = data.photosets.photoset;
 
-            //     $.each(albums, function (i, album) {
+                $.each(albums, function (i, album) {
 
-            //         album.index = i;
-            //         app.ctrl.inicio.setAlbum(album);
+                    album.index = i;
+                    app.ctrl.inicio.setAlbum(album);
 
-            //     });
+                });
 
-            //     // - inicializar la paginacion de la galeria
-            //     $("div.holder").jPages({
-            //         previous: 'anterior',
-            //         next: 'siguiente',
-            //         containerID: "albumsContainer",
-            //         perPage: 8,
-            //         minHeight: false,
-            //         animation: 'fadeInUpAlbum'
-            //     });
+                // - inicializar la paginacion de la galeria
+                $("div.holder").jPages({
+                    previous: 'anterior',
+                    next: 'siguiente',
+                    containerID: "albumsContainer",
+                    perPage: 8,
+                    minHeight: false,
+                    animation: 'fadeInUpAlbum'
+                });
 
-            // }, function (resp) {
+            }, function (resp) {
 
-            //     // - Fail getFlikrAlbums
+                // - Fail getFlikrAlbums
 
-            //     console.log('fail');
-            //     console.log(resp);
+                console.log('fail');
+                console.log(resp);
 
-            // });
+            });
 
             // OBTENCION DE DATOS DE LA API DE YOUTBE
-            // app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
+            app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
 
-            //     // - Done getYoutubeChannel
+                // - Done getYoutubeChannel
 
-            //     var items = data.items;
+                var items = data.items;
 
-            //     $.each(items, function (i, item) {
+                $.each(items, function (i, item) {
 
-            //         var playlistId = item.contentDetails.relatedPlaylists.favorites;
+                    var playlistId = item.contentDetails.relatedPlaylists.uploads;
 
-            //         app.ctrl.inicio.getYoutubeChannelVideos(playlistId, function (data, textStatus, xhr) {
+                    console.log(item.contentDetails.relatedPlaylists);
 
-            //             // - Done getYoutubeChannelVideos
+                    app.ctrl.inicio.getYoutubeChannelVideos(playlistId, function (data, textStatus, xhr) {
 
-            //             var items = data.items,
-            //                 $owlCarousel = $('.owl-carousel');
+                        // - Done getYoutubeChannelVideos
 
-            //             $.each(items, function (i, item) {
+                        var items = data.items,
+                            $owlCarousel = $('.owl-carousel');
 
-            //                 var videoObj = {
-            //                     titulo: item.snippet.title,
-            //                     videoId: item.snippet.resourceId.videoId
-            //                 };
+                        $.each(items, function (i, item) {
 
-            //                 $owlCarousel.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
+                            var videoObj = {
+                                titulo: item.snippet.title,
+                                videoId: item.snippet.resourceId.videoId
+                            };
 
-            //             });
+                            $owlCarousel.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
 
-            //             // - se inicializa owl-carousel
-            //             $owlCarousel.owlCarousel({
-            //                 items: 1,
-            //                 nav: true,
-            //                 loop: true,
-            //                 center: true,
-            //                 mouseDrag: false,
-            //                 touchDrag: false,
-            //                 navText: ['<', '>'],
-            //                 responsive: {
-            //                     0: {
-            //                         dots: false
-            //                     },
-            //                     640: {
-            //                         stagePadding: 100,
-            //                         margin: 50
-            //                     },
-            //                     1024: {
-            //                         stagePadding: 300,
-            //                         margin: 150
-            //                     },
-            //                     1224: {
-            //                         stagePadding: 400,
-            //                         margin: 200
-            //                     }
-            //                 },
-            //                 onInitialized: function () {
+                        });
 
-            //                     // - se inicializa plyr quien se encarga se setiar los videos
-            //                     plyr.setup({
-            //                         controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
-            //                     });
+                        // - se inicializa owl-carousel
+                        $owlCarousel.owlCarousel({
+                            items: 1,
+                            nav: true,
+                            loop: true,
+                            center: true,
+                            mouseDrag: false,
+                            touchDrag: false,
+                            navText: ['<', '>'],
+                            responsive: {
+                                0: {
+                                    dots: false
+                                },
+                                640: {
+                                    stagePadding: 100,
+                                    margin: 50
+                                },
+                                1024: {
+                                    stagePadding: 300,
+                                    margin: 150
+                                },
+                                1300: {
+                                    stagePadding: 400,
+                                    margin: 200
+                                }
+                            },
+                            onInitialized: function () {
 
-            //                 }
-            //             });
+                                // - se inicializa plyr quien se encarga se setiar los videos
+                                plyr.setup({
+                                    controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
+                                });
 
-            //         }, function (resp) {
+                            }
+                        });
 
-            //             // - Fail getYoutubeChannelVideos
+                    }, function (resp) {
 
-            //         });
+                        // - Fail getYoutubeChannelVideos
 
-            //     });
+                    });
 
-            // }, function (resp) {
+                });
 
-            //     // - Fail getYoutubeChannel
+            }, function (resp) {
 
-            // });
+                // - Fail getYoutubeChannel
+
+            });
 
         });
 
@@ -276,11 +280,11 @@ app.ctrl.inicio = {
                     }
                 };
 
-            if (app.context.isMobile()) {
+            // if (app.context.isMobile()) {
 
-                $('body').addClass('gallery-open');
+            $('body').addClass('gallery-open');
 
-            }
+            // }
 
             app.ctrl.inicio.getFlikrAlbumsPhotos(id, function (data, textStatus, xhr) {
 
@@ -356,7 +360,7 @@ app.ctrl.inicio = {
 
     },
 
-    // HELPER SECTION FUNCTIONS
+    // SERVICES
     getFlikrAlbums: function (page, done, fail) {
 
         'use strict';
@@ -482,6 +486,7 @@ app.ctrl.inicio = {
 
     },
 
+    // HELPER SECTION FUNCTIONS
     defineHeaderBG: function (isMobile) {
 
         'use strict';
@@ -527,7 +532,7 @@ app.ctrl.inicio = {
         });
 
         $pointerHand.css({
-            top: $logo.position().top + (logoH + containerH / 15)
+            top: $logo.position().top + (logoH + containerH / 7)
         });
 
     },
@@ -661,7 +666,7 @@ app.ctrl.homeParty = {
                 delay: 100,
                 scale: 1,
                 easing: 'ease-in-out',
-                viewFactor: 0.8
+                viewFactor: 0.3
             });
 
         }());
@@ -716,7 +721,7 @@ app.ctrl.partyCocktail = {
                 viewFactor: 1
             });
 
-            // - section-header title
+            // - section-header description
             sr.reveal('.section-header__description', {
                 origin: 'right',
                 distance: '40px',
@@ -734,7 +739,68 @@ app.ctrl.partyCocktail = {
                 delay: 200,
                 scale: 1,
                 easing: 'ease-out',
-                viewFactor: 0.8
+                viewFactor: 0.15
+            });
+
+        }());
+
+    }
+
+};
+
+// OFFICE PARTY
+app.ctrl.officeParty = {
+
+    init: function () {
+
+        'use strict';
+
+        $(document).on('ready', function () {
+
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.officeParty.settings();
+
+        });
+
+    },
+
+    settings: function () {
+
+        'use strict';
+
+        // - scrollReveal settings
+        (function () {
+
+            // - section-header
+            sr.reveal('.section-header', {
+                distance: '100px',
+                duration: 2000,
+                delay: 100,
+                scale: 1,
+                easing: 'cubic-bezier(0.08,0.51,0.81,0.99)',
+                viewFactor: 0.5
+            });
+
+            // - section-header title
+            sr.reveal('.section-header__title', {
+                origin: 'left',
+                distance: '40px',
+                duration: 1000,
+                delay: 1500,
+                scale: 1,
+                easing: 'ease-in',
+                viewFactor: 1
+            });
+
+            // - section-header description
+            sr.reveal('.section-header__description', {
+                origin: 'right',
+                distance: '40px',
+                duration: 1000,
+                delay: 1500,
+                scale: 1,
+                easing: 'ease-out',
+                viewFactor: 1
             });
 
         }());
