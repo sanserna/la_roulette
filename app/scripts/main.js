@@ -82,7 +82,7 @@ app.ctrl.inicio = {
             // - test api key
             // api_key: 'b5a15c73a84e621e304052f94c847246',
             // - la roulette user id
-            user_id: '142065498@N08',
+            user_id: '142065498@N08'
             // - test user id
             // user_id: '140878839@N02'
         },
@@ -96,7 +96,7 @@ app.ctrl.inicio = {
             api_key: 'AIzaSyBPPX9x7Aj3wQ_aTTMXH7nrl2ddb9v-MdU',
             user_name: '',
             // - la roulette channel id
-            channel_id: 'UC7CtU1sK_A8uboBCJLfzj2g',
+            channel_id: 'UC7CtU1sK_A8uboBCJLfzj2g'
             // - test channel id
             // channel_id: 'UCp2irPEY6KT4392YGoC6ZBQ'
         }
@@ -132,119 +132,119 @@ app.ctrl.inicio = {
 
             }, 'html');
 
-            // // OBTENCION DE DATOS DE LA API DE FLIKR
-            app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
+            // OBTENCION DE DATOS DE LA API DE FLIKR
+            // app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
 
-                // - Done getFlikrAlbums
+            //     // - Done getFlikrAlbums
 
-                var albums = data.photosets.photoset;
+            //     var albums = data.photosets.photoset;
 
-                $.each(albums, function (i, album) {
+            //     $.each(albums, function (i, album) {
 
-                    album.index = i;
-                    app.ctrl.inicio.setAlbum(album);
+            //         album.index = i;
+            //         app.ctrl.inicio.setAlbum(album);
 
-                });
+            //     });
 
-                // - inicializar la paginacion de la galeria
-                $("div.holder").jPages({
-                    previous: 'anterior',
-                    next: 'siguiente',
-                    containerID: "albumsContainer",
-                    perPage: 8,
-                    minHeight: false,
-                    animation: 'fadeInUpAlbum'
-                });
+            //     // - inicializar la paginacion de la galeria
+            //     $("div.holder").jPages({
+            //         previous: 'anterior',
+            //         next: 'siguiente',
+            //         containerID: "albumsContainer",
+            //         perPage: 8,
+            //         minHeight: false,
+            //         animation: 'fadeInUpAlbum'
+            //     });
 
-            }, function (resp) {
+            // }, function (resp) {
 
-                // - Fail getFlikrAlbums
+            //     // - Fail getFlikrAlbums
 
-                console.log('fail');
-                console.log(resp);
+            //     console.log('fail');
+            //     console.log(resp);
 
-            });
+            // });
 
             // OBTENCION DE DATOS DE LA API DE YOUTBE
-            app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
+            // app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
 
-                // - Done getYoutubeChannel
+            //     // - Done getYoutubeChannel
 
-                var items = data.items;
+            //     var items = data.items;
 
-                $.each(items, function (i, item) {
+            //     $.each(items, function (i, item) {
 
-                    var playlistId = item.contentDetails.relatedPlaylists.uploads;
+            //         var playlistId = item.contentDetails.relatedPlaylists.uploads;
 
-                    console.log(item.contentDetails.relatedPlaylists);
+            //         console.log(item.contentDetails.relatedPlaylists);
 
-                    app.ctrl.inicio.getYoutubeChannelVideos(playlistId, function (data, textStatus, xhr) {
+            //         app.ctrl.inicio.getYoutubeChannelVideos(playlistId, function (data, textStatus, xhr) {
 
-                        // - Done getYoutubeChannelVideos
+            //             // - Done getYoutubeChannelVideos
 
-                        var items = data.items,
-                            $owlCarousel = $('.owl-carousel');
+            //             var items = data.items,
+            //                 $owlCarousel = $('.owl-carousel');
 
-                        $.each(items, function (i, item) {
+            //             $.each(items, function (i, item) {
 
-                            var videoObj = {
-                                titulo: item.snippet.title,
-                                videoId: item.snippet.resourceId.videoId
-                            };
+            //                 var videoObj = {
+            //                     titulo: item.snippet.title,
+            //                     videoId: item.snippet.resourceId.videoId
+            //                 };
 
-                            $owlCarousel.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
+            //                 $owlCarousel.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
 
-                        });
+            //             });
 
-                        // - se inicializa owl-carousel
-                        $owlCarousel.owlCarousel({
-                            items: 1,
-                            nav: true,
-                            loop: true,
-                            center: true,
-                            mouseDrag: false,
-                            touchDrag: false,
-                            navText: ['<', '>'],
-                            responsive: {
-                                0: {
-                                    dots: false
-                                },
-                                640: {
-                                    stagePadding: 100,
-                                    margin: 50
-                                },
-                                1024: {
-                                    stagePadding: 300,
-                                    margin: 150
-                                },
-                                1300: {
-                                    stagePadding: 400,
-                                    margin: 200
-                                }
-                            },
-                            onInitialized: function () {
+            //             // - se inicializa owl-carousel
+            //             $owlCarousel.owlCarousel({
+            //                 items: 1,
+            //                 nav: true,
+            //                 loop: true,
+            //                 center: true,
+            //                 mouseDrag: false,
+            //                 touchDrag: false,
+            //                 navText: ['<', '>'],
+            //                 responsive: {
+            //                     0: {
+            //                         dots: false
+            //                     },
+            //                     640: {
+            //                         stagePadding: 100,
+            //                         margin: 50
+            //                     },
+            //                     1024: {
+            //                         stagePadding: 300,
+            //                         margin: 150
+            //                     },
+            //                     1300: {
+            //                         stagePadding: 400,
+            //                         margin: 200
+            //                     }
+            //                 },
+            //                 onInitialized: function () {
 
-                                // - se inicializa plyr quien se encarga se setiar los videos
-                                plyr.setup({
-                                    controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
-                                });
+            //                     // - se inicializa plyr quien se encarga se setiar los videos
+            //                     plyr.setup({
+            //                         controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
+            //                     });
 
-                            }
-                        });
+            //                 }
+            //             });
 
-                    }, function (resp) {
+            //         }, function (resp) {
 
-                        // - Fail getYoutubeChannelVideos
+            //             // - Fail getYoutubeChannelVideos
 
-                    });
+            //         });
 
-                });
+            //     });
 
-            }, function (resp) {
+            // }, function (resp) {
 
-                // - Fail getYoutubeChannel
+            //     // - Fail getYoutubeChannel
 
-            });
+            // });
 
         });
 
@@ -291,6 +291,8 @@ app.ctrl.inicio = {
                 // - Done getFlikrAlbumsPhotos
 
                 var photos = data.photoset.photo;
+
+                console.log(data);
 
                 $.each(photos, function (i, photo) {
 
@@ -402,7 +404,7 @@ app.ctrl.inicio = {
             key: app.ctrl.inicio.data.flikrAuth.api_key,
             id: app.ctrl.inicio.data.flikrAuth.user_id,
             photosetId: albumId,
-            extras: 'url_s, url_m'
+            extras: 'url_s, url_m, url_sq, url_t'
         })
         .done(function (data, textStatus, xhr) {
 
@@ -807,4 +809,27 @@ app.ctrl.officeParty = {
 
     }
 
+};
+
+// CONTACTO
+app.ctrl.contacto = {
+
+    init: function () {
+
+        'use strict';
+
+        $(document).on('ready', function () {
+
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.contacto.settings();
+
+        });
+
+    },
+
+    settings: function () {
+
+        'use strict';
+
+    }
 };

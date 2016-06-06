@@ -17,15 +17,16 @@
 
 .page-content--inicio {
     .frase-animada {
-        background $overlay-color
-        display block
-        height 600px
-        padding-top 200px
+        background $home-header-overlay-color
         border-bottom 7px solid $home-primary-color
+        display block
+        min-height 90vh
+        padding 100px 0 300px 0
         h1 {
-            // color $blackMed
             color white
-            font-size 45px
+        }
+        @media screen and (min-width: 40em) {
+            padding 200px 0 400px 0
         }
     }
 }
@@ -73,7 +74,7 @@
     .main-header__overlayed-bg {
         height 100%
         width 100%
-        background $overlay-color
+        background $home-header-overlay-color
         z-index 0
     }
     .main-header__lr-logo {
@@ -92,16 +93,6 @@
         height 50px
         width 50px
     }
-    &:after {
-        // content ''
-        display block
-        position absolute
-        left 0px
-        bottom 0px
-        height 7px
-        background-color $purple-logo
-        width 100%
-    }
 }
 
 
@@ -111,7 +102,7 @@
 // -------------------
 
 .servicios {
-    background-color $blackBG
+    background-color $blackMed
     .servicios__titulo {
         color white
         margin 0
@@ -136,8 +127,12 @@
 // -------------------
 
 .galeria {
-    // background-color $silver
-    background linear-gradient(to top, white 30%, $silver 100%)
+    background-color $clouds
+    // background linear-gradient(to top, white 30%, $silver 100%)
+    .section-title,
+    .section-description {
+        color $blackMed
+    }
     .section-title {
         margin 0
     }
@@ -156,11 +151,10 @@
 // -------------------
 // @VIDEOS-PROMOCIONALES
 // -------------------
-// linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(125,185,232,1) 100%)
 
 .videos-promocionales {
-    // background-color $silver
-    background linear-gradient(to bottom, white 30%, $silver 100%)
+    background-color lighten($home-primary-color, 70%)
+    // background linear-gradient(to bottom, white 30%, $silver 100%)
     width 100%
     padding-left 10px
     padding-right 10px
@@ -188,15 +182,25 @@
 // -------------------
 
 .about {
-    background-color $blackBG
+    background-color $clouds
     .about__titulo {
-        color white
+        color $blackMed
         margin 0
     }
     .about__descripcion {
-        color white
+        color $blackMed
         font-weight 300
         padding-bottom 1.5rem
         text-align center
+    }
+    @media screen and (min-width: 40em) {
+        & > .column > .column:first-child .fundador {
+            margin-right 0
+            margin-left auto
+        }
+        & > .column > .column:last-child .fundador {
+            margin-left 0
+            margin-right auto
+        }
     }
 }

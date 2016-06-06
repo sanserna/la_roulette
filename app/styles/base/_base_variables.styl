@@ -12,7 +12,7 @@ $base-font-size = 16px
 
 mediaQ = {
     min-screen-size: 320px
-    max-screen-size: 1280px
+    max-screen-size: 1900px
     small-cutoff: 39.9375em
     medium-cutoff: 40em
     large-cutoff: 64em
@@ -49,6 +49,7 @@ $maroon = #85144B
 $white = #FFF
 $silver = #DDD
 $gray = #AAA
+$darkGray = #333333
 $blackBG = #0F0F0F
 $blackMed = #141414
 $clouds = #ECF0F1
@@ -110,7 +111,8 @@ $pink-logo = #EC008B
 $home-primary-color = $azul-3
 
 // - Main header
-$overlay-color = rgba(black,.2)
+// $home-header-overlay-color = rgba(black,.2) url('img/assets/pattern.png')
+$home-header-overlay-color = url('img/assets/pattern.png')
 
 
 
@@ -156,7 +158,7 @@ $main-nav-num-items = 5
 // #PAGINACION
 // -------------------
 
-$paginacion-normal-color = $blackBG
+$paginacion-normal-color = $blackMed
 $paginacion-current-color = $home-primary-color
 $paginacion-disabled-color = $asbestos
 
@@ -170,7 +172,7 @@ $min-screen-size = mediaQ.min-screen-size
 $max-screen-size = mediaQ.max-screen-size
 
 // max y min para titulos
-$big-title-range = 2rem 2.8rem
+$big-title-range = 1.8rem 2.8rem
 $section-title-range = 1.5rem 2rem
 $item-title-range = 1.2rem 1.7rem
 $item-title-big-range = 1.2rem 2rem

@@ -18,10 +18,10 @@
  * home-party...................Contiene los estilos de la seccion home-party
  * party-cocktails..............Contiene los estilos de la seccion party-cocktails
  * office-party.................Contiene los estilos de la seccion office-party
+ * contacto.....................Contiene los estilos de la seccion contacto
+ *
  *
  * - Comun
- * .contacto....................Seccion de contacto
- * .section-intro...............Intro de informacion sobre el servicio
  * .page-foter..................Footer principal de la pagina
  *
  * COMPONENTES
@@ -38,6 +38,8 @@
  * .owl-controls................Estilos para los controles de owl-carousel
  * .pagination-controls.........Estilos para los controles de la paginacion
  * .servicio-content-group......Grupo que descrive un servicio con sus subservicios
+ * .social-links................Contenedor de links de redes sociales
+ * .page-footer.................Footer general de la pagina web
  */
 
 // - Frameworks imports
@@ -60,6 +62,7 @@
 @import 'secciones/home-party'
 @import 'secciones/party-cocktail'
 @import 'secciones/office-party'
+@import 'secciones/contacto'
 
 // - Component imports
 @import 'componentes/main-nav-header'
@@ -74,6 +77,8 @@
 @import 'componentes/owl-controls'
 @import 'componentes/pagination-controls'
 @import 'componentes/servicio-content-group'
+@import 'componentes/social-links'
+@import 'componentes/page-footer'
 
 
 
@@ -83,128 +88,6 @@
 
 .page-content {
     width 100%
-}
-
-
-
-// -------------------
-// @SECTION-INTRO
-// -------------------
-
-.section-intro {
-    background white url('img/agsquare_@2X.png')
-    min-height 80vh
-    .section-intro__logo {
-        display block
-        margin auto
-        margin-bottom 20px
-        padding-left 0.625rem
-        padding-right 0.625rem
-        width 100%
-        max-width 400px
-        @media screen and (min-width: 40em) {
-            margin-bottom 40px
-        }
-    }
-    .section-intro__txt {
-        text-align center
-        width 70%
-        margin auto
-    }
-}
-
-
-
-// -------------------
-// @CONTACTO
-// -------------------
-
-.contacto {
-    background white url('img/assets/square_bg_@2X.png')
-    text-align center
-    .row {
-        margin 0
-    }
-    .contacto__titulo {
-        @media screen and (min-width: 40em) {
-            margin-bottom 1rem
-        }
-        @media screen and (min-width: 64em) {
-            margin-bottom 4rem
-        }
-    }
-    .contacto__normal-text{
-        padding 20px 0
-        @media screen and (min-width: 40em) {
-            padding 1.5rem 0
-        }
-        @media screen and (min-width: 64em) {
-            padding 1rem 0
-        }
-    }
-    .contacto__item {
-        padding 10px 0
-        h2 {
-            color $green-logo
-            font-weight 400
-        }
-        @media screen and (min-width: 64em) {
-            padding 1rem 0
-        }
-    }
-    .contacto__social {
-        justify-content center
-        padding 10px 0
-        > div {
-            flex none
-        }
-        img {
-            border-radius 50%
-            max-width 60px
-            transition 0.3s background-color ease-in
-            &[src*=facebook]:hover {
-                background-color #3B5998
-            }
-            &[src*=twitter]:hover {
-                background-color #55ACEE
-            }
-            &[src*=instagram]:hover {
-                background-color #125688
-            }
-        }
-    }
-    .contact-form {
-        margin-top 2rem
-        @media screen and (min-width: 40em) {
-            margin-top 3rem
-        }
-        @media screen and (min-width: 64em) {
-            margin-top 0
-        }
-    }
-}
-
-
-
-// -------------------
-// @PAGE-FOOTER
-// -------------------
-
-.page-footer {
-    color white
-    background-image url(img/assets/footer.png)
-    padding 20px 10px
-    text-align center
-    .page-footer__logo {
-        width 100px
-    }
-    .small-text {
-        margin-top 10px
-    }
-    .referenceLink {
-        color $teal-logo
-        text-decoration underline
-    }
 }
 
 

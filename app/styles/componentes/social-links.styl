@@ -1,0 +1,28 @@
+// -------------------
+// #SOCIAL-LINKS
+// -------------------
+
+.social-links {
+    justify-content center
+    padding 10px 0
+    > div {
+        flex none
+    }
+    img {
+        border-radius 50%
+        max-width 30px
+        transition 0.3s background-color ease-in
+        &[src*=facebook]:hover {
+            background-color #3B5998
+        }
+        &[src*=twitter]:hover {
+            background-color #55ACEE
+        }
+        &[src*=instagram]:hover {
+            background-color #125688
+        }
+        @media screen and (min-width: 40em) {
+            max-width 60px
+        }
+    }
+}
