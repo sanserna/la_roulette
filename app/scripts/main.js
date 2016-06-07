@@ -50,6 +50,74 @@ app.ctrl = {
 
         });
 
+        // SETTINGS MAIN NAV
+        (function () {
+
+            var didScroll,
+                lastScrollTop = 0,
+                // - Minimum of pixels lapsed after hide or show menu
+                delta = 100,
+                $body = $('body'),
+                navbarHeight = $('#globalnav').outerHeight();
+
+            // on scroll, let the interval function know the user has scrolled
+            $(window).scroll(function (event) {
+
+                didScroll = true;
+
+            });
+
+            // run hasScrolled() and reset didScroll status
+            setInterval(function () {
+
+                if (didScroll) {
+
+                    hasScrolled();
+                    didScroll = false;
+
+                }
+
+            }, 250);
+
+            /**
+            * Muestra u oculta la navegacion si se esta haciendo scroll
+            */
+            function hasScrolled () {
+
+                var st = $(window).scrollTop();
+
+                // Verify minimum of pixels lapsed after hide or show menu
+                if (Math.abs(lastScrollTop - st) <= delta) {
+
+                    return;
+
+                }
+
+                // if (!app.context.isMobile()) {
+
+                //     return;
+
+                // }
+
+                // If current position > last position AND scrolled past navbar
+                if (st > lastScrollTop && st > navbarHeight) {
+
+                    // - scroll down hide
+                    $body.addClass('main-nav-hide');
+
+                } else if (st + $(window).height() < $(document).height()) {
+
+                    // - scroll up show
+                    $body.removeClass('main-nav-hide');
+
+                }
+
+                lastScrollTop = st;
+
+            }
+
+        }());
+
     }()),
 
     // HELPER FUNCTIONS
@@ -139,6 +207,8 @@ app.ctrl.inicio = {
 
             //     var albums = data.photosets.photoset;
 
+            //     console.log(albums);
+
             //     $.each(albums, function (i, album) {
 
             //         album.index = i;
@@ -165,7 +235,7 @@ app.ctrl.inicio = {
 
             // });
 
-            // OBTENCION DE DATOS DE LA API DE YOUTBE
+            // // OBTENCION DE DATOS DE LA API DE YOUTBE
             // app.ctrl.inicio.getYoutubeChannel(function (data, textStatus, xhr) {
 
             //     // - Done getYoutubeChannel
@@ -175,8 +245,6 @@ app.ctrl.inicio = {
             //     $.each(items, function (i, item) {
 
             //         var playlistId = item.contentDetails.relatedPlaylists.uploads;
-
-            //         console.log(item.contentDetails.relatedPlaylists);
 
             //         app.ctrl.inicio.getYoutubeChannelVideos(playlistId, function (data, textStatus, xhr) {
 
@@ -280,11 +348,7 @@ app.ctrl.inicio = {
                     }
                 };
 
-            // if (app.context.isMobile()) {
-
-            $('body').addClass('gallery-open');
-
-            // }
+            $('body').addClass('main-nav-hide');
 
             app.ctrl.inicio.getFlikrAlbumsPhotos(id, function (data, textStatus, xhr) {
 
@@ -639,7 +703,7 @@ app.ctrl.homeParty = {
                 viewFactor: 0.5
             });
 
-            // - section-header title
+            // - section-header__title
             sr.reveal('.section-header__title', {
                 origin: 'left',
                 distance: '40px',
@@ -650,7 +714,7 @@ app.ctrl.homeParty = {
                 viewFactor: 1
             });
 
-            // - section-header title
+            // - section-header__description
             sr.reveal('.section-header__description', {
                 origin: 'right',
                 distance: '40px',
@@ -676,7 +740,6 @@ app.ctrl.homeParty = {
     }
 
     // HELPER SECTION FUNCTIONS
-
 };
 
 // PARTY COCKTAIL
@@ -712,7 +775,7 @@ app.ctrl.partyCocktail = {
                 viewFactor: 0.5
             });
 
-            // - section-header title
+            // - section-header__title
             sr.reveal('.section-header__title', {
                 origin: 'left',
                 distance: '40px',
@@ -723,7 +786,7 @@ app.ctrl.partyCocktail = {
                 viewFactor: 1
             });
 
-            // - section-header description
+            // - section-header__description
             sr.reveal('.section-header__description', {
                 origin: 'right',
                 distance: '40px',
@@ -734,7 +797,7 @@ app.ctrl.partyCocktail = {
                 viewFactor: 1
             });
 
-            // - cocktail half
+            // - cocktail__half
             sr.reveal('.sr-half', {
                 distance: '50px',
                 duration: 1000,
@@ -748,6 +811,7 @@ app.ctrl.partyCocktail = {
 
     }
 
+    // HELPER SECTION FUNCTIONS
 };
 
 // OFFICE PARTY
@@ -783,7 +847,7 @@ app.ctrl.officeParty = {
                 viewFactor: 0.5
             });
 
-            // - section-header title
+            // - section-header__title
             sr.reveal('.section-header__title', {
                 origin: 'left',
                 distance: '40px',
@@ -794,7 +858,7 @@ app.ctrl.officeParty = {
                 viewFactor: 1
             });
 
-            // - section-header description
+            // - section-header__description
             sr.reveal('.section-header__description', {
                 origin: 'right',
                 distance: '40px',
@@ -805,10 +869,31 @@ app.ctrl.officeParty = {
                 viewFactor: 1
             });
 
+            // - servicio-content-item
+            sr.reveal('.sr-servicio-item', {
+                distance: '50px',
+                duration: 800,
+                delay: 100,
+                scale: 1,
+                easing: 'ease-in-out',
+                viewFactor: 0.3
+            });
+
+            // - servicio-content-group__item
+            sr.reveal('.sr-sc-group-item', {
+                distance: '30px',
+                duration: 500,
+                delay: 100,
+                scale: 1,
+                easing: 'ease-in-out',
+                viewFactor: 0.4
+            });
+
         }());
 
     }
 
+    // HELPER SECTION FUNCTIONS
 };
 
 // CONTACTO
@@ -832,4 +917,6 @@ app.ctrl.contacto = {
         'use strict';
 
     }
+
+    // HELPER SECTION FUNCTIONS
 };

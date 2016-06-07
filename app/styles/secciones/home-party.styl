@@ -28,6 +28,19 @@
     .items-wrapper {
         padding 0
     }
+    .btn-sliding-bg {
+        &:hover {
+            color $home-party-primary-color
+        }
+    }
+    .servicio-content-item {
+        .item-description-big {
+            color $home-party-primary-color
+        }
+    }
+    .item-divider:last-child {
+        background-color $blackBG
+    }
 }
 
 
@@ -40,8 +53,13 @@
     background-color $clouds
     color $blackMed
     min-height 70vh
+    padding-left 20px
+    padding-right 20px
     p {
         font-weight 300
         text-align center
+    }
+    @media screen and (min-width: 64em) {
+        min-height 80vh
     }
 }
