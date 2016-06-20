@@ -55,7 +55,7 @@ var distFiles;
 
 // Lint JavaScript: lee el codigo JS y verifica si tiene errores.
 gulp.task('lint', function() {
-  gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/**'])
+  gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/**', '!app/scripts/utils/**'])
   .pipe(eslint({
     'rules': {
       'camelcase': 0,
@@ -90,7 +90,7 @@ gulp.task('lint', function() {
       'slm': false,
       'PhotoSwipe': false,
       'PhotoSwipeUI_Default': false,
-      'ScrollReveal': false,
+      'scrollReveal': false,
       'sr': false
     }
   }))
@@ -187,7 +187,7 @@ gulp.task('build:css', function() {
 
 // Scripts task: procesar codigo JS.
 gulp.task('build:js', function() {
-  return gulp.src([
+  var bundle = gulp.src([
     // Nota: en listar los scripts explícitamente en el orden para que sean
     // correctamente concatenados.
     'app/scripts/vendors/jquery.js',
@@ -199,6 +199,7 @@ gulp.task('build:js', function() {
     'app/scripts/vendors/owl.carousel.js',
     'app/scripts/vendors/jPages.js',
     'app/scripts/vendors/scrollreveal.js',
+    'app/scripts/vendors/jquery.blast.js',
     'app/scripts/slm.js',
     'app/scripts/context.js',
     'app/scripts/services.js',
@@ -209,9 +210,17 @@ gulp.task('build:js', function() {
   .pipe(concat('main.min.js'))
   .pipe(uglify())
   // Output files
-  .pipe(size({title: 'scripts'}))
+  .pipe(size({title: 'bundled scripts'}))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('dist/scripts'));
+
+  var utils = gulp.src(['app/scripts/utils/**/*'])
+  .pipe(uglify())
+  // Output files
+  .pipe(size({title: 'utils scripts'}))
+  .pipe(gulp.dest('dist/scripts/utils'));
+
+  return merge(bundle, utils);
 });
 
 // HTML task: compilar los templates.

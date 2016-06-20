@@ -11,7 +11,14 @@ app.ctrl = {
         $(document).on('ready', function () {
 
             // - set global scrollReveal var
-            window.sr = ScrollReveal();
+            window.sr = scrollReveal();
+
+            // - añadir clase al <html> si scrollReveal es soportado
+            if (sr.isSupported()) {
+
+                document.documentElement.classList.add('sr');
+
+            }
 
             // - inicializar variables globales
             app.ctrl.data.transEndEventNames = {
@@ -179,9 +186,11 @@ app.ctrl.inicio = {
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.inicio.settings();
 
+            // - llamado inicial para que se configure la interfaz
+            app.ctrl.inicio.centerHeaderContent();
+
             // - listener para centrar el logo al cambiar el tamaño de la ventana
             $(window).resize(app.ctrl.inicio.centerHeaderContent);
-            $(window).ready(app.ctrl.inicio.centerHeaderContent);
 
             if (app.context.isMobile()) {
 
@@ -206,8 +215,6 @@ app.ctrl.inicio = {
             //     // - Done getFlikrAlbums
 
             //     var albums = data.photosets.photoset;
-
-            //     console.log(albums);
 
             //     $.each(albums, function (i, album) {
 
@@ -251,7 +258,8 @@ app.ctrl.inicio = {
             //             // - Done getYoutubeChannelVideos
 
             //             var items = data.items,
-            //                 $owlCarousel = $('.owl-carousel');
+            //                 $owlCarousel = $('.owl-carousel'),
+            //                 html = '';
 
             //             $.each(items, function (i, item) {
 
@@ -260,9 +268,11 @@ app.ctrl.inicio = {
             //                     videoId: item.snippet.resourceId.videoId
             //                 };
 
-            //                 $owlCarousel.append(slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj));
+            //                 html += slm.tmpltParser(app.templates.youTubeVideoPlyr, videoObj);
 
             //             });
+
+            //             $owlCarousel.append(html);
 
             //             // - se inicializa owl-carousel
             //             $owlCarousel.owlCarousel({
@@ -356,16 +366,14 @@ app.ctrl.inicio = {
 
                 var photos = data.photoset.photo;
 
-                console.log(data);
-
                 $.each(photos, function (i, photo) {
 
                     var photoObj = {
                         src: photo[imgProps.imgType],
                         w: Number(photo[imgProps.w]),
                         h: Number(photo[imgProps.h]),
-                        author: data.ownername,
-                        title: photo.title
+                        author: data.ownername
+                        // title: photo.title
                     };
 
                     items.push(photoObj);
@@ -890,6 +898,31 @@ app.ctrl.officeParty = {
             });
 
         }());
+
+    }
+
+    // HELPER SECTION FUNCTIONS
+};
+
+// COCKTAIL BOX
+app.ctrl.cocktailBox = {
+
+    init: function () {
+
+        'use strict';
+
+        $(document).on('ready', function () {
+
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.contacto.settings();
+
+        });
+
+    },
+
+    settings: function () {
+
+        'use strict';
 
     }
 

@@ -8,6 +8,7 @@
 .contacto {
     background white url('img/assets/square_bg_@2X.png')
     text-align center
+    min-height 100vh
     .row {
         margin 0
     }
@@ -19,13 +20,22 @@
             margin-bottom 4rem
         }
     }
-    .contacto__normal-text{
+    .contacto__normal-text {
         padding 20px 0
         @media screen and (min-width: 40em) {
             padding 1.5rem 0
         }
         @media screen and (min-width: 64em) {
             padding 1rem 0
+        }
+    }
+    .contacto__form-text {
+        padding 2rem 0 1rem 0
+        @media screen and (min-width: 40em) {
+            padding 3rem 0 1.5rem 0
+        }
+        @media screen and (min-width: 64em) {
+            padding 0 0 2rem 0
         }
     }
     .contacto__item {
@@ -36,15 +46,6 @@
         }
         @media screen and (min-width: 64em) {
             padding 1rem 0
-        }
-    }
-    .contact-form {
-        margin-top 2rem
-        @media screen and (min-width: 40em) {
-            margin-top 3rem
-        }
-        @media screen and (min-width: 64em) {
-            margin-top 0
         }
     }
 }

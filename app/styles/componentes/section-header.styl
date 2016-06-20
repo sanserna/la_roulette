@@ -3,23 +3,22 @@
 // -------------------
 
 .section-header {
-    visibility hidden // scroll reveal
     background-color black
     background-attachment fixed
     box-sizing content-box
     display flex
     flex-direction column
     justify-content center
-    height 100vh
+    min-height 100vh
     overflow hidden
-    padding 0px 15px
+    padding 0 15px
     position relative
     .section-header__overlayed-bg {
         position absolute
         top 0px
         left 0px
         width 100%
-        height 100vh
+        height 100%
         background-image url(img/assets/pattern.png)
         background-color rgba(black,.1)
         z-index 0
@@ -59,6 +58,10 @@
             width 80%
         }
     }
+}
+
+.sr .section-header {
+    visibility hidden // scroll reveal
 }
 
 // - Home-party section-header

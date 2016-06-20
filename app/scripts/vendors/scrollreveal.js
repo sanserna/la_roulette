@@ -42,7 +42,7 @@
         Tools,
         _requestAnimationFrame;
 
-    this.ScrollReveal = (function() {
+    this.scrollReveal = (function() {
 
         /**
          * Configuration
