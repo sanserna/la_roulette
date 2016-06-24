@@ -186,11 +186,20 @@ app.ctrl.inicio = {
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.inicio.settings();
 
+            // - inicializar facebook-plugin al cargar el plugin de instagram
+            $('.lightwidget-widget').load(function () {
+
+                var $fbPluginContainer = $('#facebook-plugin');
+
+                $fbPluginContainer.html('<div class="fb-page" data-href="https://www.facebook.com/partylaroulette" data-height="' + $(this).height() + '" data-width="500" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/partylaroulette" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/partylaroulette">La Roulette</a></blockquote></div>');
+
+            });
+
             // - llamado inicial para que se configure la interfaz
-            app.ctrl.inicio.centerHeaderContent();
+            app.ctrl.inicio.renderPageContent();
 
             // - listener para centrar el logo al cambiar el tamaño de la ventana
-            $(window).resize(app.ctrl.inicio.centerHeaderContent);
+            $(window).resize(app.ctrl.inicio.renderPageContent);
 
             if (app.context.isMobile()) {
 
@@ -588,7 +597,7 @@ app.ctrl.inicio = {
 
     },
 
-    centerHeaderContent: function () {
+    renderPageContent: function () {
 
         'use strict';
 

@@ -9,39 +9,18 @@
     }
     .servicio-content-group__header {
         min-height 80vh
-        display flex
-        flex-direction column
-        justify-content center
-        .item-description-big, 
-        .big-description {
-            color white
-            text-align center
-            z-index 1
-        }
-        .item-description-big {
+        .servicio-content-group__header__titulo {
             font-weight 700
             color $office-party-primary-color
         }
-        .big-description {
+        .servicio-content-group__header__descripcion {
             font-weight 300
-            padding 0 20px
         }
         @media screen and (min-width: 40em) {
             min-height 40vh
-            .big-description {
-                padding 0 80px
-            }
         }
         @media screen and (min-width: 64em) {
             min-height 70vh
-            .big-description {
-                padding 0 250px
-            }
-        }
-        @media screen and (min-width: 120em) {
-            .big-description {
-                padding 0 450px
-            }
         }
     }
     .servicio-content-group__item {
