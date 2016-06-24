@@ -271,8 +271,8 @@ gulp.task('start', function(){
     server: ['.tmp', 'app'],
     open: false,
     port: 3000,
-    ghostMode: false,
-    online: false,
+    // ghostMode: false,
+    // online: false,
     reloadDelay: 1000,
     injectChanges: false,
   });
