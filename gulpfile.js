@@ -80,6 +80,7 @@ gulp.task('lint', function() {
     },
     'globals': {
       '$': false,
+      'jQuery': false,
       'document': false,
       'window': false,
       'navigator': false,
@@ -91,7 +92,8 @@ gulp.task('lint', function() {
       'PhotoSwipe': false,
       'PhotoSwipeUI_Default': false,
       'scrollReveal': false,
-      'sr': false
+      'sr': false,
+      'XMLSerializer': false
     }
   }))
   .pipe(eslint.format())
@@ -288,7 +290,7 @@ gulp.task('serve:dist', function() {
     notify: false,
     logPrefix: 'WCP',
     server: 'dist',
-    port: 3001
+    port: 3000
   })
 });
 

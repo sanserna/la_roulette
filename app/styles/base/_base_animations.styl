@@ -17,7 +17,7 @@
 // @FADE-IN-UP-ALBUM
 // -------------------
 
-@-webkit-keyframes fadeInUpAlbum {
+@keyframes fadeInUpAlbum {
     0% {
         opacity 0
         transform translateY(30px)
@@ -31,6 +31,27 @@
 
 .fadeInUpAlbum {
     animation-name fadeInUpAlbum
+}
+
+
+
+// -------------------
+// @FADE-IN-SCALE
+// -------------------
+
+@keyframes fadeInScale {
+    0% {
+        opacity 0
+        transform scale(5)
+    }
+    100% {
+        opacity 1
+        transform scale(1)
+    }
+}
+
+.fadeInScale {
+    animation-name fadeInScale
 }
 
 
@@ -60,7 +81,7 @@
 
 
 // -------------------
-// @FADE-IN-UP
+// @FADE-IN
 // -------------------
 
 @keyframes fadeIn {

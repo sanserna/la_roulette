@@ -21,6 +21,13 @@ app.ctrl = {
             }
 
             // - inicializar variables globales
+            app.ctrl.data.animationEndEventsNames = {
+                WebkitAnimation: 'webkitAnimationEnd',
+                MozAnimation: 'mozAnimationEnd',
+                OAnimation: 'MSAnimationEnd',
+                msAnimation: 'oanimationend',
+                animation: 'animationend'
+            };
             app.ctrl.data.transEndEventNames = {
                 WebkitTransition: 'webkitTransitionEnd',
                 MozTransition: 'transitionend',
@@ -28,13 +35,18 @@ app.ctrl = {
                 msTransition: 'MSTransitionEnd',
                 transition: 'transitionend'
             };
+            app.ctrl.data.animationEventName = app.ctrl.data.animationEndEventsNames[Modernizr.prefixed('animation')];
             app.ctrl.data.transEndEventName = app.ctrl.data.transEndEventNames[Modernizr.prefixed('transition')];
             app.ctrl.data.support = {
+                animations: Modernizr.cssanimations,
                 transitions: Modernizr.csstransitions
             };
 
             // - set elements image backgrounds
             app.ctrl.setElementImgBg();
+
+            // - inicializar blast en textos que van a ser animados
+            app.ctrl.initBlast();
 
         });
 
@@ -43,6 +55,8 @@ app.ctrl = {
     settings: (function () {
 
         'use strict';
+
+        var didScroll;
 
         // MAIN NAVIGATION TOGGLE
         $(document).on('click', '#trigger-main-nav', function (event) {
@@ -57,22 +71,33 @@ app.ctrl = {
 
         });
 
+        // - on scroll, let the interval function know the user has scrolled
+        $(window).scroll(function (event) {
+
+            // - variable que determina si se esta haciendo scroll
+            didScroll = true;
+
+            if ($('[blast-wrapper]').length) {
+
+                // - determinar si el elemento blast-wrapper entra en el area visible
+                if (app.ctrl.elementIsVisible('[blast-wrapper]', 0.7)) {
+
+                    app.ctrl.animateText();
+
+                }
+
+            }
+
+        });
+
         // SETTINGS MAIN NAV
         (function () {
 
-            var didScroll,
-                lastScrollTop = 0,
+            var lastScrollTop = 0,
                 // - Minimum of pixels lapsed after hide or show menu
                 delta = 100,
                 $body = $('body'),
                 navbarHeight = $('#globalnav').outerHeight();
-
-            // on scroll, let the interval function know the user has scrolled
-            $(window).scroll(function (event) {
-
-                didScroll = true;
-
-            });
 
             // run hasScrolled() and reset didScroll status
             setInterval(function () {
@@ -114,8 +139,12 @@ app.ctrl = {
 
                 } else if (st + $(window).height() < $(document).height()) {
 
-                    // - scroll up show
-                    $body.removeClass('main-nav-hide');
+                    if (!$body.hasClass('carta-is-open')) {
+
+                        // - scroll up show
+                        $body.removeClass('main-nav-hide');
+
+                    }
 
                 }
 
@@ -140,6 +169,49 @@ app.ctrl = {
                 path = $e.attr('media-bg-img');
 
             $e.css('background-image', 'url(' + path + ')');
+
+        });
+
+    },
+
+    initBlast: function () {
+
+        'use strict';
+
+        var $blastTexts = $('[blast-text]');
+
+        $blastTexts.blast({
+            // delimiter: 'character',
+            customClass: 'blast-element'
+        });
+
+    },
+
+    elementIsVisible: function (element, viewFactor) {
+
+        'use strict';
+
+        var $e = element instanceof jQuery ? element : $(element),
+            eTop = $e.offset().top + ($e.offset().top * viewFactor),
+            eBottom = $e.offset().top + $e.outerHeight(),
+            viewportBottom = $(window).scrollTop() + $(window).height();
+
+        return ((viewportBottom > eTop) && (viewportBottom < eBottom));
+
+    },
+
+    animateText: function () {
+
+        'use strict';
+
+        var $e = $('.blast-element');
+
+        $e.each(function (i, l) {
+
+            var $this = $(this),
+                delay = i / $e.length;
+
+            $this.css('animation-delay', delay + 's').addClass('animated fadeInScale');
 
         });
 
@@ -212,11 +284,14 @@ app.ctrl.inicio = {
             }
 
             // - load plyr controls sprite
-            $.get('img/assets/plyr-sprite.svg', function (data) {
+            $.get("img/assets/plyr-sprite.svg", function (data) {
 
-                $('body').prepend('<div hidden>' + data + '</div>');
+                var div = document.createElement("div");
 
-            }, 'html');
+                div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
+                document.body.insertBefore(div, document.body.childNodes[0]);
+
+            });
 
             // OBTENCION DE DATOS DE LA API DE FLIKR
             app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
@@ -246,7 +321,7 @@ app.ctrl.inicio = {
 
                 // - Fail getFlikrAlbums
 
-                console.log('fail');
+                $('.galeria .error-text').css('display', 'block');
                 console.log(resp);
 
             });
@@ -323,6 +398,9 @@ app.ctrl.inicio = {
 
                         // - Fail getYoutubeChannelVideos
 
+                        $('.videos-promocionales .error-text').css('display', 'block');
+                        console.log(resp);
+
                     });
 
                 });
@@ -330,6 +408,9 @@ app.ctrl.inicio = {
             }, function (resp) {
 
                 // - Fail getYoutubeChannel
+
+                $('.videos-promocionales .error-text').css('display', 'block');
+                console.log(resp);
 
             });
 
@@ -707,6 +788,10 @@ app.ctrl.homeParty = {
 
         'use strict';
 
+        var cartaCurrentIndex = 0,
+            $cartaItems = $('.js-carta-img-container div'),
+            cartaItemsCount = $cartaItems.length;
+
         // - scrollReveal settings
         (function () {
 
@@ -754,9 +839,69 @@ app.ctrl.homeParty = {
 
         }());
 
-    }
+        // - abrir carta cocteles
+        $(document).on('click', '.js-carta-abrir', function () {
+
+            var $cartaCocteles = $('.carta-cocteles');
+
+            $cartaCocteles.fadeIn(500).css('display', 'flex');
+            $('body').addClass('carta-is-open');
+
+        });
+
+        // - close carta cocteles
+        $(document).on('click', '.js-carta-close', function () {
+
+            var $cartaCocteles = $('.carta-cocteles');
+
+            $cartaCocteles.fadeOut(500);
+            $('body').removeClass('carta-is-open');
+
+        });
+
+        // - next carta cocteles
+        $(document).on('click', '.js-carta-next', function () {
+
+            cartaCurrentIndex += 1;
+
+            if (cartaCurrentIndex > cartaItemsCount - 1) {
+
+                cartaCurrentIndex = 0;
+
+            }
+
+            app.ctrl.homeParty.cycleCartaCocteles(cartaCurrentIndex);
+
+        });
+
+        // - prev carta cocteles
+        $(document).on('click', '.js-carta-prev', function () {
+
+            cartaCurrentIndex -= 1;
+
+            if (cartaCurrentIndex < 0) {
+
+                cartaCurrentIndex = cartaItemsCount - 1;
+
+            }
+
+            app.ctrl.homeParty.cycleCartaCocteles(cartaCurrentIndex);
+
+        });
+
+    },
 
     // HELPER SECTION FUNCTIONS
+    cycleCartaCocteles: function (index) {
+
+        'use strict';
+
+        var item = $('.js-carta-img-container div').eq(index);
+
+        $('.js-carta-img-container div').hide();
+        item.css('display', 'inline-block');
+
+    }
 };
 
 // PARTY COCKTAIL
@@ -957,6 +1102,75 @@ app.ctrl.contacto = {
     settings: function () {
 
         'use strict';
+
+        // - send contact form
+        $('#sendForm').click(function (event) {
+
+            event.preventDefault();
+
+            var $nombre = $('#nombre'),
+                $email = $('#correo'),
+                $mensaje = $('#mensaje'),
+                $returnMsn = $('#returnMsn'),
+                datos;
+
+            $returnMsn.empty().removeClass('contact-form__return-msn--success contact-form__return-msn--error');
+
+            if ($nombre.val() == '') {
+
+                $nombre.addClass('animated shake');
+                $nombre.one(app.ctrl.data.animationEventName, function () {
+
+                    $(this).removeClass('animated shake');
+                    $(this).focus();
+
+                });
+
+            } else if ($email.val() == '') {
+
+                $email.addClass('animated shake');
+                $email.one(app.ctrl.data.animationEventName, function () {
+
+                    $(this).removeClass('animated shake');
+                    $(this).focus();
+
+                });
+
+            } else if ($mensaje.val() == '') {
+
+                $mensaje.addClass('animated shake');
+                $mensaje.one(app.ctrl.data.animationEventName, function () {
+
+                    $(this).removeClass('animated shake');
+                    $(this).focus();
+
+                });
+
+            } else {
+
+                datos = 'nombre=' + $nombre.val() + '&email=' + $email.val() + '&mensaje=' + $mensaje.val();
+                $.ajax({
+                    type: 'POST',
+                    url: './contact-form.php',
+                    data: datos,
+                    success: function () {
+
+                        $nombre.val('');
+                        $email.val('');
+                        $mensaje.val('');
+                        $returnMsn.text('Mensaje enviado con éxito!').addClass('contact-form__return-msn--success');
+
+                    },
+                    error: function () {
+
+                        $returnMsn.text('Error al enviar el mensaje, por favor intenta de nuevo.').addClass('contact-form__return-msn--error');
+
+                    }
+                });
+
+            }
+
+        });
 
     }
 
