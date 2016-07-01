@@ -93,7 +93,8 @@ gulp.task('lint', function() {
       'PhotoSwipeUI_Default': false,
       'scrollReveal': false,
       'sr': false,
-      'XMLSerializer': false
+      'XMLSerializer': false,
+      'FB': false
     }
   }))
   .pipe(eslint.format())
@@ -193,6 +194,7 @@ gulp.task('build:js', function() {
     // Nota: en listar los scripts explícitamente en el orden para que sean
     // correctamente concatenados.
     'app/scripts/vendors/jquery.js',
+    'app/scripts/vendors/jquery-ui-easings.js',
     'app/scripts/vendors/jquery.vide.js',
     'app/scripts/vendors/plyr.js',
     'app/scripts/vendors/modernizr-custom.js',

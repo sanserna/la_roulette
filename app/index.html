@@ -65,7 +65,7 @@
             <a href="contacto.html" class="main-nav__link">Contacto</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="/" class="main-nav__link">Blog</a>
+            <a href="/blog" class="main-nav__link">Blog</a>
           </li>
         </ul>
       </div>
@@ -78,8 +78,8 @@
       <header id="main-header">
           <div id="main-header__bg"></div>
           <div class="main-header__overlayed-bg"></div>
-          <img id="lr-logo" class="main-header__lr-logo animated fadeIn" src="img/assets/logoLaRoulette_blanco.png" alt="la roulette">
-          <div id="pointer-hand" class="main-header__hand-icon animated slideDownUp infinite"></div>
+          <img id="lr-logo" class="main-header__lr-logo" src="img/assets/logoLaRoulette_blanco.png" alt="la roulette">
+          <div id="pointer-hand" class="main-header__hand-icon"></div>
       </header>
       
       <div class="frase-animada" blast-wrapper>
@@ -223,7 +223,9 @@
       </section>
 
       <section class="videos-promocionales">        
-        <div class="owl-carousel">
+        <div class="owl-carousel"></div>
+        <div class="small-12 column">
+          <p class="error-text normal-text">Disculpa las molestias, no fue posible cargar la sección de videos, por favor, intenta de nuevo.</p>
         </div>
       </section>
 
@@ -283,7 +285,8 @@
       
       <!-- FACEBOOK PAGE PLUGIN -->
       <script src="scripts/utils/fb-page-plugin.js"></script>
-      <div class="small-12 medium-3 column widget-content" id="facebook-plugin"></div>
+      <div class="small-12 medium-3 column widget-content" id="fb-plugin">
+      </div>
 
       <!-- INSTAGRAM PAGE PLUGIN -->
       <script src="//lightwidget.com/widgets/lightwidget.js"></script>
@@ -303,6 +306,7 @@
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/vendors/modernizr-custom.js"></script>
     <script src="scripts/vendors/jquery.js"></script>
+    <script src="scripts/vendors/jquery-ui-easings.js"></script>
     <script src="scripts/vendors/jquery.vide.js"></script>
     <script src="scripts/vendors/plyr.js"></script>
     <script src="scripts/vendors/photoswipe.js"></script>

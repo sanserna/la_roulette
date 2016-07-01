@@ -80,7 +80,7 @@ app.ctrl = {
             if ($('[blast-wrapper]').length) {
 
                 // - determinar si el elemento blast-wrapper entra en el area visible
-                if (app.ctrl.elementIsVisible('[blast-wrapper]', 0.7)) {
+                if (app.ctrl.elementIsVisible('[blast-wrapper]', 0.5)) {
 
                     app.ctrl.animateText();
 
@@ -226,26 +226,16 @@ app.ctrl.inicio = {
         flikrAuth: {
             // - la roulette api key
             api_key: 'd95dcce57dea2cd47bcb0c1b692783f9',
-            // - test api key
-            // api_key: 'b5a15c73a84e621e304052f94c847246',
             // - la roulette user id
             user_id: '142065498@N08'
-            // - test user id
-            // user_id: '140878839@N02'
         },
 
         youTubeAuth: {
             // - la roulette api key
-            // api_key: 'AIzaSyCpEgQmSQC2TRDl73yy5Tn9U1ngZDFy9Ls',
-            // - test api key
-            // api_key: 'AIzaSyDCAnbI51T-sgKTtYaPI7-8YAOg0tVttIg',
-            // - test roulette api key
-            api_key: 'AIzaSyBPPX9x7Aj3wQ_aTTMXH7nrl2ddb9v-MdU',
+            api_key: 'AIzaSyCpEgQmSQC2TRDl73yy5Tn9U1ngZDFy9Ls',
             user_name: '',
             // - la roulette channel id
             channel_id: 'UC7CtU1sK_A8uboBCJLfzj2g'
-            // - test channel id
-            // channel_id: 'UCp2irPEY6KT4392YGoC6ZBQ'
         }
     },
 
@@ -261,17 +251,27 @@ app.ctrl.inicio = {
             // - inicializar facebook-plugin al cargar el plugin de instagram
             $('.lightwidget-widget').load(function () {
 
-                var $fbPluginContainer = $('#facebook-plugin');
-
-                $fbPluginContainer.html('<div class="fb-page" data-href="https://www.facebook.com/partylaroulette" data-height="' + $(this).height() + '" data-width="500" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/partylaroulette" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/partylaroulette">La Roulette</a></blockquote></div>');
+                // var $fbPlugin = $('.fb-page');
+                // - establecer alto del fb plugin
+                // $fbPlugin.attr('data-height', $(this).height());
+                // - volver a rendirizar el plugin para que adapte sus dimensiones
+                // FB.XFBML.parse();
+                $('#fb-plugin').append('<div class="fb-page" data-href="https://www.facebook.com/partylaroulette" data-height="' + $(this).height() + '" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/partylaroulette" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/partylaroulette">La Roulette</a></blockquote></div>');
 
             });
 
-            // - llamado inicial para que se configure la interfaz
-            app.ctrl.inicio.renderPageContent();
-
             // - listener para centrar el logo al cambiar el tamaño de la ventana
-            $(window).resize(app.ctrl.inicio.renderPageContent);
+            $(window).resize(function () {
+
+                app.ctrl.inicio.renderHeaderContent(false);
+
+            });
+            // - centrar logo cuando se carge el contenido de la pagina por completo
+            $(window).load(function () {
+
+                app.ctrl.inicio.renderHeaderContent(true);
+
+            });
 
             if (app.context.isMobile()) {
 
@@ -284,14 +284,11 @@ app.ctrl.inicio = {
             }
 
             // - load plyr controls sprite
-            $.get("img/assets/plyr-sprite.svg", function (data) {
+            $.get('img/assets/plyr-sprite.svg', function (data) {
 
-                var div = document.createElement("div");
+                $('body').prepend('<div hidden>' + data + '</div>');
 
-                div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
-                document.body.insertBefore(div, document.body.childNodes[0]);
-
-            });
+            }, 'html');
 
             // OBTENCION DE DATOS DE LA API DE FLIKR
             app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
@@ -410,7 +407,7 @@ app.ctrl.inicio = {
                 // - Fail getYoutubeChannel
 
                 $('.videos-promocionales .error-text').css('display', 'block');
-                console.log(resp);
+                console.error(resp.responseJSON.error.message);
 
             });
 
@@ -433,6 +430,8 @@ app.ctrl.inicio = {
                 items = [],
                 imgProps = app.ctrl.inicio.defineImgProps(),
                 options = {
+                    showHideOpacity: true,
+                    galleryPIDs: true,
                     // - establecer ubicacion y dimensiones del album al que se le da click
                     getThumbBoundsFn: function () {
 
@@ -462,7 +461,8 @@ app.ctrl.inicio = {
                         src: photo[imgProps.imgType],
                         w: Number(photo[imgProps.w]),
                         h: Number(photo[imgProps.h]),
-                        author: data.ownername
+                        author: data.ownername,
+                        pid: 'img-' + i
                         // title: photo.title
                     };
 
@@ -494,6 +494,19 @@ app.ctrl.inicio = {
                 // - Fail getFlikrAlbumsPhotos
 
             });
+
+        });
+
+        // - handIcon click
+        $(document).on('click', '#pointer-hand', function () {
+
+            var toSectionTop = $('.servicios').offset().top;
+
+            app.ctrl.animateText();
+
+            $("html, body").animate({
+                scrollTop: toSectionTop
+            }, 6000, 'easeInOutQuart');
 
         });
 
@@ -678,7 +691,7 @@ app.ctrl.inicio = {
 
     },
 
-    renderPageContent: function () {
+    renderHeaderContent: function (isLoading) {
 
         'use strict';
 
@@ -698,6 +711,17 @@ app.ctrl.inicio = {
         $pointerHand.css({
             top: $logo.position().top + (logoH + containerH / 7)
         });
+
+        // - si se esta realizando la carga inicial de la pagina
+        if (isLoading) {
+
+            $logo.addClass('animated fadeIn').one(app.ctrl.data.animationEventName, function () {
+
+                $pointerHand.css('opacity', 1).addClass('animated slideDownUp infinite');
+
+            });
+
+        }
 
     },
 
@@ -1112,6 +1136,7 @@ app.ctrl.contacto = {
                 $email = $('#correo'),
                 $mensaje = $('#mensaje'),
                 $returnMsn = $('#returnMsn'),
+                validacionEmail = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/,
                 datos;
 
             $returnMsn.empty().removeClass('contact-form__return-msn--success contact-form__return-msn--error');
@@ -1126,7 +1151,7 @@ app.ctrl.contacto = {
 
                 });
 
-            } else if ($email.val() == '') {
+            } else if ($email.val() == '' || !validacionEmail.test($email.val())) {
 
                 $email.addClass('animated shake');
                 $email.one(app.ctrl.data.animationEventName, function () {

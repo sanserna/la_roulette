@@ -78,6 +78,7 @@
         z-index 0
     }
     .main-header__lr-logo {
+        opacity 0 // estado inicial antes de que se posicione en pantalla
         width 50%
         max-width 300px
         z-index 1
@@ -86,6 +87,8 @@
         }
     }
     .main-header__hand-icon {
+        cursor pointer
+        opacity 0 // estado inicial antes de que se posicione en pantalla
         background-image url(img/assets/hand_icon.png)
         background-size 50px 50px
         background-repeat no-repeat
