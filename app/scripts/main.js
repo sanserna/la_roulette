@@ -16,7 +16,14 @@ app.ctrl = {
             // - añadir clase al <html> si scrollReveal es soportado
             if (sr.isSupported()) {
 
-                document.documentElement.classList.add('sr');
+                $('body').addClass('sr');
+
+            }
+
+            // - identificar si el dispositivo es ios
+            if (app.context.isIOS()) {
+
+                $('body').addClass('ios');
 
             }
 
@@ -266,8 +273,9 @@ app.ctrl.inicio = {
                 app.ctrl.inicio.renderHeaderContent(false);
 
             });
-            // - centrar logo cuando se carge el contenido de la pagina por completo
-            $(window).load(function () {
+
+            // - centrar el contenido del header cuando se carguen las imagenes por completo
+            $("#main-header").waitForImages(function () {
 
                 app.ctrl.inicio.renderHeaderContent(true);
 
@@ -295,31 +303,42 @@ app.ctrl.inicio = {
 
                 // - Done getFlikrAlbums
 
-                var albums = data.photosets.photoset;
+                var albums;
 
-                $.each(albums, function (i, album) {
+                if (data.stat === 'ok') {
 
-                    album.index = i;
-                    app.ctrl.inicio.setAlbum(album);
+                    albums = data.photosets.photoset;
 
-                });
+                    $.each(albums, function (i, album) {
 
-                // - inicializar la paginacion de la galeria
-                $("div.holder").jPages({
-                    previous: 'anterior',
-                    next: 'siguiente',
-                    containerID: "albumsContainer",
-                    perPage: 8,
-                    minHeight: false,
-                    animation: 'fadeInUpAlbum'
-                });
+                        album.index = i;
+                        app.ctrl.inicio.setAlbum(album);
+
+                    });
+
+                    // - inicializar la paginacion de la galeria
+                    $("div.holder").jPages({
+                        previous: 'anterior',
+                        next: 'siguiente',
+                        containerID: "albumsContainer",
+                        perPage: 8,
+                        minHeight: false,
+                        animation: 'fadeInUpAlbum'
+                    });
+
+                } else {
+
+                    $('.galeria .error-text').css('display', 'block');
+                    console.error('Flikr Api: ' + data.message);
+
+                }
 
             }, function (resp) {
 
                 // - Fail getFlikrAlbums
 
                 $('.galeria .error-text').css('display', 'block');
-                console.log(resp);
+                // console.error(resp);
 
             });
 
@@ -396,7 +415,7 @@ app.ctrl.inicio = {
                         // - Fail getYoutubeChannelVideos
 
                         $('.videos-promocionales .error-text').css('display', 'block');
-                        console.log(resp);
+                        console.log(resp.responseJSON.error.message);
 
                     });
 
@@ -432,6 +451,12 @@ app.ctrl.inicio = {
                 options = {
                     showHideOpacity: true,
                     galleryPIDs: true,
+                    shareButtons: [
+                        {id: 'facebook', label: 'Compartir en Facebook', url: 'https://www.facebook.com/sharer/sharer.php?u={{image_url}}'},
+                        {id: 'twitter', label: 'Tweet', url: 'https://twitter.com/intent/tweet?text={{text}}&url={{image_url}}'},
+                        {id: 'pinterest', label: 'Pin it', url: 'http://www.pinterest.com/pin/create/button/?url={{url}}&media={{image_url}}&description={{text}}'},
+                        {id: 'download', label: 'Descargar imagen', url: '{{raw_image_url}}', download: true}
+                    ],
                     // - establecer ubicacion y dimensiones del album al que se le da click
                     getThumbBoundsFn: function () {
 
@@ -493,6 +518,8 @@ app.ctrl.inicio = {
 
                 // - Fail getFlikrAlbumsPhotos
 
+                console.log(resp);
+
             });
 
         });
@@ -506,7 +533,7 @@ app.ctrl.inicio = {
 
             $("html, body").animate({
                 scrollTop: toSectionTop
-            }, 6000, 'easeInOutQuart');
+            }, 5000, 'easeInOutQuart');
 
         });
 
@@ -704,7 +731,7 @@ app.ctrl.inicio = {
             logoH = $logo.height();
 
         $logo.css({
-            top: containerH / 2 - logoH / 2,
+            top: containerH / 2 - logoH / 1.5,
             left: containerW / 2 - logoW / 2
         });
 
@@ -804,6 +831,13 @@ app.ctrl.homeParty = {
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.homeParty.settings();
 
+            // - identificar cuando la carga del contenido (img) del header se haya completado
+            $('[wfi-content]').waitForImages(function () {
+
+                $(this).find('header').addClass('loaded');
+
+            });
+
         });
 
     },
@@ -818,38 +852,6 @@ app.ctrl.homeParty = {
 
         // - scrollReveal settings
         (function () {
-
-            // - section-header
-            sr.reveal('.section-header', {
-                distance: '100px',
-                duration: 2000,
-                delay: 100,
-                scale: 1,
-                easing: 'cubic-bezier(0.08,0.51,0.81,0.99)',
-                viewFactor: 0.5
-            });
-
-            // - section-header__title
-            sr.reveal('.section-header__title', {
-                origin: 'left',
-                distance: '40px',
-                duration: 1000,
-                delay: 1500,
-                scale: 1,
-                easing: 'ease-in',
-                viewFactor: 1
-            });
-
-            // - section-header__description
-            sr.reveal('.section-header__description', {
-                origin: 'right',
-                distance: '40px',
-                duration: 1000,
-                delay: 1500,
-                scale: 1,
-                easing: 'ease-out',
-                viewFactor: 1
-            });
 
             // - servicio-content-item
             sr.reveal('.sr-servicio-item', {
@@ -940,6 +942,13 @@ app.ctrl.partyCocktail = {
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.partyCocktail.settings();
 
+            // - identificar cuando la carga del contenido (img) del header se haya completado
+            $('[wfi-content]').waitForImages(function () {
+
+                $(this).find('header').addClass('loaded');
+
+            });
+
         });
 
     },
@@ -950,38 +959,6 @@ app.ctrl.partyCocktail = {
 
         // - scrollReveal settings
         (function () {
-
-            // - section-header
-            sr.reveal('.section-header', {
-                distance: '100px',
-                duration: 2000,
-                delay: 100,
-                scale: 1,
-                easing: 'cubic-bezier(0.08,0.51,0.81,0.99)',
-                viewFactor: 0.5
-            });
-
-            // - section-header__title
-            sr.reveal('.section-header__title', {
-                origin: 'left',
-                distance: '40px',
-                duration: 1000,
-                delay: 1500,
-                scale: 1,
-                easing: 'ease-in',
-                viewFactor: 1
-            });
-
-            // - section-header__description
-            sr.reveal('.section-header__description', {
-                origin: 'right',
-                distance: '40px',
-                duration: 1000,
-                delay: 1500,
-                scale: 1,
-                easing: 'ease-out',
-                viewFactor: 1
-            });
 
             // - cocktail__half
             sr.reveal('.sr-half', {
@@ -1012,6 +989,13 @@ app.ctrl.officeParty = {
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.officeParty.settings();
 
+            // - identificar cuando la carga del contenido (img) del header se haya completado
+            $('[wfi-content]').waitForImages(function () {
+
+                $(this).find('header').addClass('loaded');
+
+            });
+
         });
 
     },
@@ -1022,38 +1006,6 @@ app.ctrl.officeParty = {
 
         // - scrollReveal settings
         (function () {
-
-            // - section-header
-            sr.reveal('.section-header', {
-                distance: '100px',
-                duration: 2000,
-                delay: 100,
-                scale: 1,
-                easing: 'cubic-bezier(0.08,0.51,0.81,0.99)',
-                viewFactor: 0.5
-            });
-
-            // - section-header__title
-            sr.reveal('.section-header__title', {
-                origin: 'left',
-                distance: '40px',
-                duration: 1000,
-                delay: 1500,
-                scale: 1,
-                easing: 'ease-in',
-                viewFactor: 1
-            });
-
-            // - section-header__description
-            sr.reveal('.section-header__description', {
-                origin: 'right',
-                distance: '40px',
-                duration: 1000,
-                delay: 1500,
-                scale: 1,
-                easing: 'ease-out',
-                viewFactor: 1
-            });
 
             // - servicio-content-item
             sr.reveal('.sr-servicio-item', {

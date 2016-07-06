@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="¿Quieres celebrar una ocasión espcial y no sabes qué hacer para que sea diferente? Bueno, déjanos contarte las propuestas que tenemos para ti.">
     <meta name="keywords" content="la roulette, home party, cocktail party, office party, fiesta en casa, fiesta, experiencia, cocteles, beer pong, shots, cumpleaños, celebraciones, matrimonio, despedida de soltera, grado, regalo, fiesta sorpresa, fiestas empresariales">
-    <meta name="author" content="http://www.laroulette.com.co/humans.txt">
+    <meta name="author" content="La Roulette">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cocktail Box</title>
 
@@ -14,7 +14,7 @@
     <link rel="manifest" href="manifest.json">
 
     <!-- ESTILOS -->
-    <!-- build:css styles/main.min.css -->
+    <!-- build:css styles/main.min.css?v=050720162400 -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <!-- endbuild -->
 
@@ -22,7 +22,9 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <!-- FACEBOOK PIXEL CODE -->
-    <script src="scripts/utils/fb-pixel.js"></script>
+    <script>
+      !function(e,n,t,a,c,o,s){e.fbq||(c=e.fbq=function(){c.callMethod?c.callMethod.apply(c,arguments):c.queue.push(arguments)},e._fbq||(e._fbq=c),c.push=c,c.loaded=!0,c.version="2.0",c.queue=[],o=n.createElement(t),o.async=!0,o.src=a,s=n.getElementsByTagName(t)[0],s.parentNode.insertBefore(o,s))}(window,document,"script","//connect.facebook.net/en_US/fbevents.js"),fbq("init","1512958809021258"),fbq("track","PageView");
+    </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1512958809021258&amp;ev=PageView&amp;noscript=1"></noscript>
     <!-- FINAL DEL FACEBOOK PIXEL CODE -->
   </head>
@@ -41,28 +43,28 @@
             </div>
           </li>
           <li class="main-nav__item main-nav__item--logo">
-            <a href="index.html" class="main-nav__link main-nav__link--roulette"></a>
+            <a href="/" class="main-nav__link main-nav__link--roulette"></a>
           </li>
         </ul>
 
         <ul id="main-nav-menu" class="main-nav__list">
           <li class="main-nav__item main-nav__item--logo">
-            <a href="index.html" class="main-nav__link main-nav__link--roulette"></a>
+            <a href="/" class="main-nav__link main-nav__link--roulette"></a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="home-party.html" class="main-nav__link">Home Party</a>
+            <a href="home-party" class="main-nav__link">Home Party</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="party-cocktails.html" class="main-nav__link">Party Cocktails</a>
+            <a href="party-cocktails" class="main-nav__link">Party Cocktails</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="office-party.html" class="main-nav__link">Office Party</a>
+            <a href="office-party" class="main-nav__link">Office Party</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
             <a class="main-nav__link current">Cocktail Box</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="contacto.html" class="main-nav__link">Contacto</a>
+            <a href="contacto" class="main-nav__link">Contacto</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
             <a href="/blog" class="main-nav__link">Blog</a>
@@ -78,22 +80,48 @@
 
     <!-- MAIN FOOTER -->
     <footer class="page-footer expanded row">
+      <div class="page-footer_overlay"></div>
+      <div class="small-12 column">
+        <div class="page-footer__text">
+          <h2 class="item-title-big">Vivir Diferente es no dejar pasar desapercibidos esos momentos importantes.</h2>
+          <h2 class="item-title-big">Vivir diferente es celebrar diferente.</h2>
+        </div>
+      </div>
+
+      <div class="social-links small-12 column row">
+        <div class="small-4 column">
+          <a href="http://www.facebook.com/partylaroulette" target="_blank">
+            <img src="img/assets/facebook_blanco.png">
+          </a>
+        </div>
+        <div class="small-4 column">
+          <a href="http://www.twitter.com/partylaroulette" target="_blank">
+            <img src="img/assets/twitter_blanco.png">
+          </a>
+        </div>
+        <div class="small-4 column">
+          <a href="http://www.instagram.com/partylaroulette" target="_blank">
+            <img src="img/assets/instagram_blanco.png">
+          </a>
+        </div>
+      </div>
+
       <div class="small-12 column">
         <img class="page-footer__logo" src="img/assets/logoLaRoulette_blanco.png">
       </div>
-
       <div class="small-12 column">
         <p class="small-text">© La Roulette 2015. Todos los derechos reservados. Elaborado por <a class="referenceLink" href="mailto:sanserve91@gmail.com" target="_blank">Santiago Serna</a></p>
       </div>
     </footer>
 
     <!-- MAIN SCRIPTS -->
-    <!-- build:js scripts/main.min.js -->
+    <!-- build:js scripts/main.min.js?v=050720162400 -->
     <script src="scripts/vendors/modernizr-custom.js"></script>
     <script src="scripts/vendors/jquery.js"></script>
     <script src="scripts/vendors/jquery-ui-easings.js"></script>
     <script src="scripts/vendors/scrollreveal.js"></script>
     <script src="scripts/vendors/jquery.blast.js"></script>
+    <script src="scripts/vendors/jquery.waitforimages.js"></script>
     <script src="scripts/context.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
@@ -103,6 +131,8 @@
     </script>
 
     <!-- Google Analytics -->
-    <script src="scripts/utils/google-analytics.js"></script>
+    <script>
+      !function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-70422484-1","auto"),ga("send","pageview");
+    </script>
   </body>
 </html>

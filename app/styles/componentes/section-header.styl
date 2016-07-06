@@ -3,6 +3,7 @@
 // -------------------
 
 .section-header {
+    opacity 0 // initial for animation
     background-color black
     background-attachment fixed
     box-sizing content-box
@@ -13,6 +14,9 @@
     overflow hidden
     padding 0 15px
     position relative
+    animation-duration 3s
+    animation-delay 0.1s
+    animation-timing-function cubic-bezier(0.08,0.51,0.81,0.99)
     .section-header__overlayed-bg {
         position absolute
         top 0px
@@ -24,18 +28,24 @@
         z-index 0
     }
     .section-header__title, .section-header__description {
+        opacity 0 // initial for animation
         color white
         flex 0 1 auto
         text-align center
+        animation-duration 1s
         z-index 1
     }
     .section-header__title {
         font-weight 700
         margin 0px
         padding-bottom 10px
+        animation-delay 2s
+        animation-timing-function ease-in
     }
     .section-header__description {
         font-weight 300
+        animation-delay 2s
+        animation-timing-function ease-out
     }
     &:after {
         content ''
@@ -44,11 +54,14 @@
         left 0px
         bottom 0px
         height 7px
-        animation-name widthLeftToRight
         animation-duration 2s
         animation-fill-mode forwards
         animation-timing-function ease-in-out
         animation-delay 2s
+    }
+    @media screen and (max-width: 39.9375em) {
+        padding-top $main-nav-height
+        padding-bottom 20px
     }
     @media screen and (min-width: 40em) {
         align-items flex-start
@@ -60,9 +73,28 @@
     }
 }
 
-// - si scroll reveal es soportado
-.sr .section-header {
-    visibility hidden // scroll reveal
+// - si es ios cambiar la propiedad para que funcione
+.ios .section-header {
+    background-attachment scroll
+}
+
+// - animar contenido del header cuando este listo
+.section-header.loaded {
+    animation-name fadeInUpHeader
+    &, 
+    .section-header__title, 
+    .section-header__description {
+        animation-fill-mode both
+    }
+    .section-header__title {
+        animation-name fadeInLeft
+    }
+    .section-header__description {
+        animation-name fadeInRight
+    }
+    &:after {
+        animation-name widthLeftToRight
+    }
 }
 
 // - Home-party section-header

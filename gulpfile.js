@@ -190,7 +190,7 @@ gulp.task('build:css', function() {
 
 // Scripts task: procesar codigo JS.
 gulp.task('build:js', function() {
-  var bundle = gulp.src([
+  return gulp.src([
     // Nota: en listar los scripts explícitamente en el orden para que sean
     // correctamente concatenados.
     'app/scripts/vendors/jquery.js',
@@ -204,27 +204,20 @@ gulp.task('build:js', function() {
     'app/scripts/vendors/jPages.js',
     'app/scripts/vendors/scrollreveal.js',
     'app/scripts/vendors/jquery.blast.js',
+    'app/scripts/vendors/jquery.waitforimages.js',
     'app/scripts/slm.js',
     'app/scripts/context.js',
     'app/scripts/services.js',
     'app/scripts/templates.js',
     'app/scripts/main.js'
   ])
-  .pipe(sourcemaps.init())
-  .pipe(concat('main.min.js'))
-  .pipe(uglify())
-  // Output files
-  .pipe(size({title: 'bundled scripts'}))
-  .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest('dist/scripts'));
-
-  var utils = gulp.src(['app/scripts/utils/**/*'])
-  .pipe(uglify())
-  // Output files
-  .pipe(size({title: 'utils scripts'}))
-  .pipe(gulp.dest('dist/scripts/utils'));
-
-  return merge(bundle, utils);
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.min.js'))
+    .pipe(uglify())
+    // Output files
+    .pipe(size({title: 'bundled scripts'}))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist/scripts'));
 });
 
 // HTML task: compilar los templates.
@@ -236,7 +229,12 @@ gulp.task('build:html', function(){
     }))
     .pipe(gulpif('*.css', uncss({
       html: [
-        'app/index.html'
+        'app/index.html',
+        'app/home-party.html',
+        'app/party-cocktails.html',
+        'app/office-party.html',
+        'app/cocktail-box.html',
+        'app/contacto.html'
       ],
       // Selectores CSS para que sean ignorados por uncss
       ignore: []

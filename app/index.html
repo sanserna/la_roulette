@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="¿Quieres celebrar una ocasión espcial y no sabes qué hacer para que sea diferente? Bueno, déjanos contarte las propuestas que tenemos para ti.">
     <meta name="keywords" content="la roulette, home party, cocktail party, office party, fiesta en casa, fiesta, experiencia, cocteles, beer pong, shots, cumpleaños, celebraciones, matrimonio, despedida de soltera, grado, regalo, fiesta sorpresa, fiestas empresariales">
-    <meta name="author" content="http://www.laroulette.com.co/humans.txt">
+    <meta name="author" content="La Roulette">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>La Roulette</title>
 
@@ -14,15 +14,20 @@
     <link rel="manifest" href="manifest.json">
 
     <!-- ESTILOS -->
-    <!-- build:css styles/main.min.css -->
+    <!-- build:css styles/main.min.css?v=050720162400 -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <!-- endbuild -->
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <!-- FACEBOOK PIXEL CODE -->
-    <script src="scripts/utils/fb-pixel.js"></script>
+    <script>
+      !function(e,n,t,a,c,o,s){e.fbq||(c=e.fbq=function(){c.callMethod?c.callMethod.apply(c,arguments):c.queue.push(arguments)},e._fbq||(e._fbq=c),c.push=c,c.loaded=!0,c.version="2.0",c.queue=[],o=n.createElement(t),o.async=!0,o.src=a,s=n.getElementsByTagName(t)[0],s.parentNode.insertBefore(o,s))}(window,document,"script","//connect.facebook.net/en_US/fbevents.js"),fbq("init","1512958809021258"),fbq("track","PageView");
+    </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1512958809021258&amp;ev=PageView&amp;noscript=1"></noscript>
     <!-- FINAL DEL FACEBOOK PIXEL CODE -->
   </head>
@@ -50,19 +55,19 @@
             <a class="main-nav__link main-nav__link--roulette"></a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="home-party.html" class="main-nav__link">Home Party</a>
+            <a href="home-party" class="main-nav__link">Home Party</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="party-cocktails.html" class="main-nav__link">Party Cocktails</a>
+            <a href="party-cocktails" class="main-nav__link">Party Cocktails</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="office-party.html" class="main-nav__link">Office Party</a>
+            <a href="office-party" class="main-nav__link">Office Party</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="cocktail-box.html" class="main-nav__link">Cocktail Box</a>
+            <a href="cocktail-box" class="main-nav__link">Cocktail Box</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
-            <a href="contacto.html" class="main-nav__link">Contacto</a>
+            <a href="contacto" class="main-nav__link">Contacto</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
             <a href="/blog" class="main-nav__link">Blog</a>
@@ -95,7 +100,7 @@
         <div class="small-12 column row medium-collapse">
           <div class="small-12 medium-6 column">
             <div class="sr-servicio">
-              <a href="home-party.html">
+              <a href="home-party">
                 <div class="servicio servicio--home-party" media-bg-img="img/inicio/home-party-nav-bg.jpg">
                   <div class="servicio__image-filter"></div>
                   <h2 class="servicio__titulo item-title">Home Party</h2>
@@ -107,7 +112,7 @@
 
           <div class="small-12 medium-6 column">
             <div class="sr-servicio">
-              <a href="party-cocktails.html">
+              <a href="party-cocktails">
                 <div class="servicio servicio--cocktail-party" media-bg-img="img/inicio/party-cocktail-nav-bg.jpg">
                   <div class="servicio__image-filter"></div>
                   <h2 class="servicio__titulo item-title">Party Cocktails</h2>
@@ -119,7 +124,7 @@
 
           <div class="small-12 medium-6 column">
             <div class="sr-servicio">
-              <a href="office-party.html">
+              <a href="office-party">
                 <div class="servicio servicio--office-party" media-bg-img="img/inicio/office-party-nav-bg.jpg">
                   <div class="servicio__image-filter"></div>
                   <h2 class="servicio__titulo item-title">Office Party</h2>
@@ -131,7 +136,7 @@
 
           <div class="small-12 medium-6 column">
             <div class="sr-servicio">
-              <a href="cocktail-box.html">
+              <a href="cocktail-box">
                 <div class="servicio servicio--delivery" media-bg-img="">
                   <div class="servicio__image-filter"></div>
                   <h2 class="servicio__titulo item-title">¡Muy Pronto!</h2>
@@ -260,7 +265,7 @@
       <div class="page-footer_overlay"></div>
       <div class="small-12 column">
         <div class="page-footer__text">
-          <h2 class="item-title-big">Vivir Diferente es no dejar pasar desapercibios esos momentos importantes.</h2>
+          <h2 class="item-title-big">Vivir Diferente es no dejar pasar desapercibidos esos momentos importantes.</h2>
           <h2 class="item-title-big">Vivir diferente es celebrar diferente.</h2>
         </div>
       </div>
@@ -284,9 +289,10 @@
       </div>
       
       <!-- FACEBOOK PAGE PLUGIN -->
-      <script src="scripts/utils/fb-page-plugin.js"></script>
-      <div class="small-12 medium-3 column widget-content" id="fb-plugin">
-      </div>
+      <script>
+        !function(e,n,t){var o,c=e.getElementsByTagName(n)[0];e.getElementById(t)||(o=e.createElement(n),o.id=t,o.src="//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6",c.parentNode.insertBefore(o,c))}(document,"script","facebook-jssdk");
+      </script>
+      <div class="small-12 medium-3 column widget-content" id="fb-plugin"></div>
 
       <!-- INSTAGRAM PAGE PLUGIN -->
       <script src="//lightwidget.com/widgets/lightwidget.js"></script>
@@ -303,7 +309,7 @@
     </footer>
 
     <!-- MAIN SCRIPTS -->
-    <!-- build:js scripts/main.min.js -->
+    <!-- build:js scripts/main.min.js?v=050720162400 -->
     <script src="scripts/vendors/modernizr-custom.js"></script>
     <script src="scripts/vendors/jquery.js"></script>
     <script src="scripts/vendors/jquery-ui-easings.js"></script>
@@ -315,6 +321,7 @@
     <script src="scripts/vendors/jPages.js"></script>
     <script src="scripts/vendors/scrollreveal.js"></script>
     <script src="scripts/vendors/jquery.blast.js"></script>
+    <script src="scripts/vendors/jquery.waitforimages.js"></script>
     <script src="scripts/slm.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/templates.js"></script>
@@ -327,6 +334,8 @@
     </script>
 
     <!-- Google Analytics -->
-    <script src="scripts/utils/google-analytics.js"></script>
+    <script>
+      !function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-70422484-1","auto"),ga("send","pageview");
+    </script>
   </body>
 </html>
