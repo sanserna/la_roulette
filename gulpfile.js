@@ -68,6 +68,7 @@ gulp.task('lint', function() {
       'no-empty': 1,
       'no-use-before-define': 0,
       'no-obj-calls': 2,
+      'no-nested-ternary': 1,
       'no-unused-vars': 0,
       'one-var': [2, "always"],
       'padded-blocks': [2, "always"],
@@ -94,7 +95,8 @@ gulp.task('lint', function() {
       'scrollReveal': false,
       'sr': false,
       'XMLSerializer': false,
-      'FB': false
+      'FB': false,
+      'alert': false
     }
   }))
   .pipe(eslint.format())
@@ -256,8 +258,9 @@ gulp.task('build:html', function(){
 });
 
 // Clean task: borra todos los archivos del directorio de salida
-gulp.task('clean', function() {
-  del(['.tmp', 'dist/*', '!dist/.git'], {dot: true})
+gulp.task('clean', function(cb) {
+  del(['.tmp', 'dist/*', '!dist/.git'], {dot: true});
+  cb();
 });
 
 // Browser-sync task: estar atento a los cambios en los archivos refrescar el
@@ -304,4 +307,5 @@ gulp.task('default', ['clean'], function(cb) {
     ['lint', 'build:html', 'build:js', 'images', 'copy'],
     cb
   )
+
 });

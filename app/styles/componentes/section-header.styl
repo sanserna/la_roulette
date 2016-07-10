@@ -27,13 +27,18 @@
         background-color rgba(black,.1)
         z-index 0
     }
-    .section-header__title, .section-header__description {
+    .section-header__title, 
+    .section-header__description,
+    .section-header__hand-icon {
+        animation-duration 1s
+        flex 0 1 auto
+        z-index 1
+    }
+    .section-header__title, 
+    .section-header__description {
         opacity 0 // initial for animation
         color white
-        flex 0 1 auto
         text-align center
-        animation-duration 1s
-        z-index 1
     }
     .section-header__title {
         font-weight 700
@@ -46,6 +51,9 @@
         font-weight 300
         animation-delay 2s
         animation-timing-function ease-out
+    }
+    .section-header__hand-icon {
+        opacity 0
     }
     &:after {
         content ''
@@ -62,6 +70,9 @@
     @media screen and (max-width: 39.9375em) {
         padding-top $main-nav-height
         padding-bottom 20px
+        .section-header__hand-icon {
+            display none
+        }
     }
     @media screen and (min-width: 40em) {
         align-items flex-start

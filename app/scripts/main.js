@@ -42,7 +42,7 @@ app.ctrl = {
                 msTransition: 'MSTransitionEnd',
                 transition: 'transitionend'
             };
-            app.ctrl.data.animationEventName = app.ctrl.data.animationEndEventsNames[Modernizr.prefixed('animation')];
+            app.ctrl.data.animationEndEventName = app.ctrl.data.animationEndEventsNames[Modernizr.prefixed('animation')];
             app.ctrl.data.transEndEventName = app.ctrl.data.transEndEventNames[Modernizr.prefixed('transition')];
             app.ctrl.data.support = {
                 animations: Modernizr.cssanimations,
@@ -447,7 +447,7 @@ app.ctrl.inicio = {
                 $pswpElement = $('.pswp')[0],
                 id = $this.data().id,
                 items = [],
-                imgProps = app.ctrl.inicio.defineImgProps(),
+                windowIsSmall = Modernizr.mq('(max-width: 39.9375em)'),
                 options = {
                     showHideOpacity: true,
                     galleryPIDs: true,
@@ -472,6 +472,7 @@ app.ctrl.inicio = {
                     }
                 };
 
+            // - ocultar navegacion principal
             $('body').addClass('main-nav-hide');
 
             app.ctrl.inicio.getFlikrAlbumsPhotos(id, function (data, textStatus, xhr) {
@@ -483,9 +484,9 @@ app.ctrl.inicio = {
                 $.each(photos, function (i, photo) {
 
                     var photoObj = {
-                        src: photo[imgProps.imgType],
-                        w: Number(photo[imgProps.w]),
-                        h: Number(photo[imgProps.h]),
+                        src: windowIsSmall ? photo.url_m : photo.url_h || photo.url_z,
+                        w: Number(windowIsSmall ? photo.width_m : photo.width_h || photo.width_z),
+                        h: Number(windowIsSmall ? photo.height_m : photo.height_h || photo.height_z),
                         author: data.ownername,
                         pid: 'img-' + i
                         // title: photo.title
@@ -518,7 +519,7 @@ app.ctrl.inicio = {
 
                 // - Fail getFlikrAlbumsPhotos
 
-                console.log(resp);
+                alert('Disculpa los inconvenientes, no fue posible obtener los recursos necesarios de este álbum, por favor intenta de nuevo.');
 
             });
 
@@ -572,7 +573,7 @@ app.ctrl.inicio = {
         app.services.flikrAlbums({
             key: app.ctrl.inicio.data.flikrAuth.api_key,
             id: app.ctrl.inicio.data.flikrAuth.user_id,
-            extras: 'url_s, url_m',
+            extras: 'url_m',
             // - actualmente no se esta enviando page y perPage
             page: page,
             perPage: 5
@@ -606,7 +607,7 @@ app.ctrl.inicio = {
             key: app.ctrl.inicio.data.flikrAuth.api_key,
             id: app.ctrl.inicio.data.flikrAuth.user_id,
             photosetId: albumId,
-            extras: 'url_s, url_m, url_sq, url_t'
+            extras: 'url_m, url_z, url_h'
         })
         .done(function (data, textStatus, xhr) {
 
@@ -742,9 +743,11 @@ app.ctrl.inicio = {
         // - si se esta realizando la carga inicial de la pagina
         if (isLoading) {
 
-            $logo.addClass('animated fadeIn').one(app.ctrl.data.animationEventName, function () {
+            $logo.addClass('animated fadeIn').one(app.ctrl.data.animationEndEventName, function () {
 
-                $pointerHand.css('opacity', 1).addClass('animated slideDownUp infinite');
+                $pointerHand.animate({
+                    opacity: 1
+                }, 1000);
 
             });
 
@@ -758,7 +761,7 @@ app.ctrl.inicio = {
 
         var $albumsContainer = $('#albumsContainer'),
             dataObj = {},
-            imgUrl = albumObj.primary_photo_extras[app.ctrl.inicio.defineImgProps().imgType];
+            imgUrl = albumObj.primary_photo_extras.url_m;
 
         if (albumObj) {
 
@@ -781,40 +784,6 @@ app.ctrl.inicio = {
 
         }
 
-    },
-
-    defineImgProps: function () {
-
-        'use strict';
-
-        var propsObj = {};
-
-        if (app.context.isMobile()) {
-
-            if (app.context.isTablet()) {
-
-                propsObj.imgType = 'url_m';
-                propsObj.w = 'width_m';
-                propsObj.h = 'height_m';
-
-            } else {
-
-                propsObj.imgType = 'url_s';
-                propsObj.w = 'width_s';
-                propsObj.h = 'height_s';
-
-            }
-
-        } else {
-
-            propsObj.imgType = 'url_m';
-            propsObj.w = 'width_m';
-            propsObj.h = 'height_m';
-
-        }
-
-        return propsObj;
-
     }
 
 };
@@ -835,6 +804,13 @@ app.ctrl.homeParty = {
             $('[wfi-content]').waitForImages(function () {
 
                 $(this).find('header').addClass('loaded');
+                $('.section-header__title').one(app.ctrl.data.animationEndEventName, function () {
+
+                    $('.js-hand-icon').animate({
+                        opacity: 1
+                    }, 1000);
+
+                });
 
             });
 
@@ -946,6 +922,13 @@ app.ctrl.partyCocktail = {
             $('[wfi-content]').waitForImages(function () {
 
                 $(this).find('header').addClass('loaded');
+                $('.section-header__title').one(app.ctrl.data.animationEndEventName, function () {
+
+                    $('.js-hand-icon').animate({
+                        opacity: 1
+                    }, 1000);
+
+                });
 
             });
 
@@ -993,6 +976,13 @@ app.ctrl.officeParty = {
             $('[wfi-content]').waitForImages(function () {
 
                 $(this).find('header').addClass('loaded');
+                $('.section-header__title').one(app.ctrl.data.animationEndEventName, function () {
+
+                    $('.js-hand-icon').animate({
+                        opacity: 1
+                    }, 1000);
+
+                });
 
             });
 
@@ -1096,7 +1086,7 @@ app.ctrl.contacto = {
             if ($nombre.val() == '') {
 
                 $nombre.addClass('animated shake');
-                $nombre.one(app.ctrl.data.animationEventName, function () {
+                $nombre.one(app.ctrl.data.animationEndEventName, function () {
 
                     $(this).removeClass('animated shake');
                     $(this).focus();
@@ -1106,7 +1096,7 @@ app.ctrl.contacto = {
             } else if ($email.val() == '' || !validacionEmail.test($email.val())) {
 
                 $email.addClass('animated shake');
-                $email.one(app.ctrl.data.animationEventName, function () {
+                $email.one(app.ctrl.data.animationEndEventName, function () {
 
                     $(this).removeClass('animated shake');
                     $(this).focus();
@@ -1116,7 +1106,7 @@ app.ctrl.contacto = {
             } else if ($mensaje.val() == '') {
 
                 $mensaje.addClass('animated shake');
-                $mensaje.one(app.ctrl.data.animationEventName, function () {
+                $mensaje.one(app.ctrl.data.animationEndEventName, function () {
 
                     $(this).removeClass('animated shake');
                     $(this).focus();
