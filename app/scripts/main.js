@@ -291,13 +291,6 @@ app.ctrl.inicio = {
 
             }
 
-            // - load plyr controls sprite
-            $.get('img/assets/plyr-sprite.svg', function (data) {
-
-                $('body').prepend('<div hidden>' + data + '</div>');
-
-            }, 'html');
-
             // OBTENCION DE DATOS DE LA API DE FLIKR
             app.ctrl.inicio.getFlikrAlbums(1, function (data, textStatus, xhr) {
 
@@ -338,7 +331,7 @@ app.ctrl.inicio = {
                 // - Fail getFlikrAlbums
 
                 $('.galeria .error-text').css('display', 'block');
-                // console.error(resp);
+                console.error(resp);
 
             });
 
@@ -403,9 +396,7 @@ app.ctrl.inicio = {
                             onInitialized: function () {
 
                                 // - se inicializa plyr quien se encarga se setiar los videos
-                                plyr.setup({
-                                    controls: ["restart", "play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
-                                });
+                                plyr.setup('.js-item-video');
 
                             }
                         });
