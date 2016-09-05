@@ -1,3 +1,4 @@
+/* globals $ */
 var slm = {};
 
 slm.tmpltParser = function (template, data) {

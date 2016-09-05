@@ -5,25 +5,20 @@
 .album {
     box-shadow 0 2px 2px 1px rgba(black,.3)
     cursor pointer
-    // display flex
-    // flex-direction column
-    // align-items flex-end
-    // justify-content center
-    overflow hidden
-    height 200px
-    position relative
-    max-width 350px
     margin auto
+    overflow hidden
+    padding-top aspect-ratio(16,9)
+    position relative
     &, .album__title, .album__date {
         transition 0.3s ease-out-cubic
     }
     .album__title {
         background rgba(29,29,33,.7)
+        bottom 0
         color white
+        left 0
         padding 5px 10px
         position absolute
-        bottom 0
-        left 0
         width 100%
     }
     .album__date {
@@ -40,17 +35,4 @@
             background rgba(white,1)
         }
     }
-    @media screen and (min-width: 40em) {
-        max-width none
-    }
-    @media screen and (min-width: 64em) {
-        height 250px
-    }
 }
-
-
-
-
-
-
-

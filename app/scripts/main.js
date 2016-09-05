@@ -1,3 +1,4 @@
+/* global $, jQuery, document, window, navigator, classie, Modernizr, plyr, XMLHttpRequest, slm, PhotoSwipe, PhotoSwipeUI_Default, scrollReveal, sr, XMLSerializer, FB, alert */
 var app = app || {};
 
 app.ctrl = {
@@ -289,6 +290,9 @@ app.ctrl.inicio = {
 
                 app.ctrl.inicio.defineHeaderBG(false);
 
+                // - ocultar la descripcion del servicio para que se cree efecto on hover
+                $('.js-servicio__descripcion').addClass('isHide');
+
             }
 
             // OBTENCION DE DATOS DE LA API DE FLIKR
@@ -314,7 +318,7 @@ app.ctrl.inicio = {
                         previous: 'anterior',
                         next: 'siguiente',
                         containerID: "albumsContainer",
-                        perPage: 8,
+                        perPage: 9,
                         minHeight: false,
                         animation: 'fadeInUpAlbum'
                     });
@@ -1067,6 +1071,7 @@ app.ctrl.contacto = {
 
             var $nombre = $('#nombre'),
                 $email = $('#correo'),
+                $telefono = $('#telefono'),
                 $mensaje = $('#mensaje'),
                 $returnMsn = $('#returnMsn'),
                 validacionEmail = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/,
@@ -1094,6 +1099,16 @@ app.ctrl.contacto = {
 
                 });
 
+            } else if ($telefono.val() == '') {
+
+                $telefono.addClass('animated shake');
+                $telefono.one(app.ctrl.data.animationEndEventName, function () {
+
+                    $(this).removeClass('animated shake');
+                    $(this).focus();
+
+                });
+
             } else if ($mensaje.val() == '') {
 
                 $mensaje.addClass('animated shake');
@@ -1106,7 +1121,7 @@ app.ctrl.contacto = {
 
             } else {
 
-                datos = 'nombre=' + $nombre.val() + '&email=' + $email.val() + '&mensaje=' + $mensaje.val();
+                datos = 'nombre=' + $nombre.val() + '&email=' + $email.val() + '&telefono' + $telefono.val() + '&mensaje=' + $mensaje.val();
                 $.ajax({
                     type: 'POST',
                     url: './contact-form.php',
@@ -1115,6 +1130,7 @@ app.ctrl.contacto = {
 
                         $nombre.val('');
                         $email.val('');
+                        $telefono.val('');
                         $mensaje.val('');
                         $returnMsn.text('Mensaje enviado con éxito!').addClass('contact-form__return-msn--success');
 

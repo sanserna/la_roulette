@@ -3,45 +3,55 @@
 // -------------------
 
 .servicio {
-    background-color black
-    height 30vh
-    display flex
+    // height 30vh
     align-items center
+    background-color black
+    display flex
     flex-direction column
     justify-content center
+    padding-top aspect-ratio(16,9)
     position relative
     transition 0.5s ease-in
-    .servicio__titulo {
-        margin 0
-        transition 0.3s ease-in-out
-        text-transform uppercase
-    }
     .servicio__image-filter {
         background-color rgba(black,.2)
+        height 100%
+        left 0px
         position absolute
         top 0px
-        left 0px
-        height 100%
+        transition 0.3s ease-in-out
         width 100%
         z-index 0
-        transition 0.3s ease-in-out
+    }
+    .text-wrapper {
+        left 0px
+        position absolute
+        top 50%
+        transform translateY(-50%)
+        width 100%
     }
     .servicio__titulo, .servicio__descripcion {
-        z-index 1
         text-shadow 0 1px 2px rgba(black,0.6)
+        z-index 1
     }
     .servicio__titulo{
         color white
-        line-height 1.3
         font-weight 700
+        line-height 1.3
+        margin 0
+        text-transform uppercase
+        transition 0.3s ease-in-out
     }
     .servicio__descripcion {
         color white
         font-weight 300
+        margin auto
+        padding 0 5%
         text-align center
-        width 90%
         transition 0.3s ease-in-out
         @media screen and (min-width: 64em) {
+            padding 0 10%
+        }
+        &.isHide {
             opacity 0
         }
     }
@@ -56,15 +66,6 @@
         .servicio__descripcion {
             opacity 1
         }
-    }
-    @media screen and (min-width: 35em) and (orientation: landscape) {
-        height 40vh
-    }
-    @media screen and (min-width: 40em) and (orientation: portrait) {
-        height 20vh
-    }
-    @media screen and (min-width: 64em) {
-        height 40vh
     }
 }
 

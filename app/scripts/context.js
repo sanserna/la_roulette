@@ -1,3 +1,4 @@
+/* globals navigator, Modernizr */
 var app = app || {};
 
 app.context = {

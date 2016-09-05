@@ -56,49 +56,7 @@ var distFiles;
 // Lint JavaScript: lee el codigo JS y verifica si tiene errores.
 gulp.task('lint', function() {
   gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/**', '!app/scripts/utils/**'])
-  .pipe(eslint({
-    'rules': {
-      'camelcase': 0,
-      'curly': 1,
-      'eqeqeq': 0,
-      'indent': [2, 4],
-      'max-len': 0,
-      'max-nested-callbacks': 0,
-      'no-alert': 0,
-      'no-empty': 1,
-      'no-use-before-define': 0,
-      'no-obj-calls': 2,
-      'no-nested-ternary': 1,
-      'no-unused-vars': 0,
-      'one-var': [2, "always"],
-      'padded-blocks': [2, "always"],
-      'quotes': 0,
-      'semi': 1,
-      'space-before-blocks': [1, "always"],
-      'space-before-function-paren': [2, "always"],
-      'no-multiple-empty-lines': 0,
-      'wrap-iife': [2, "outside"]
-    },
-    'globals': {
-      '$': false,
-      'jQuery': false,
-      'document': false,
-      'window': false,
-      'navigator': false,
-      'classie': false,
-      'Modernizr': false,
-      'plyr': false,
-      'XMLHttpRequest': false,
-      'slm': false,
-      'PhotoSwipe': false,
-      'PhotoSwipeUI_Default': false,
-      'scrollReveal': false,
-      'sr': false,
-      'XMLSerializer': false,
-      'FB': false,
-      'alert': false
-    }
-  }))
+  .pipe(eslint())
   .pipe(eslint.format())
   .pipe(gulpif(!browserSync.active, eslint.failOnError()));
 });
@@ -208,6 +166,7 @@ gulp.task('build:js', function() {
     'app/scripts/vendors/jquery.blast.js',
     'app/scripts/vendors/jquery.waitforimages.js',
     'app/scripts/slm.js',
+    'app/scripts/directives.js',
     'app/scripts/context.js',
     'app/scripts/services.js',
     'app/scripts/templates.js',

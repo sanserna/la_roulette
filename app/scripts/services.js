@@ -1,3 +1,4 @@
+/* globals $ */
 var app = app || {};
 
 app.services = {

@@ -143,11 +143,13 @@
           <p class="contacto__form-text normal-text">Llena el formulario con tus datos si deseas recibir mas información</p>
           <form class="contact-form">
               <label for="nombre" class="normal-text">Nombre <span style="color: red;">*</span></label>
-              <input type="text" id="nombre" name="nombre" class="contact-form__input normal-text" />
+              <input type="text" id="nombre" name="nombre" class="contact-form__input normal-text" filter-keys="alpha" />
               <label for="correo" class="normal-text">E-mail <span style="color: red;">*</span></label>
-              <input type="text" id="correo" name="correo" class="contact-form__input normal-text" />
+              <input type="text" id="correo" name="correo" class="contact-form__input normal-text" filter-keys="email" />
+              <label for="telefono" class="normal-text">Telefono <span style="color: red;">*</span></label>
+              <input type="text" id="telefono" name="telefono" class="contact-form__input normal-text" filter-keys="numeric"/>
               <label for="mensaje" class="normal-text">Mensaje <span style="color: red;">*</span></label>
-              <textarea id="mensaje" name="mensaje" class="contact-form__text-area normal-text" spellcheck="true" rows="10" cols="40"></textarea>
+              <textarea id="mensaje" name="mensaje" class="contact-form__text-area normal-text" spellcheck="true" rows="10" cols="40" filter-keys="alphanumeric"></textarea>
               <button id="sendForm" class="contact-form__submit">Enviar</button>
               <p id="returnMsn" class="contact-form__return-msn normal-text"></p>
           </form>
@@ -174,6 +176,7 @@
     <script src="scripts/vendors/scrollreveal.js"></script>
     <script src="scripts/vendors/jquery.blast.js"></script>
     <script src="scripts/vendors/jquery.waitforimages.js"></script>
+    <script src="scripts/directives.js"></script>
     <script src="scripts/context.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->

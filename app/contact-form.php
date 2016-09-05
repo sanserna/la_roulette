@@ -1,6 +1,7 @@
 <?php
 $nombre = $_POST['nombre'];
 $email = $_POST['email'];
+$telefono = $_POST['telefono'];
 $mensaje = $_POST['mensaje'];
 $subject = "Contacto pagina web La Roulette";
 $dest = "contacto@laroulette.com.co";
@@ -19,6 +20,12 @@ $cuerpo = '
     </tr>
     <tr style="padding: 0px;">
       <td style="padding-right: 5px; padding-top: 5px; width: 100px;" valign="top">'.$email.'</td>
+    </tr>
+    <tr style="padding: 0px;">
+        <td style="padding-right: 5px; padding-top: 20px; width: 10px;" valign="top"><h3 style="color: #ED1C24; padding: 0px; padding-top: 10px; margin: 0px;"><strong>Telefono:</strong></h3></td>
+    </tr>
+    <tr style="padding: 0px;">
+      <td style="padding-right: 5px; padding-top: 5px; width: 100px;" valign="top">'.$telefono.'</td>
     </tr>
     <tr style="padding: 0px;">
         <td style="padding-right: 5px; padding-top: 20px; width: 10px;" valign="top"><h3 style="color: #ED1C24; padding: 0px; padding-top: 10px; margin: 0px;"><strong>Mensaje:</strong></h3></td>
