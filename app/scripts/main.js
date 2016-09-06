@@ -1099,7 +1099,7 @@ app.ctrl.contacto = {
 
                 });
 
-            } else if ($telefono.val() == '') {
+            } else if ($telefono.val() == '' || $telefono.val().length < 7) {
 
                 $telefono.addClass('animated shake');
                 $telefono.one(app.ctrl.data.animationEndEventName, function () {
@@ -1121,11 +1121,15 @@ app.ctrl.contacto = {
 
             } else {
 
-                datos = 'nombre=' + $nombre.val() + '&email=' + $email.val() + '&telefono' + $telefono.val() + '&mensaje=' + $mensaje.val();
                 $.ajax({
                     type: 'POST',
                     url: './contact-form.php',
-                    data: datos,
+                    data: {
+                        nombre: $nombre.val(),
+                        email: $email.val(),
+                        telefono: $telefono.val(),
+                        mensaje: $mensaje.val()
+                    },
                     success: function () {
 
                         $nombre.val('');
