@@ -389,8 +389,8 @@ app.ctrl.inicio = {
                                     margin: 50
                                 },
                                 1024: {
-                                    stagePadding: 300,
-                                    margin: 150
+                                    stagePadding: 250,
+                                    margin: 100
                                 },
                                 1300: {
                                     stagePadding: 400,
@@ -994,22 +994,12 @@ app.ctrl.officeParty = {
 
             // - servicio-content-item
             sr.reveal('.sr-servicio-item', {
-                distance: '50px',
+                distance: '30px',
                 duration: 800,
                 delay: 100,
                 scale: 1,
                 easing: 'ease-in-out',
                 viewFactor: 0.3
-            });
-
-            // - servicio-content-group__item
-            sr.reveal('.sr-sc-group-item', {
-                distance: '30px',
-                duration: 500,
-                delay: 100,
-                scale: 1,
-                easing: 'ease-in-out',
-                viewFactor: 0.4
             });
 
         }());
