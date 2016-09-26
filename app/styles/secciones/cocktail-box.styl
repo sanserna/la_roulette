@@ -1,6 +1,7 @@
 /** TABLA DE CONTENIDOS
  *
  * SECCIONES
+ * .page-content--cocktail-box...Contenedor general de la pagina
  *
  * COMPONENTES
  *
@@ -13,11 +14,37 @@
 // -------------------
 
 .page-content--cocktail-box {
-    background-color $blackBG
-    display flex
-    justify-content center
-    align-items center
-    img {
-        padding 10px
+    .frase-animada {
+        background-color white
+        h1 {
+            color $blackMed
+        }
+    }
+    .items-wrapper {
+        padding 0
+    }
+    .item-divider {
+        background-color white
+    }
+    .servicio-content-item {
+        .servicio-content-item__titulo {
+            color $cocktail-box-primary-color
+        }
+        .servicio-content-item__descripcion {
+            a {
+                text-decoration underline
+                color $cocktail-box-primary-color
+            }
+        }
+    }
+    .item-divider:last-child {
+        background-color $blackBG
+    }
+    @media screen and (max-width: 39.9375em) {
+        .column.small-12 {
+            .servicio-content-item {
+                padding-top aspect-ratio(9,13)
+            }
+        }
     }
 }
