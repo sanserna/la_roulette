@@ -18,7 +18,7 @@ area(color = red, grosor = 1px) {
 animationDelay(numItems) {
     for num in (2..numItems) {
         &:nth-child({num}) {
-            delay = num * 0.1
+            delay = num * 0.05
             transition-delay unit(delay, 's')
         }
     }

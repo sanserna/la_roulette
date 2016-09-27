@@ -74,7 +74,10 @@ app.ctrl = {
                 $mainNavMenu = $('#main-nav-menu'),
                 $mainNavMenuItem = $('.main-nav__item--menu');
 
-            $mainNavMenu.slideToggle(300);
+            $mainNavMenu.slideToggle({
+                duration: 500,
+                easing: 'easeInCubic'
+            });
             $mainNav.toggleClass('main-nav--active');
 
         });
