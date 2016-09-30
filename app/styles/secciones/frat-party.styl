@@ -1,0 +1,44 @@
+/** TABLA DE CONTENIDOS
+ *
+ * SECCIONES
+ * .page-content--frat-party...Contenedor general de la pagina
+ *
+ * COMPONENTES
+ *
+ */
+ 
+
+
+// -------------------
+// @PAGE-CONTENT
+// -------------------
+
+.page-content--frat-party {
+    &,
+    .frase-animada,
+    .items-wrapper,
+    .item-divider {
+        background-color $blackMed
+    }
+    .frase-animada {
+        h1 {
+            color white
+        }
+    }
+    .items-wrapper {
+        padding 0
+    }
+    .servicio-content-item {
+        .servicio-content-item__titulo {
+            color $frat-party-primary-color
+        }
+    }
+    .section-header {
+        &:after {
+            background-color $frat-party-primary-color
+        }
+    }
+    .item-divider:last-child {
+        background-color $blackBG
+    }
+}
