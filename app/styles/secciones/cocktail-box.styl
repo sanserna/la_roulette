@@ -14,17 +14,19 @@
 // -------------------
 
 .page-content--cocktail-box {
+    &,
+    .frase-animada,
+    .items-wrapper,
+    .item-divider {
+        background-color $blackMed
+    }
     .frase-animada {
-        background-color white
         h1 {
-            color $blackMed
+            color white
         }
     }
     .items-wrapper {
         padding 0
-    }
-    .item-divider {
-        background-color white
     }
     .servicio-content-item {
         .servicio-content-item__titulo {
@@ -37,13 +39,13 @@
             }
         }
     }
-    .item-divider:last-child {
-        background-color $blackBG
-    }
     .section-header {
         &:after {
             background-color $cocktail-box-primary-color
         }
+    }
+    .item-divider:last-child {
+        background-color $blackBG
     }
     @media screen and (max-width: 39.9375em) {
         .column.small-12 {
