@@ -1046,6 +1046,16 @@ app.ctrl.cocktailBox = {
 
         'use strict';
 
+        // - pagos en linea de payu
+        $('[buy-item]').click(function () {
+
+            var $this = $(this),
+                $itemInput = $('[item-ref="' + $this.attr('buy-item') + '"]');
+
+            $itemInput.trigger('click');
+
+        });
+
         // - scrollReveal settings
         (function () {
 
@@ -1155,7 +1165,7 @@ app.ctrl.contacto = {
 
             $returnMsn.empty().removeClass('contact-form__return-msn--success contact-form__return-msn--error');
 
-            if ($nombre.val() == '') {
+            if ($nombre.val() === '') {
 
                 $nombre.addClass('animated shake');
                 $nombre.one(app.ctrl.data.animationEndEventName, function () {
@@ -1165,7 +1175,7 @@ app.ctrl.contacto = {
 
                 });
 
-            } else if ($email.val() == '' || !validacionEmail.test($email.val())) {
+            } else if ($email.val() === '' || !validacionEmail.test($email.val())) {
 
                 $email.addClass('animated shake');
                 $email.one(app.ctrl.data.animationEndEventName, function () {
@@ -1175,7 +1185,7 @@ app.ctrl.contacto = {
 
                 });
 
-            } else if ($telefono.val() == '' || $telefono.val().length < 7) {
+            } else if ($telefono.val() === '' || $telefono.val().length < 7) {
 
                 $telefono.addClass('animated shake');
                 $telefono.one(app.ctrl.data.animationEndEventName, function () {
@@ -1185,7 +1195,7 @@ app.ctrl.contacto = {
 
                 });
 
-            } else if ($mensaje.val() == '') {
+            } else if ($mensaje.val() === '') {
 
                 $mensaje.addClass('animated shake');
                 $mensaje.one(app.ctrl.data.animationEndEventName, function () {
