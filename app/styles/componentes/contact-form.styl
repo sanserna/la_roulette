@@ -8,7 +8,8 @@
     margin-right auto
     max-width 500px
     .contact-form__input,
-    .contact-form__text-area {
+    .contact-form__text-area,
+    .contact-form__select {
         color grey
         border 2px solid rgba($green-logo,.7)
         margin-bottom 1rem
@@ -32,6 +33,51 @@
         width 100px
         &:hover {
             background-color darken($green-logo, 20%)
+        }
+    }
+    .contact-form__select {
+        position relative
+        .arr {
+            background #fff
+            bottom 5px
+            position absolute
+            right 5px
+            top 5px
+            width 50px
+            pointer-events none
+            &:before {
+                content ''
+                position absolute
+                top 50%
+                right 10px
+                margin-top -5px
+                pointer-events none
+                border-top 10px solid $green-logo
+                border-left 10px solid transparent
+                border-right 10px solid transparent
+            }
+            &:after {
+                content ''
+                position absolute
+                top 50%
+                right 14px
+                margin-top -5px
+                pointer-events none
+                border-top 6px solid #fff
+                border-left 6px solid transparent
+                border-right 6px solid transparent
+            }
+        }
+        select {
+            outline none
+            appearance none
+            display block
+            padding 0 .5em
+            margin 0
+            border none
+            background transparent
+            line-height 3
+            text-transform uppercase
         }
     }
     .contact-form__return-msn {

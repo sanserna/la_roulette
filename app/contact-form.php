@@ -2,9 +2,10 @@
 $nombre = $_POST['nombre'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
+$pais = $_POST['pais'];
 $mensaje = $_POST['mensaje'];
 $subject = "Contacto pagina web La Roulette";
-$dest = "contacto@laroulette.com.co";
+$dest = ($pais == "co" ? "contacto@laroulette.com.co" : "infomexico@laroulette.com.co");
 // cuerpo del mensaje que se recibe
 $cuerpo = '
 <h2 style="max-width: 500px; padding: 0px; margin: 0px;">Tienes un nuevo mensaje!</h2>
@@ -42,6 +43,6 @@ $cuerpo = '
 $headers = "From: $nombre <$email>\n";
 $headers .= "X-Mailer: PHP5\n";
 $headers .= 'MIME-Version: 1.0'."\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+$headers .= 'Content-type: text/html; charset=utf-8'."\r\n";
 mail($dest,$subject,$cuerpo,$headers);
 ?>

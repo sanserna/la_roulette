@@ -1159,6 +1159,7 @@ app.ctrl.contacto = {
                 $email = $('#correo'),
                 $telefono = $('#telefono'),
                 $mensaje = $('#mensaje'),
+                $pais = $('#pais'),
                 $returnMsn = $('#returnMsn'),
                 validacionEmail = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/,
                 datos;
@@ -1195,6 +1196,16 @@ app.ctrl.contacto = {
 
                 });
 
+            } else if ($pais.val() === '') {
+
+                $pais.addClass('animated shake');
+                $pais.one(app.ctrl.data.animationEndEventName, function () {
+
+                    $(this).removeClass('animated shake');
+                    $(this).focus();
+
+                });
+
             } else if ($mensaje.val() === '') {
 
                 $mensaje.addClass('animated shake');
@@ -1214,6 +1225,7 @@ app.ctrl.contacto = {
                         nombre: $nombre.val(),
                         email: $email.val(),
                         telefono: $telefono.val(),
+                        pais: $pais.val(),
                         mensaje: $mensaje.val()
                     },
                     success: function () {

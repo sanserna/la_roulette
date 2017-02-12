@@ -91,7 +91,7 @@
 
     <!-- CONTENIDO DE LA PAGINA -->
     <main class="page-content page-content--contacto">
-      
+
       <!-- CONTACTO -->
       <section class="contacto expanded align-middle row">
         <!-- <div class="small-12 column">
@@ -104,15 +104,15 @@
               <h2 class="item-title">Email</h2>
               <a href="mailto:contacto@laroulette.com.co" target="_blank"><p class="normal-text">contacto@laroulette.com.co</p></a>
             </div>
-            
+
             <div class="contacto__item small-12 medium-6 column">
               <h2 class="item-title">David Restrepo</h2>
               <p class="normal-text">312-3055351</p>
             </div>
 
             <div class="contacto__item small-12 medium-6 column">
-              <h2 class="item-title">Sebastian Duque</h2>
-              <p class="normal-text">310-8741280</p>
+              <h2 class="item-title">Bryan Garzon</h2>
+              <p class="normal-text">322-2118502</p>
             </div>
           </div>
 
@@ -146,6 +146,15 @@
               <input type="text" id="correo" name="correo" class="contact-form__input normal-text" filter-keys="email" />
               <label for="telefono" class="normal-text">Telefono <span style="color: red;">*</span></label>
               <input type="text" id="telefono" name="telefono" class="contact-form__input normal-text" filter-keys="numeric"/>
+              <label for="pais" class="normal-text">País donde se desea realizar el evento <span style="color: red;">*</span></label>
+              <div class="contact-form__select normal-text">
+                <span class="arr"></span>
+                <select id="pais" name="pais">
+                  <option value>Seleccione...</option>
+                  <option value="co">Colombia</option>
+                  <option value="mx">Mexico</option>
+                </select>
+              </div>
               <label for="mensaje" class="normal-text">Mensaje <span style="color: red;">*</span></label>
               <textarea id="mensaje" name="mensaje" class="contact-form__text-area normal-text" spellcheck="true" rows="10" cols="40"></textarea>
               <button id="sendForm" class="contact-form__submit">Enviar</button>
@@ -167,7 +176,7 @@
     </footer>
 
     <!-- MAIN SCRIPTS -->
-    <!-- build:js scripts/main.min.js?v=103020161600 -->
+    <!-- build:js scripts/main.min.js?v=120220171600 -->
     <script src="scripts/vendors/modernizr-custom.js"></script>
     <script src="scripts/vendors/jquery.js"></script>
     <script src="scripts/vendors/jquery-ui-easings.js"></script>
@@ -178,7 +187,7 @@
     <script src="scripts/context.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
-    
+
     <script>
       app.ctrl.contacto.init();
     </script>
