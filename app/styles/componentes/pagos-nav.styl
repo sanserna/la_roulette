@@ -1,0 +1,40 @@
+// -------------------
+// @PAGOS-NAV
+// -------------------
+
+.pagos-nav {
+    display none
+    position fixed
+    right 10px
+    bottom 0
+    z-index 999
+    width 340px
+    .pagos-nav__toggle {
+        background $darkGray url('img/assets/pay.png') 15px 50% no-repeat
+        background-size 30px 30px
+        border-top-left-radius 5px
+        border-top-right-radius 5px
+        color white
+        cursor pointer
+        font-weight 700
+        padding 10px
+        text-align center
+        text-transform uppercase
+        transition 0.3s
+        &:hover {
+            background-color $blackBG
+        }
+    }
+    .pagos-nav__content {
+        display none
+        background darken($darkGray, 30%)
+        padding 0 10px 10px 10px
+        .btn {
+            margin 10px 0 0 0
+            width 100%
+        }
+    }
+    @media screen and (min-width: 40em) {
+        display block
+    }
+}

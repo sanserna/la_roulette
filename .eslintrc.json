@@ -16,6 +16,7 @@
     "one-var": [2, "always"],
     "padded-blocks": [2, "always"],
     "quotes": 0,
+    "require-jsdoc": 0,
     "semi": 1,
     "space-before-blocks": [1, "always"],
     "space-before-function-paren": [2, "always"],

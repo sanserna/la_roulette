@@ -165,6 +165,25 @@ app.ctrl = {
 
         }());
 
+        // Pagos en linea de payu
+        $('[buy-item]').click(function () {
+
+            var $this = $(this),
+                $itemInput = $('[item-ref="' + $this.attr('buy-item') + '"]');
+
+            $itemInput.trigger('click');
+
+        });
+
+        // Toggle pagos en linea
+        $('#togglePagosNav').click(function () {
+
+            var $pagosContent = $('#pagosContent');
+
+            $pagosContent.slideToggle(300);
+
+        });
+
     }()),
 
     // HELPER FUNCTIONS
@@ -1046,16 +1065,6 @@ app.ctrl.cocktailBox = {
 
         'use strict';
 
-        // - pagos en linea de payu
-        $('[buy-item]').click(function () {
-
-            var $this = $(this),
-                $itemInput = $('[item-ref="' + $this.attr('buy-item') + '"]');
-
-            $itemInput.trigger('click');
-
-        });
-
         // - scrollReveal settings
         (function () {
 
@@ -1086,6 +1095,114 @@ app.ctrl.fratParty = {
 
             // - llamar funcion que establece los settings de la seccion
             app.ctrl.fratParty.settings();
+
+            // - identificar cuando la carga del contenido (img) del header se haya completado
+            $('[wfi-content]').waitForImages(function () {
+
+                $(this).find('header').addClass('loaded');
+                $('.section-header__title').one(app.ctrl.data.animationEndEventName, function () {
+
+                    $('.js-hand-icon').animate({
+                        opacity: 1
+                    }, 1000);
+
+                });
+
+            });
+
+        });
+
+    },
+
+    settings: function () {
+
+        'use strict';
+
+        // - scrollReveal settings
+        (function () {
+
+            // - servicio-content-item
+            sr.reveal('.sr-servicio-item', {
+                distance: '50px',
+                duration: 800,
+                delay: 100,
+                scale: 1,
+                easing: 'ease-in-out',
+                viewFactor: 0.2
+            });
+
+        }());
+
+    }
+
+    // HELPER SECTION FUNCTIONS
+
+};
+
+app.ctrl.officeFestival = {
+
+    init: function () {
+
+        'use strict';
+
+        $(document).on('ready', function () {
+
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.officeFestival.settings();
+
+            // - identificar cuando la carga del contenido (img) del header se haya completado
+            $('[wfi-content]').waitForImages(function () {
+
+                $(this).find('header').addClass('loaded');
+                $('.section-header__title').one(app.ctrl.data.animationEndEventName, function () {
+
+                    $('.js-hand-icon').animate({
+                        opacity: 1
+                    }, 1000);
+
+                });
+
+            });
+
+        });
+
+    },
+
+    settings: function () {
+
+        'use strict';
+
+        // - scrollReveal settings
+        (function () {
+
+            // - servicio-content-item
+            sr.reveal('.sr-servicio-item', {
+                distance: '50px',
+                duration: 800,
+                delay: 100,
+                scale: 1,
+                easing: 'ease-in-out',
+                viewFactor: 0.2
+            });
+
+        }());
+
+    }
+
+    // HELPER SECTION FUNCTIONS
+
+};
+
+app.ctrl.travelInfusion = {
+
+    init: function () {
+
+        'use strict';
+
+        $(document).on('ready', function () {
+
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.travelInfusion.settings();
 
             // - identificar cuando la carga del contenido (img) del header se haya completado
             $('[wfi-content]').waitForImages(function () {

@@ -40,7 +40,7 @@ var reload = browserSync.reload;
 
 var distFiles;
 
-/** 
+/**
  * Por defecto el Care-Package cuenta con una estructura de proyecto estandar,
  * las rutas para los archivos que seran procesados se almacenan en la variable
  * config. Si desea usar una estructura de proyecto diferente es necesario

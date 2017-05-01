@@ -1,6 +1,7 @@
 /** TABLA DE CONTENIDOS
  *
  * SECCIONES
+ * .page-content--office-festival...Contenedor general de la pagina
  *
  * COMPONENTES
  *
@@ -8,11 +9,11 @@
 
 
 
- // -------------------
+// -------------------
 // @PAGE-CONTENT
 // -------------------
 
-.page-content--office-party {
+.page-content--office-festival {
     &,
     .frase-animada,
     .items-wrapper,
@@ -29,35 +30,34 @@
     }
     .btn-sliding-bg {
         &:hover {
-            color $office-party-primary-color
+            color $office-festival-primary-color
         }
     }
     .servicio-content-item {
-        .item-description-big {
-            color $office-party-primary-color
+        .servicio-content-item__titulo {
+            color $office-festival-primary-color
+        }
+        .servicio-content-item__descripcion {
+            a {
+                text-decoration underline
+                color $office-festival-primary-color
+            }
         }
     }
-    .column.medium-6 {
-        .servicio-content-item {
-            .item-description-big {
-                color white
-            }
+    .section-header {
+        &:after {
+            background-color $office-festival-primary-color
         }
     }
     .item-divider:last-child {
         background-color $blackBG
     }
-    .section-header {
-        &:after {
-            background-color $office-party-primary-color
-        }
-    }
     @media screen and (max-width: 39.9375em) {
-        .servicio-content-item.servicio-content-item--center {
+        .servicio-content-item.fixed {
             padding-top aspect-ratio(9,13)
         }
         .column.medium-6 {
-            .servicio-content-item {
+            .servicio-content-item.fixed {
                 padding-top aspect-ratio(21,9)
             }
         }
