@@ -1,6 +1,7 @@
 *.sh
 *.DS_Store
 *.db
+package-lock.json
 /.tmp
 /dist
 /node_modules

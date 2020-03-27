@@ -27,14 +27,14 @@
         background-color rgba(black,.1)
         z-index 0
     }
-    .section-header__title, 
+    .section-header__title,
     .section-header__description,
     .section-header__hand-icon {
         animation-duration 1s
         flex 0 1 auto
         z-index 1
     }
-    .section-header__title, 
+    .section-header__title,
     .section-header__description {
         opacity 0 // initial for animation
         color white
@@ -67,6 +67,11 @@
         animation-timing-function ease-in-out
         animation-delay 2s
     }
+    &--compressed {
+        min-height 0
+        height 370px
+        background-attachment scroll
+    }
     @media screen and (max-width: 39.9375em) {
         padding-top $main-nav-height
         padding-bottom 20px
@@ -92,8 +97,8 @@
 // - animar contenido del header cuando este listo
 .section-header.loaded {
     animation-name fadeInUpHeader
-    &, 
-    .section-header__title, 
+    &,
+    .section-header__title,
     .section-header__description {
         animation-fill-mode both
     }

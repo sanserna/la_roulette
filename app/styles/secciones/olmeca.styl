@@ -1,0 +1,127 @@
+/** TABLA DE CONTENIDOS
+ *
+ * COMPONENTES
+ *
+ */
+
+
+
+// -------------------
+// @PAGE-CONTENT
+// -------------------
+
+.page-content--olmeca {
+    &,
+    .frase-animada,
+    .items-wrapper,
+    .item-divider {
+        background-color $blackMed
+    }
+    .frase-animada {
+        flex-wrap wrap
+        .logo-olmeca-2 {
+            text-align center
+            width 100%
+
+            img {
+                max-width 300px
+            }
+        }
+        h1 {
+            color $olmeca-primary-color
+        }
+    }
+    .items-wrapper {
+        padding 0
+    }
+    .btn-sliding-bg {
+        &:hover {
+            color $olmeca-primary-color
+        }
+    }
+    .servicio-content-item {
+        .servicio-content-item__titulo {
+            color $olmeca-primary-color
+        }
+    }
+    .item-divider:last-child {
+        background-color $blackBG
+    }
+    .section-header {
+        &::after {
+            display none
+            background-color $olmeca-primary-color
+        }
+    }
+    .glow-text {
+        text-shadow 0px 0px 5px $olmeca-primary-color, 0px 0px 10px $olmeca-primary-color, 0px 0px 15px $olmeca-primary-color
+    }
+    .sub-header {
+        position relative
+        h1 {
+           color $olmeca-primary-color
+           margin 0
+           padding 20px 0
+           background-color #050707
+        }
+        &:after {
+            content ''
+            display block
+            position absolute
+            left 0px
+            bottom 0px
+            height 7px
+            animation-duration 2s
+            animation-fill-mode forwards
+            animation-timing-function ease-in-out
+            animation-delay 2s
+            background-color $olmeca-primary-color
+            animation-name widthLeftToRight
+        }
+    }
+    .logo-olmeca {
+        left calc(50% - 200px)
+        position absolute
+        top $main-nav-height
+        div {
+            position relative
+            img {
+                position absolute
+                left calc(50% - 60px)
+                top 0
+                width 120px
+            }
+            &:before {
+                content ''
+                display block
+                height 0
+                border-left 200px solid transparent
+                border-right 200px solid transparent
+                border-top 130px solid $main-nav-bg-color
+                width 0
+            }
+        }
+    }
+}
+
+.page-footer{
+    .logo-olmeca-2 {
+        text-align center
+        width 100%
+        z-index 1
+
+        img {
+            max-width 300px
+        }
+    }
+    .contact-btn {
+        background-color darken($olmeca-primary-color, 20%)
+        border none
+        color black
+        height 40px
+        width 200px
+        &:hover {
+            background-color darken($olmeca-primary-color, 30%)
+        }
+    }
+}

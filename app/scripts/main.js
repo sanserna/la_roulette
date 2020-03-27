@@ -1369,3 +1369,55 @@ app.ctrl.contacto = {
 
     // HELPER SECTION FUNCTIONS
 };
+
+// FIESTON OLMECA
+app.ctrl.olmeca = {
+
+    init: function () {
+
+        'use strict';
+
+        $(document).on('ready', function () {
+
+            // - llamar funcion que establece los settings de la seccion
+            app.ctrl.olmeca.settings();
+
+            // - identificar cuando la carga del contenido (img) del header se haya completado
+            $('[wfi-content]').waitForImages(function () {
+
+                $(this).find('header').addClass('loaded');
+                $('.section-header__title').one(app.ctrl.data.animationEndEventName, function () {
+
+                    $('.js-hand-icon').animate({
+                        opacity: 1
+                    }, 1000);
+
+                });
+
+            });
+
+        });
+
+    },
+
+    settings: function () {
+
+        'use strict';
+
+        // - scrollReveal settings
+        (function () {
+
+            // - servicio-content-item
+            sr.reveal('.sr-servicio-item', {
+                distance: '50px',
+                duration: 800,
+                delay: 100,
+                scale: 1,
+                easing: 'ease-in-out',
+                viewFactor: 0.2
+            });
+
+        }());
+
+    }
+};

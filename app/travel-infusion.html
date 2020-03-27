@@ -24,7 +24,7 @@
     <link rel="manifest" href="manifest.json">
 
     <!-- ESTILOS -->
-    <!-- build:css styles/main.min.css?v=010420161600 -->
+    <!-- build:css styles/main.min.css?v=010420161700 -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <!-- endbuild -->
 
@@ -62,6 +62,9 @@
             <a href="/" class="main-nav__link main-nav__link--roulette"></a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
+            <a href="fieston-olmeca" class="main-nav__link">FiestON  Olmeca</a>
+          </li>
+          <li class="main-nav__item main-nav__item--menu">
             <a href="home-party" class="main-nav__link">Home Party</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
@@ -69,9 +72,6 @@
           </li>
           <li class="main-nav__item main-nav__item--menu">
             <a href="office-party" class="main-nav__link">Office Party</a>
-          </li>
-          <li class="main-nav__item main-nav__item--menu">
-            <a href="cocktail-box" class="main-nav__link">Cocktail Box</a>
           </li>
           <li class="main-nav__item main-nav__item--menu">
             <a href="frat-party" class="main-nav__link">Frat Party</a>
@@ -122,7 +122,24 @@
             <input name="buttonType" value="SIMPLE" type="hidden"/>
             <input name="signature" value="2665dc40be9ff46db2c7f86b6bbb7caef90b6781391dc6e116949fc065046844" type="hidden"/>
           </form>
-          <button buy-item="margaritaCB" class="btn btn-sliding-bg normal-text">cocktail box</button>
+          <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
+            <button type="submit" class="btn btn-sliding-bg normal-text" onClick="this.form.urlOrigen.value = window.location.href;">Sesiones Virtuales</button>
+            <input name="buttonId" type="hidden" value="UR0J+WEcvFjtsu93hoGfOX1KOvbyt3LwsC9PiHS8n9mleAYdckE4xw=="/>
+            <input name="merchantId" type="hidden" value="790586"/>
+            <input name="accountId" type="hidden" value="797457"/>
+            <input name="description" type="hidden" value="Clase Online Zumba"/>
+            <input name="referenceCode" type="hidden" value="Clase Online Zumba"/>
+            <input name="amount" type="hidden" value="10000.00"/>
+            <input name="tax" type="hidden" value="0.00"/>
+            <input name="taxReturnBase" type="hidden" value="0.00"/>
+            <input name="shipmentValue" value="0.00" type="hidden"/>
+            <input name="currency" type="hidden" value="COP"/>
+            <input name="lng" type="hidden" value="es"/>
+            <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
+            <input name="buttonType" value="SIMPLE" type="hidden"/>
+            <input name="signature" value="84c1eaa5a84c5f5a4c0afb774154d1626bdb3c4ea367231c493f17c0a1de746e" type="hidden"/>
+          </form>
+          <!-- <button buy-item="margaritaCB" class="btn btn-sliding-bg normal-text">cocktail box</button>
           <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
             <input item-ref="margaritaCB" type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_pequeno.png" style="display: none;" />
             <input name="buttonId" type="hidden" value="xXDwxOENilSm1r+cq+DApSGHsB0qpsTLktfjKJznUiquNnXe+PcSpw=="/>
@@ -139,7 +156,7 @@
             <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
             <input name="buttonType" value="SIMPLE" type="hidden"/>
             <input name="signature" value="8e07ba3580440c87e885cd651c8625423fbe853082751331a2a1b539974efdb2" type="hidden"/>
-          </form>
+          </form> -->
         </div>
       </div>
 
@@ -237,7 +254,7 @@
     </footer>
 
     <!-- MAIN SCRIPTS -->
-    <!-- build:js scripts/main.min.js?v=010420161600 -->
+    <!-- build:js scripts/main.min.js?v=010420161700 -->
     <script src="scripts/vendors/modernizr-custom.js"></script>
     <script src="scripts/vendors/jquery.js"></script>
     <script src="scripts/vendors/jquery-ui-easings.js"></script>
